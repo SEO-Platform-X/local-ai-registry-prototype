@@ -3,8 +3,8 @@ exec(open('/tmp/ed61.py').read().split("CL=['Claim'")[0])
 DATA=open('/tmp/gen/premdata.js').read()
 CSS=r'''.wrapU{display:grid;grid-template-columns:1fr 320px;gap:24px;padding:28px 40px 48px;align-items:start}
 .ptabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.ptabs div{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:14px;border:1px solid #e3e3e3;background:#ffffff;cursor:pointer}
-.ptabs div.on{border:2px solid #222222}
+.ptabs > div{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:14px;border:1px solid #e3e3e3;background:#ffffff;cursor:pointer}
+.ptabs > div.on{border:2px solid #222222}
 .ptabs strong{font-size:17px}
 .ptabs span{font-size:12px;color:#6a6a6a}
 .cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid #ebebeb;border-left:1px solid #ebebeb;background:#ffffff;border-radius:12px;overflow:hidden}

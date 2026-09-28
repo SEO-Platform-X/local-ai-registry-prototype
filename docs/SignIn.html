@@ -150,18 +150,14 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 
 /*wrap*/h1,h2,h3,.ttl1,.T,.T2,.sh{text-wrap:balance}p,.v4-sub,.sub,.lead{text-wrap:pretty}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></head><body style="margin:0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></head><body style="margin:0"><div id="dc-root"></div><script type="text/x-dc-tpl" id="dc-tpl">
 <div style="width: 1440px; box-sizing: border-box; display: flex; flex-direction: column; background: #f3efe7; position: relative;">
 <div class="sw"><span style="display: flex; align-items: center; gap: 6px; font-size: 17px; font-weight: 700;"><svg width="18" height="18" viewBox="0 0 30 30" aria-hidden="true"><path d="M15 3 27.5 27h-8.2L15 18.6 10.7 27H2.5L15 3Z" fill="#2b59d9"></path><path d="M15 18.6 19.3 27h-8.6L15 18.6Z" fill="#e5482d"></path></svg>Local AI Registry</span><div class="box"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i><h1>Sign in to your record.</h1><span style="font-size: 13px; line-height: 21px; color: #3d4658;">The registry keeps a file on every business. Sign in to read yours and keep it current.</span><span class="lab2">Email</span><div class="fin2"></div><span class="lab2">Password<a href="#">Forgot it?</a></span><div class="fin2">👁</div><a href="OwnerHome.html" class="b1" style="text-decoration: none;">Sign in</a><span class="or">OR</span><div class="b2">Sign in with Google</div></div><span style="font-size: 13px; color: #3d4658; margin-top: 28px;">Not in the registry yet? <a href="Business.html">Register your business</a></span></div>
 </div>
-<script>
-document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
-  var box=inp.closest('label')||inp.parentElement;
-  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
-  if(sug){sug.style.display='none';
-    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
-    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
-    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
-  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
-});
-</script></body></html>
+</script><script src="lair-rt.js"></script><script>class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+
+__dcStart(Component);</script></body></html>

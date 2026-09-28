@@ -176,18 +176,14 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 
 /*wrap*/h1,h2,h3,.ttl1,.T,.T2,.sh{text-wrap:balance}p,.v4-sub,.sub,.lead{text-wrap:pretty}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></head><body style="margin:0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></head><body style="margin:0"><div id="dc-root"></div><script type="text/x-dc-tpl" id="dc-tpl">
 <div style="width: 1440px; box-sizing: border-box; display: flex; flex-direction: column; background: #f3efe7; position: relative;">
 <header style="height: 68px; flex-shrink: 0; box-sizing: border-box; padding: 0 40px; background: #f3efe7; border-bottom: 1px solid #e4ded2; display: flex; align-items: center; gap: 24px;"><a href="Home.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0;"><svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M15 3 27.5 27h-8.2L15 18.6 10.7 27H2.5L15 3Z" fill="#2b59d9"></path><path d="M15 18.6 19.3 27h-8.6L15 18.6Z" fill="#e5482d"></path></svg><span style="font-weight: 700; font-size: 16px; color: #13203a;">Local AI Registry</span></a><span style="height: 24px; padding: 0 10px; border-radius: 12px; background: #e9e3d6; color: #5b6474; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; display: inline-flex; align-items: center;">Storyboard · Add a location</span><a href="OwnerHome.html" style="margin-left: auto; font-size: 14px; font-weight: 600; color: #13203a; text-decoration: none;">‹ Back to dashboard</a></header><div class="wrap"><div style="display: flex; flex-direction: column; gap: 18px;"><div class="flowh"><h2>A second location</h2><span>From the business switcher. Each location has its own page, plan and AI Score.</span></div><div class="frames" style="grid-template-columns: repeat(3, minmax(0, 1fr));"><div class="fr"><span class="lb"><b>1</b> · Open the switcher</span><div class="scr"><div class="lst"><div class="it"><span><strong>Lumen Aesthetics</strong><br><span class="mu">Irvine Spectrum · Trust</span></span><span>✓</span></div><div class="it"><span style="color: #2b59d9; font-weight: 600;">+ Add a location</span></div><div class="it"><span style="color: #2b59d9; font-weight: 600;">+ Claim another business</span></div></div></div></div><div class="fr"><span class="lb"><b>2</b> · Find it</span><div class="scr"><div class="mh"><strong>Add a location</strong><span class="x">✕</span></div><div class="inp focus">Lumen Newport</div><div class="lst"><div class="it"><span><strong>Lumen Aesthetics Newport</strong><br><span class="mu">Fashion Island · unclaimed · 11 posts</span></span><span class="btn b-sm b-dark">Add</span></div></div><span class="mu" style="font-size: 12px;">Same brand and team, so you skip the text code.</span></div></div><div class="fr"><span class="lb"><b>3</b> · Confirm what carries over</span><div class="scr"><strong style="font-size: 16px;">Copy from Irvine Spectrum?</strong><div class="opt on"><span class="rdo"></span>Services and prices</div><div class="opt on"><span class="rdo"></span>Team (pick who works here)</div><div class="opt on"><span class="rdo"></span>AI notes</div><div class="opt"><span class="rdo"></span>Hours (Newport's are different)</div><span class="btn b-dark" style="margin-top: auto;">Add Newport</span></div></div></div></div></div>
 </div>
-<script>
-document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
-  var box=inp.closest('label')||inp.parentElement;
-  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
-  if(sug){sug.style.display='none';
-    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
-    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
-    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
-  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
-});
-</script></body></html>
+</script><script src="lair-rt.js"></script><script>class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+
+__dcStart(Component);</script></body></html>

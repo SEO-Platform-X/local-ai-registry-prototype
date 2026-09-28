@@ -4,8 +4,8 @@ CSS=r'''.mw{max-width:880px;margin:0 auto;padding:36px 40px 64px;display:flex;fl
 .av{width:72px;height:72px;border-radius:50%;background:#dfe8f5;color:#13203a;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0}
 .bdgx{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 10px;border-radius:12px;background:#e8eefc;color:#2b59d9;font-size:12px;font-weight:700}
 .tabs{display:flex;gap:4px;border-bottom:1px solid #e4ded2}
-.tabs span{padding:12px 14px;font-size:14px;font-weight:600;color:#667085;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
-.tabs span.on{color:#13203a;border-bottom-color:#13203a}
+.tabs > span{padding:12px 14px;font-size:14px;font-weight:600;color:#667085;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs > span.on{color:#13203a;border-bottom-color:#13203a}
 .it{display:flex;flex-direction:column;gap:6px;padding:16px 0;border-bottom:1px solid #ece6da}
 .it .m{font-size:12px;color:#667085}.it .m a{font-weight:600}
 .it strong{font-size:16px}.it p{margin:0;font-size:14px;line-height:21px;color:#3d4658}

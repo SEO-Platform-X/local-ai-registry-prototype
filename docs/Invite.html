@@ -176,18 +176,14 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 
 /*wrap*/h1,h2,h3,.ttl1,.T,.T2,.sh{text-wrap:balance}p,.v4-sub,.sub,.lead{text-wrap:pretty}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></head><body style="margin:0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></head><body style="margin:0"><div id="dc-root"></div><script type="text/x-dc-tpl" id="dc-tpl">
 <div style="width: 1440px; box-sizing: border-box; display: flex; flex-direction: column; background: #f3efe7; position: relative;">
 <header style="height: 68px; flex-shrink: 0; box-sizing: border-box; padding: 0 40px; background: #f3efe7; border-bottom: 1px solid #e4ded2; display: flex; align-items: center; gap: 24px;"><a href="Home.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0;"><svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M15 3 27.5 27h-8.2L15 18.6 10.7 27H2.5L15 3Z" fill="#2b59d9"></path><path d="M15 18.6 19.3 27h-8.6L15 18.6Z" fill="#e5482d"></path></svg><span style="font-weight: 700; font-size: 16px; color: #13203a;">Local AI Registry</span></a><span style="height: 24px; padding: 0 10px; border-radius: 12px; background: #e9e3d6; color: #5b6474; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; display: inline-flex; align-items: center;">Storyboard · Team invite</span><a href="OwnerTeam.html" style="margin-left: auto; font-size: 14px; font-weight: 600; color: #13203a; text-decoration: none;">‹ Back to team</a></header><div class="wrap"><div style="display: flex; flex-direction: column; gap: 18px;"><div class="flowh"><h2>Joining a team</h2><span>What Lumen's marketing person sees after Dr. Nair invites them.</span></div><div class="frames" style="grid-template-columns: repeat(3, minmax(0, 1fr));"><div class="fr"><span class="lb"><b>1</b> · The invite email</span><div class="scr"><div class="em"><div class="eh"><b>Dr. Priya Nair invited you to Lumen Aesthetics</b>To jess@lumenirvine.com</div><div class="eb"><span>You're invited as <strong>Marketing</strong> on Local AI Registry. You'll approve the work that goes out under Lumen's name and reply to locals.</span><span class="btn b-sm b-dark" style="align-self: flex-start;">Join Lumen</span></div></div></div></div><div class="fr"><span class="lb"><b>2</b> · Confirm who you are</span><div class="scr"><div class="mh"><strong>Join Lumen Aesthetics</strong><span class="x">✕</span></div><div class="fl"><label>Your name</label><div class="inp">Jess Kim</div></div><div class="fl"><label>Your mobile, for sign-in codes</label><div class="inp focus">(949) 555-0172</div></div><div class="note">Role: Marketing. Approves work and edits the page. Can't see billing.</div><span class="btn b-dark" style="margin-top: auto;">Send my code</span></div></div><div class="fr"><span class="lb"><b>3</b> · First thing they see</span><div class="scr"><strong style="font-size: 16px;">Welcome, Jess</strong><div class="okb"><strong>3 pieces are waiting for you.</strong> Two Google posts and a press release for Morpheus8 Body.</div><div class="lst"><div class="it"><span>Google post: Morpheus8 Body is here</span><span class="btn b-sm b-dark">Review</span></div><div class="it"><span>Reply to 4 new reviews</span><span class="btn b-sm">Review</span></div><div class="it"><span>2 questions from locals</span><span class="btn b-sm">Answer</span></div></div></div></div></div></div></div>
 </div>
-<script>
-document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
-  var box=inp.closest('label')||inp.parentElement;
-  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
-  if(sug){sug.style.display='none';
-    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
-    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
-    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
-  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
-});
-</script></body></html>
+</script><script src="lair-rt.js"></script><script>class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+
+__dcStart(Component);</script></body></html>

@@ -69,7 +69,7 @@ FL=f'''<div class="sf"><span class="s3-lb">Storyboard · search</span><h1>What h
 <span class="sf-h">Types</span><div class="sf-r"><span class="ic">▦</span><span class="n"><b>Med spas in Irvine</b><span>148 places</span></span><span class="sf-tag" style="background: #237233;">3</span></div>
 <span class="sf-h">Ask locals</span><div class="sf-r" style="padding-bottom: 14px;"><span class="ic">?</span><span class="n"><b>"lumen" in Irvine conversations</b><span>Press Enter to see answers</span></span><span class="sf-tag" style="background: #e5482d;">4</span></div></div>
 <div class="sf-rules">
-{rule('1','#13203a','Click a business','Goes straight to its page: facts with their marks, what locals say, photos. If the business is not on the registry yet, the page offers "Add it" and "Ask locals about it."','Business page','Main.dc.html')}
+{rule('1','#13203a','Click a business','Opens Explore with that business selected: its pin on the map, its card with the top facts and conversations, and a button to see the full page.','Explore, selected','ExploreLumen.dc.html')}
 {rule('2','#2b59d9','Click a city','Opens that city: a map of what people are talking about, the live feed of questions and tips, and the categories. Your city is remembered for next time.','City page','Explore.dc.html')}
 {rule('3','#237233','Click a type','Opens the best-of list for that type in that city, ranked by what locals say and what owners confirm. Nobody can pay to rank.','Best-of list','BestOf.dc.html')}
 {rule('4','#e5482d','Press Enter','A name ("lumen") shows matching places on the map. A question ("natural lip filler") shows the short answer from locals, their top answers, and the places they named.','Results','QResults.dc.html')}
@@ -79,8 +79,8 @@ open(P+'QResults.dc.html','w').write(page('Search results: a question',Q))
 open(P+'SearchFlow.dc.html','w').write(page('What happens when you search',FL))
 # homepage dropdown: business goes to its page; add types and ask locals
 h=open(P+'Home.dc.html').read()
-print('biz links',h.count('<a href="ExploreLumen.dc.html"><span class="ic">✦</span>'))
-h=h.replace('<a href="ExploreLumen.dc.html"><span class="ic">✦</span>','<a href="Main.dc.html"><span class="ic">✦</span>')
+print('biz links',h.count('<a href="Main.dc.html"><span class="ic">✦</span>'))
+h=h.replace('<a href="Main.dc.html"><span class="ic">✦</span>','<a href="ExploreLumen.dc.html"><span class="ic">✦</span>')
 CITY='<span class="mu" style="font-size: 13px;">4,812 neighbors · 1,904 conversations</span></span></a>'
 if 'id="sugTypes"' not in h:
     h=h.replace(CITY,CITY+'<span class="h" style="display: block;" id="sugTypes">Types</span><a href="BestOf.dc.html"><span class="ic">▦</span><span style="display: flex; flex-direction: column;"><strong>Med spas in Irvine</strong><span class="mu" style="font-size: 13px;">148 places</span></span></a><span class="h" style="display: block;">Ask locals</span><a href="QResults.dc.html"><span class="ic">?</span><span style="display: flex; flex-direction: column;"><strong>See what locals say</strong><span class="mu" style="font-size: 13px;">Press Enter for answers</span></span></a>',1)

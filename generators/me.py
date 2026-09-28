@@ -12,8 +12,8 @@ CSS=HNL_CSS+'.wrap,header{flex-shrink:0}\n'+r'''.srf{font-family:"Cormorant Gara
 .st b{font-size:22px}
 .st span{font-size:12px;color:#6a6a6a}
 .tabs{display:flex;gap:4px;border-bottom:1px solid #ebebeb}
-.tabs span{height:46px;padding:0 14px;display:inline-flex;align-items:center;font-size:15px;font-weight:600;color:#717171;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer}
-.tabs span.on{color:#222222;border-bottom-color:#222222}
+.tabs > span{height:46px;padding:0 14px;display:inline-flex;align-items:center;font-size:15px;font-weight:600;color:#717171;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer}
+.tabs > span.on{color:#222222;border-bottom-color:#222222}
 .ai{display:flex;flex-direction:column;gap:10px;padding:22px 24px;border-radius:18px;background:#13203a;color:#ffffff}
 .ai .r{display:flex;gap:12px;padding:10px 0;border-top:1px solid rgba(255,255,255,0.12);font-size:14px;line-height:20px}
 .ai .r:first-of-type{border-top:none}

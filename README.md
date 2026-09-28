@@ -20,4 +20,4 @@ Clickable design prototype for localairegistry.com, desktop and mobile.
 - Boards titled "Unused · safe to delete" are retired and can be removed.
 - Start with `Flow.dc.html`, `FlowBuild.dc.html` (rebuild prompt and design system) and `FlowRules.dc.html` (product rules and open items).
 
-- `docs/` : a static copy of every screen for viewing in a browser (the link above). Buttons and links work; toggles and other in-page interactions show their default state only.
+- `docs/` : the browsable site (the link above). Every screen runs with a small runtime (`docs/lair-rt.js`), so filters, tabs, plan tiers, search and other in-page interactions work like the design canvas. Rebuilt with `generators/build_site.py`.

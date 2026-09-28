@@ -171,18 +171,14 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 
 /*wrap*/h1,h2,h3,.ttl1,.T,.T2,.sh{text-wrap:balance}p,.v4-sub,.sub,.lead{text-wrap:pretty}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></head><body style="margin:0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></head><body style="margin:0"><div id="dc-root"></div><script type="text/x-dc-tpl" id="dc-tpl">
 <div style="width: 1440px; box-sizing: border-box; display: flex; flex-direction: column; background: #f3efe7; position: relative;">
 <div class="cf-top"><a href="Home.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;"><svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M15 3 27.5 27h-8.2L15 18.6 10.7 27H2.5L15 3Z" fill="#2b59d9"></path><path d="M15 18.6 19.3 27h-8.6L15 18.6Z" fill="#e5482d"></path></svg><span style="font-weight: 700; font-size: 16px; color: #13203a;">Local AI Registry</span></a><a href="Main.html" style="font-size: 14px; font-weight: 600; color: #3d4658; text-decoration: none;">Save and exit</a></div><div class="cf"><div class="cf-l"><div class="cf-st"><div class="cf-s done"><span class="d">✓</span><span>Claim</span></div><div class="cf-s on"><span class="d">2</span><span>Text code</span></div><div class="cf-s "><span class="d">3</span><span>Confirm info</span></div><div class="cf-s "><span class="d">4</span><span>Verify ownership</span></div></div><div class="cf-vis"><svg viewBox="0 0 240 150" width="240" height="150" aria-hidden="true" fill="none" stroke="#13203a" stroke-width="1.4"><rect x="40" y="40" width="160" height="96"/><path d="M34 40h172l-8-18H42z" fill="#fbf4ea"/><path d="M40 70h160"/><path d="M52 70 60 56h120l8 14" fill="#e5482d" fill-opacity="0.18" stroke="#e5482d"/><rect x="104" y="90" width="32" height="46" fill="#dfe8f5"/><rect x="54" y="88" width="36" height="30"/><rect x="150" y="88" width="36" height="30"/><path d="M20 136h200" stroke-width="1"/><text x="120" y="35" font-size="9" text-anchor="middle" fill="#13203a" stroke="none" font-family="Figtree,sans-serif" letter-spacing="2">LUMEN</text></svg><span class="big">One text. <em>That is it.</em></span><p>No password to remember. The code proves the page is yours.</p></div><div class="cf-rep"><div style="display: flex; align-items: center; gap: 12px;"><span class="av">KM</span><span style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1;"><strong style="font-size: 14px;">Kody Muffoletto</strong><span style="font-size: 12px; color: #5b6474;">Your rep. He can do this with you in 15 minutes.</span></span><a href="#" class="cf-kb">Book with Kody</a></div><div style="height: 1px; background: #e6cfb2;"></div><div style="font-size: 13px; color: #3d4658;">Or contact support at <a href="mailto:support@localairegistry.com" style="color: #13203a; font-weight: 600;">support@localairegistry.com</a></div></div></div><div class="cf-r"><div class="cf-body"><div class="cf-in"><h1>Enter your code</h1><span style="font-size: 15px; line-height: 23px; color: #3d4658;">We texted a 6-digit code to (415) 555-1234.</span><div class="otpb"><span class="f">4</span><span class="f">8</span><span>1</span><span></span><span></span><span></span></div><span style="font-size: 14px; color: #5b6474; margin-top: 20px;">Didn't get it? <a href="#">Resend in 30s</a> · <a href="ClaimIssue.html">Get help</a></span></div></div><div class="cf-foot"><a href="Claim.html" class="cf-back">‹ Back</a><a href="Setup.html" class="cf-next">Confirm code <span>⟶</span></a></div></div></div>
 </div>
-<script>
-document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
-  var box=inp.closest('label')||inp.parentElement;
-  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
-  if(sug){sug.style.display='none';
-    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
-    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
-    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
-  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
-});
-</script></body></html>
+</script><script src="lair-rt.js"></script><script>class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+
+__dcStart(Component);</script></body></html>

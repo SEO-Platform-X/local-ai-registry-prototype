@@ -140,8 +140,14 @@ table{border-collapse:collapse;width:100%;font-size:13px}td,th{text-align:left;p
 h1,.ttl1,h2.h2{font-family:"Cormorant Garamond",Georgia,serif !important;font-weight:500 !important;letter-spacing:0 !important}
 
 /*wrap*/h1,h2,h3,.ttl1,.T,.T2,.sh{text-wrap:balance}p,.v4-sub,.sub,.lead{text-wrap:pretty}
+
+/*ds:lair*/.btn{border-radius:9999px !important;font-weight:600 !important;box-shadow:none !important;letter-spacing:0 !important;background-image:none !important}
+.btn.b-dark,.btn.b-coral,.btn.grad,.btn.b-lock,.grad{background:#13203a !important;background-image:none !important;color:#ffffff !important;border-color:#13203a !important}
+.btn:not(.b-dark):not(.b-coral):not(.grad):not(.b-lock){background:#ffffff !important;border:1px solid #13203a !important;color:#13203a !important}
+h1{font-family:"Cormorant Garamond",Georgia,serif !important;font-weight:500 !important;letter-spacing:0 !important}
+body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></head><body style="margin:0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></head><body style="margin:0"><div id="dc-root"></div><script type="text/x-dc-tpl" id="dc-tpl">
 <div style="width: 1440px; box-sizing: border-box; display: flex; flex-direction: column; background: #f3efe7; position: relative;">
 <div class="fw"><div class="fh"><span style="display: flex; align-items: center; gap: 10px;"><svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M15 3 27.5 27h-8.2L15 18.6 10.7 27H2.5L15 3Z" fill="#2b59d9"></path><path d="M15 18.6 19.3 27h-8.6L15 18.6Z" fill="#e5482d"></path></svg><b style="font-size: 17px;">Local AI Registry</b><span class="ey" style="margin-left: 8px;">Prototype map · handoff</span></span><h1 style="margin-top: 18px; font-size: 52px; line-height: 56px;">Homepage, product rules, open items</h1></div><div style="display: flex; gap: 10px; flex-wrap: wrap;"><a href="Flow.html" style="height: 40px; padding: 0 16px; border-radius: 9999px; border: 1px solid #13203a; display: inline-flex; align-items: center; font-size: 14px; font-weight: 700; text-decoration: none; color: #13203a;">0 · Start here: every screen</a><a href="FlowBuild.html" style="height: 40px; padding: 0 16px; border-radius: 9999px; border: 1px solid #13203a; display: inline-flex; align-items: center; font-size: 14px; font-weight: 700; text-decoration: none; color: #13203a;">0b · Mobile, rebuilding with Claude, design system</a><a href="FlowRules.html" style="height: 40px; padding: 0 16px; border-radius: 9999px; border: 1px solid #13203a; display: inline-flex; align-items: center; font-size: 14px; font-weight: 700; text-decoration: none; color: #13203a;">0c · Homepage, product rules, open items</a></div><div class="sec"><span class="ey">For the builder</span><h2>Rebuilding this with Claude</h2><p class="d">Every screen is a single HTML file. Download the project from the artifact page (or ask Claude to read a board by its file name) and hand it the prompt below. Build one journey at a time, and compare each page side by side with its board before moving on.</p><div class="code">You are rebuilding Local AI Registry from a clickable design prototype.
 The prototype is a set of HTML files, one per screen. Treat them as the
@@ -189,14 +195,10 @@ Ask me before changing any of them.</div></div>
 </div></div>
 </div>
 </div>
-<script>
-document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
-  var box=inp.closest('label')||inp.parentElement;
-  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
-  if(sug){sug.style.display='none';
-    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
-    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
-    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
-  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
-});
-</script></body></html>
+</script><script src="lair-rt.js"></script><script>class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+
+__dcStart(Component);</script></body></html>
