@@ -1,4 +1,13 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1440"><title>21a · Search edge cases · Local AI Registry prototype</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Search results: a question</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&amp;display=swap">
 <style>
 body{margin:0;font-family:Figtree,"Airbnb Cereal VF","Helvetica Neue",Helvetica,sans-serif;color:#13203a;background:#ffffff;-webkit-font-smoothing:antialiased}
@@ -97,6 +106,7 @@ a{color:#13203a;text-decoration:underline;text-underline-offset:2px;font-weight:
 .pin.you{background:#e5482d;width:28px;height:28px}
 .cmp{display:grid;grid-template-columns:1.4fr 0.6fr 0.9fr 1fr;gap:8px;align-items:center;padding:8px 0;border-top:1px solid #e4ded2;font-size:12px}
 .cmp .hd{font-size:10px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:0.05em}
+.otp{width:52px;height:60px;border:1px solid #dcd5c7;border-radius:10px;font-size:24px;font-weight:600;text-align:center;font-family:inherit}
 .fld{display:flex;align-items:center;gap:10px;height:50px;border:1px solid #dcd5c7;border-radius:10px;padding:0 14px;font-size:14px}
 .fld input{border:none;outline:none;flex-grow:1;font-family:inherit;font-size:14px;background:transparent}
 .day{height:36px;display:flex;align-items:center;justify-content:center;font-size:13px;border-radius:50%;cursor:pointer}
@@ -112,6 +122,8 @@ a{color:#13203a;text-decoration:underline;text-underline-offset:2px;font-weight:
 .cit{display:grid;grid-template-columns:2fr 1fr 1.4fr;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid #e4ded2;font-size:13px}
 
 
+/*palette:lair*/body{background:#f3efe7 !important}
+h1,.ttl1,h2.h2{font-family:"Cormorant Garamond",Georgia,serif !important;font-weight:500 !important;letter-spacing:0 !important}
 
 .wrap{padding:40px 56px 64px;display:flex;flex-direction:column;gap:40px;background:#f3efe7}
 .flowh{display:flex;flex-direction:column;gap:6px}
@@ -154,19 +166,23 @@ a{color:#13203a;text-decoration:underline;text-underline-offset:2px;font-weight:
 .push{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:12px;background:#fff1ec;font-size:13px;color:#a8452c}
 .big{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:20px 0}
 .big .ic{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px}
-.em{border:1px solid #e4ded2;border-radius:14px;overflow:hidden;background:#ffffff}
-.em .eh{padding:10px 14px;background:#f7f4ee;font-size:12px;color:#667085;display:flex;flex-direction:column;gap:2px}
-.em .eh b{color:#13203a;font-size:13px}
-.em .eb{padding:14px;font-size:13px;line-height:20px;color:#3d4658;display:flex;flex-direction:column;gap:10px}
-.qa{padding:12px;border-radius:12px;border:1px solid #e4ded2;display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:19px}
-.un{font-size:12px;font-weight:700;color:#13203a}.un i{font-style:normal;font-weight:500;color:#8a8a8a}
+.pw{max-width:1040px;margin:0 auto;padding:32px 40px 64px;display:flex;flex-direction:column;gap:22px}
+.crumb{font-size:13px;color:#667085}.crumb a{color:#2b59d9;text-decoration:none}
+.card2{background:#ffffff;border:1px solid #e4ded2;border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.un{font-size:13px;font-weight:700}.un i{font-style:normal;font-weight:500;color:#8a8a8a}
 .tg{display:inline-flex;height:20px;padding:0 8px;border-radius:10px;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;align-items:center;background:#efeae0;color:#667085}
-.gbtn{height:44px;border-radius:22px;border:1px solid #dcd5c7;display:flex;align-items:center;justify-content:center;gap:10px;font-size:14px;font-weight:600;background:#ffffff}
-.lst{display:flex;flex-direction:column}.lst .it{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f0ebe1;font-size:13px}
+.act{display:flex;gap:8px}.act span{height:32px;padding:0 12px;border:1px solid #e4ded2;border-radius:16px;display:inline-flex;align-items:center;font-size:13px;font-weight:600;background:#ffffff}
+.ans{padding:14px 16px;border-radius:12px;border:1px solid #efeae0;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:21px}
+.own{background:#eaf5ec;border-color:#cfe8d4}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ty{background:#ffffff;border:1px solid #e4ded2;border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;text-decoration:none;color:#13203a}
+.ty strong{font-size:15px}.ty span{font-size:12px;color:#667085}
+.rk{display:grid;grid-template-columns:40px 1fr 200px;gap:16px;align-items:start;padding:18px 0;border-top:1px solid #e4ded2}
+.rk .n{font-size:28px;font-family:"Cormorant Garamond",Georgia,serif}
+.kf{display:flex;gap:6px;flex-wrap:wrap}.kf span{height:26px;padding:0 10px;border-radius:13px;background:#efeae0;font-size:12px;font-weight:600;display:inline-flex;align-items:center}
+.q{font-size:14px;line-height:21px;color:#3d4658;padding:10px 12px;border-left:3px solid #e5482d;background:#ffffff;border-radius:0 10px 10px 0}
+h1{margin:0;font-size:38px;line-height:44px}
 
-
-/*palette:lair*/body{background:#f3efe7 !important}
-h1,.ttl1,h2.h2{font-family:"Cormorant Garamond",Georgia,serif !important;font-weight:500 !important;letter-spacing:0 !important}
 
 /*ds:lair*/.btn{border-radius:9999px !important;font-weight:600 !important;box-shadow:none !important;letter-spacing:0 !important;background-image:none !important}
 .btn.b-dark,.btn.b-coral,.btn.grad,.btn.b-lock,.grad{background:#13203a !important;background-image:none !important;color:#ffffff !important;border-color:#13203a !important}
@@ -175,9 +191,60 @@ h1{font-family:"Cormorant Garamond",Georgia,serif !important;font-weight:500 !im
 body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 
 /*wrap*/h1,h2,h3,.ttl1,.T,.T2,.sh{text-wrap:balance}p,.v4-sub,.sub,.lead{text-wrap:pretty}
+/*s3*/
+.s3{max-width:1180px;margin:0 auto;padding:28px 40px 70px;display:flex;flex-direction:column;gap:22px}
+.s3-bar{display:flex;gap:10px;align-items:center}
+.s3-city{height:48px;padding:0 16px;border-radius:24px;border:1px solid #e4ded2;background:#fff;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:#13203a}
+.s3-q{flex:1;height:48px;border-radius:24px;border:1px solid #e4ded2;background:#fff;display:flex;align-items:center;padding:0 18px;font-size:16px;color:#13203a;box-shadow:0 6px 18px rgba(19,32,58,0.06)}
+.s3 h1{margin:0;font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:48px;line-height:52px;color:#13203a}.s3 h1 em{color:#e5482d}
+.s3-g{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:26px;align-items:start}
+.s3-card{background:#fff;border:1px solid #e4ded2;border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.s3-lb{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8a93a3}
+.s3-sum{background:#13203a;color:#fff;border-color:#13203a}.s3-sum p{margin:0;font-size:17px;line-height:27px}.s3-sum .s3-lb{color:#aeb6c6}
+.s3-a{display:flex;gap:14px;padding:12px 0;border-top:1px solid #f0ebe1;text-decoration:none !important;color:#13203a}
+.s3-v{width:34px;display:flex;flex-direction:column;align-items:center;font-size:13px;color:#e5482d;flex-shrink:0}.s3-v b{color:#13203a}
+.s3-a,.s3-p,.sf-rule{font-weight:400}.s3-a .s3t{display:flex;flex-direction:column;gap:4px}.s3-a .s3q{font-size:13px;color:#5b6474;border:none;padding:0}.s3-a .s3x{font-size:16px;line-height:23px;color:#13203a}.s3-a .s3m{font-size:12px;color:#8a93a3}
+.s3-w{font-size:10px;font-weight:700;text-transform:uppercase;color:#a8452c;margin-left:4px}
+.s3-p{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid #f0ebe1;text-decoration:none !important;color:#13203a}
+.s3-av{width:40px;height:40px;border-radius:10px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.s3-p .s3n{flex:1;display:flex;flex-direction:column}.s3-p .s3n b{font-size:15px}.s3-p .s3n > span{font-size:12px;color:#5b6474}
+.s3-go{font-size:13px;font-weight:700;color:#2b59d9;white-space:nowrap}
+.s3-ask{background:#fbf4ea;border-color:#f0dcc4}
+.s3-btn{align-self:flex-start;height:44px;padding:0 20px;border-radius:22px;background:#13203a;color:#fff !important;display:inline-flex;align-items:center;font-size:14px;font-weight:700;text-decoration:none !important}
+.s3-mk{display:inline-block;width:8px;height:8px;border-radius:50%;margin-left:4px}
+/* flow map */
+.sf{max-width:1320px;margin:0 auto;padding:30px 40px 70px;display:flex;flex-direction:column;gap:22px}
+.sf h1{margin:0;font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:46px;color:#13203a}
+.sf-g{display:grid;grid-template-columns:420px minmax(0,1fr);gap:40px;align-items:start}
+.sf-dd{background:#fff;border:1px solid #e4ded2;border-radius:16px;box-shadow:0 20px 50px rgba(19,32,58,0.10);overflow:hidden}
+.sf-in{padding:14px 18px;border-bottom:1px solid #f0ebe1;font-size:16px;color:#13203a;display:flex;gap:8px;align-items:center}
+.sf-h{display:block;padding:10px 18px 4px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8a93a3}
+.sf-r{display:flex;align-items:center;gap:10px;padding:9px 18px;font-size:14px;color:#13203a}.sf-r .ic{width:28px;height:28px;border-radius:8px;background:#f3efe7;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.sf-r .n{flex:1;display:flex;flex-direction:column}.sf-r .n span{font-size:12px;color:#8a93a3}
+.sf-tag{font-size:11px;font-weight:700;color:#fff;border-radius:10px;padding:3px 8px}
+.sf-rules{display:flex;flex-direction:column;gap:12px}
+.sf-rule{display:grid;grid-template-columns:34px 220px minmax(0,1fr) 170px;gap:14px;align-items:center;background:#fff;border:1px solid #e4ded2;border-radius:14px;padding:14px 18px;text-decoration:none !important;color:#13203a}
+.sf-rule .k{width:30px;height:30px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.sf-rule b{font-size:15px}.sf-rule span{font-size:14px;line-height:21px;color:#3d4658}.sf-rule .go{font-size:13px;font-weight:700;color:#2b59d9;text-align:right}
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></head><body style="margin:0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></helmet>
 <div style="width: 1440px; box-sizing: border-box; display: flex; flex-direction: column; background: #f3efe7; position: relative;">
-<header style="height: 68px; flex-shrink: 0; box-sizing: border-box; padding: 0 40px; background: #f3efe7; border-bottom: 1px solid #e4ded2; display: flex; align-items: center; gap: 24px;"><a href="Home.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0;"><svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M15 3 27.5 27h-8.2L15 18.6 10.7 27H2.5L15 3Z" fill="#2b59d9"></path><path d="M15 18.6 19.3 27h-8.6L15 18.6Z" fill="#e5482d"></path></svg><span style="font-weight: 700; font-size: 16px; color: #13203a;">Local AI Registry</span></a><span style="height: 24px; padding: 0 10px; border-radius: 12px; background: #e9e3d6; color: #5b6474; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; display: inline-flex; align-items: center;">Storyboard · Search</span><a href="Home.html" style="margin-left: auto; font-size: 14px; font-weight: 600; color: #13203a; text-decoration: none;">‹ Back to home</a></header><div class="wrap"><div style="display: flex; flex-direction: column; gap: 18px;"><div class="flowh"><h2>Search</h2><span>One box on the homepage and in the header. It finds businesses, types and cities.</span></div><div class="frames" style="grid-template-columns: repeat(4, minmax(0, 1fr));"><div class="fr"><span class="lb"><b>1</b> · Typing</span><div class="scr"><div class="inp focus">lumen</div><div class="lst"><span class="mu" style="font-size: 11px; font-weight: 700; padding-top: 6px;">BUSINESSES</span><div class="it"><span><strong>Lumen Aesthetics</strong><br><span class="mu">Med spa · Irvine Spectrum</span></span><span class="mu">22 posts</span></div><div class="it"><span><strong>Lumen Dental Studio</strong><br><span class="mu">Dentist · Tustin</span></span><span class="mu">3 posts</span></div><span class="mu" style="font-size: 11px; font-weight: 700; padding-top: 10px;">TYPES</span><div class="it"><span>Med spas in Irvine</span><span>›</span></div></div></div></div><div class="fr"><span class="lb"><b>2</b> · Several matches</span><div class="scr"><strong style="font-size: 16px;">3 results for "glow"</strong><div class="lst"><div class="it"><span><strong>Glow Bar Irvine</strong><br><span class="mu">Med spa · Woodbridge · 41 posts</span></span><span class="btn b-sm">Open</span></div><div class="it"><span><strong>Glow Nail Lounge</strong><br><span class="mu">Nail salon · Irvine · 12 posts</span></span><span class="btn b-sm">Open</span></div><div class="it"><span><strong>Glow Skin Studio</strong><br><span class="mu">Esthetician · Costa Mesa · 2 posts</span></span><span class="btn b-sm">Open</span></div></div><span class="mu" style="font-size: 12px;">Sorted by how close and how active. <a href="Explore.html">See them on the map</a></span></div></div><div class="fr"><span class="lb"><b>3</b> · Typo</span><div class="scr"><strong style="font-size: 16px;">No results for "lumin asthetics"</strong><div class="note">Did you mean <a href="Main.html"><strong>Lumen Aesthetics</strong></a>, Irvine Spectrum?</div></div></div><div class="fr"><span class="lb"><b>4</b> · Not on the registry yet</span><div class="scr"><strong style="font-size: 16px;">No results for "Bloom Wellness Tustin"</strong><div class="lst"><div class="it"><span><strong>Is it your business?</strong><br><span class="mu">Add it and claim it in 2 minutes.</span></span><a href="AddBiz.html" class="btn b-sm b-coral">Add it</a></div><div class="it"><span><strong>Just looking for it?</strong><br><span class="mu">Ask locals in Tustin.</span></span><a href="Post.html" class="btn b-sm">Ask</a></div></div></div></div></div></div></div>
-</div>
-</body></html>
+<header style="height: 68px; flex-shrink: 0; box-sizing: border-box; padding: 0 40px; background: #f3efe7; border-bottom: 1px solid #e4ded2; display: flex; align-items: center; gap: 24px;"><a href="Home.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0;"><svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M15 3 27.5 27h-8.2L15 18.6 10.7 27H2.5L15 3Z" fill="#2b59d9"></path><path d="M15 18.6 19.3 27h-8.6L15 18.6Z" fill="#e5482d"></path></svg><span style="font-weight: 700; font-size: 16px; color: #13203a;">Local AI Registry</span></a><span style="margin-left: auto; display: flex; align-items: center;"><a href="Explore.dc.html" style="font-size: 14px; font-weight: 600; color: #3d4658; text-decoration: none; padding: 8px 10px;">Explore</a><a href="Business.dc.html" style="font-size: 14px; font-weight: 600; color: #3d4658; text-decoration: none; padding: 8px 10px;">For business</a><a href="SignIn.dc.html" style="font-size: 14px; font-weight: 600; color: #3d4658; text-decoration: none; padding: 8px 10px;">Sign in</a><a href="Join.dc.html" style="display: inline-flex; align-items: center; height: 38px; padding: 0 16px; border-radius: 19px; font-size: 14px; font-weight: 700; text-decoration: none; margin-left: 8px; background: #13203a; color: #ffffff;">Join</a></span></header><div class="s3"><div class="s3-bar"><span class="s3-city">⌖ Irvine, CA ▾</span><span class="s3-q">natural lip filler</span></div>
+<h1>What locals say about <em>natural lip filler</em></h1>
+<div class="s3-g"><div style="display: flex; flex-direction: column; gap: 18px;">
+<div class="s3-card s3-sum"><span class="s3-lb">The short answer · from 52 local answers</span><p>Most locals point to <b>Lumen Aesthetics</b> at Irvine Spectrum. The same three tips come up again and again: book a consult first, ask for Dr. Nair, and start with half a syringe.</p></div>
+<div class="s3-card"><span class="s3-lb">Answers from people who went</span><a href="Thread.dc.html" class="s3-a"><span class="s3-v">▲<b>31</b></span><span class="s3t"><span class="s3q">First time getting lip filler. Who will not overdo it?</span><span class="s3x"><b>aisha_m</b><span class="s3-w">went</span> "Dr. Nair at Lumen talked me down to half a syringe. Looked like me, just better."</span><span class="s3m">23 answers · Beauty</span></span></a><a href="Thread.dc.html" class="s3-a"><span class="s3-v">▲<b>22</b></span><span class="s3t"><span class="s3q">Natural lip filler that does not look done?</span><span class="s3x"><b>maria_k</b><span class="s3-w">went</span> "Ask for "just hydration" at Lumen. They go slow and book a free touch-up at two weeks."</span><span class="s3m">14 answers · Beauty</span></span></a><a href="Thread.dc.html" class="s3-a"><span class="s3-v">▲<b>17</b></span><span class="s3t"><span class="s3q">Is Glow Bar good for filler or just facials?</span><span class="s3x"><b>spectrum_regular</b><span class="s3-w">went</span> "Great for facials. For lips I went to Lumen, and Glow Bar sent me there themselves."</span><span class="s3m">9 answers · Beauty</span></span></a><a href="Thread.dc.html" class="s3-a"><span class="s3-v">▲<b>9</b></span><span class="s3t"><span class="s3q">How much is lip filler in Irvine right now?</span><span class="s3x"><b>new_in_tustin</b><span class="s3-w">local</span> "Most places near Spectrum charge $450 to $700 a syringe. Lumen credits the $75 consult."</span><span class="s3m">6 answers · Beauty</span></span></a><a href="Explore.dc.html" class="s3-go" style="padding-top: 6px;">See all 18 conversations ›</a></div>
+</div><div style="display: flex; flex-direction: column; gap: 18px;">
+<div class="s3-card"><span class="s3-lb">Places locals named</span><a href="Main.dc.html" class="s3-p"><span class="s3-av" style="background: #13203a;">LA</span><span class="s3n"><b>Lumen Aesthetics<span class="s3-mk" style="background: #237233;"></span></b><span>Med spa · Irvine Spectrum · Named in 31 answers</span></span><span class="s3-go">View ›</span></a><a href="Main.dc.html" class="s3-p"><span class="s3-av" style="background: #c2708a;">GB</span><span class="s3n"><b>Glow Bar Irvine<span class="s3-mk" style="background: #e8740c;"></span></b><span>Med spa · Irvine · Named in 6 answers</span></span><span class="s3-go">View ›</span></a><a href="Main.dc.html" class="s3-p"><span class="s3-av" style="background: #2b59d9;">CM</span><span class="s3n"><b>Coastline MedSpa<span class="s3-mk" style="background: #237233;"></span></b><span>Med spa · Newport Beach · Named in 4 answers</span></span><span class="s3-go">View ›</span></a><a href="BestOf.dc.html" class="s3-go" style="padding-top: 6px; text-decoration: none;">Best med spas in Irvine ›</a></div>
+<div class="s3-card s3-ask"><b style="font-size: 16px;">Still not sure?</b><span style="font-size: 14px; color: #3d4658;">Ask Irvine. Locals usually answer within a few hours. No account needed.</span><a href="Post.dc.html" class="s3-btn">Ask locals</a></div>
+</div></div></div></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
