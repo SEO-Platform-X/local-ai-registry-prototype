@@ -1,0 +1,227 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=800"><title>Archive · Item · Local AI Registry prototype</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&amp;family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&amp;display=swap">
+<style>
+body{margin:0;font-family:Figtree,"Airbnb Cereal VF","Helvetica Neue",Helvetica,sans-serif;color:#13203a;background:#ffffff;-webkit-font-smoothing:antialiased}
+a{color:#13203a;text-decoration:underline;text-underline-offset:2px;font-weight:600}
+.mu{color:#667085}
+.h2{margin:0;font-size:22px;font-weight:600;line-height:26px}
+.h3{margin:0;font-size:16px;font-weight:600;line-height:20px}
+.sub{font-size:13px;color:#667085;line-height:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 20px;border-radius:8px;font-size:15px;font-weight:600;border:1px solid #13203a;background:#ffffff;color:#13203a;font-family:inherit;cursor:pointer;white-space:nowrap;text-decoration:none}
+.btn:hover{background:#f3efe7;color:#13203a}
+.b-coral{background:#e5482d;border-color:#e5482d;color:#ffffff}.b-coral:hover{background:#e00b41;border-color:#e00b41;color:#ffffff}
+.b-dark{background:#13203a;border-color:#13203a;color:#ffffff}.b-dark:hover{background:#000000;color:#ffffff}
+.b-lock{background:#f3efe7;border-color:#dcd5c7;color:#667085;cursor:not-allowed}.b-lock:hover{background:#f3efe7;color:#667085}
+.b-sm{height:36px;padding:0 14px;font-size:13px}
+.tag{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:6px;font-size:12px;font-weight:600;background:#f3efe7;color:#13203a;white-space:nowrap}
+.tag.red{background:#fbe9e7;color:#c13515}.tag.grn{background:#ddf1e1;color:#237233}.tag.amb{background:#fdeeda;color:#b86a00}.tag.gry{background:#f3efe7;color:#667085}
+.fail{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;font-size:12px;font-weight:600;background:#fbe9e7;color:#c13515}
+.pass{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;font-size:12px;font-weight:600;background:#ddf1e1;color:#237233}
+.vs{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:9999px;font-size:11px;font-weight:600;white-space:nowrap;box-sizing:border-box}
+.vs.un{background:#ffffff;border:1px dashed #b0b0b0;color:#667085}
+.vs.ok{background:#ddf1e1;border:1px solid #ddf1e1;color:#237233}
+.vs.pp{background:#ffffff;border:1px solid #dcd5c7;color:#3d4658}
+.card{border:1px solid #dcd5c7;border-radius:12px;background:#ffffff}
+.shadow{box-shadow:0 6px 16px rgba(0,0,0,0.12)}
+.tabl{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 14px;font-size:15px;font-weight:600;color:#667085;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;margin-bottom:-1px}
+.tabl:hover{color:#13203a}
+.tabl .ct{font-size:12px;font-weight:600;color:#9a9a9a}
+.tp{display:none}
+.pill{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 12px;border-radius:30px;font-size:13px;font-weight:600;border:1px solid #dcd5c7;background:#ffffff;color:#13203a;cursor:pointer;white-space:nowrap;font-family:inherit}
+.pill:hover{border-color:#13203a}
+.pill.on{border:2px solid #13203a}
+.pill.zero{border-color:#c13515;color:#c13515;background:#fff5f2}
+.cat{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
+.c-reviews{background:#ddf1e1;color:#237233}.c-qa{background:#fdeeda;color:#b86a00}.c-posts{background:#ddf1ee;color:#0d6b62}.c-replies{background:#e9e2fb;color:#5a37c4}.c-events{background:#fce6d9;color:#b8460a}.c-media{background:#f3e1f7;color:#7a2b8c}.c-articles{background:#e1e6fb;color:#2f49b8}.c-website{background:#eaf5dc;color:#4a7a0a}.c-directories{background:#e4e7ec;color:#4a5466}.c-press{background:#f8dfdf;color:#a32222}.c-backlinks{background:#dceff3;color:#0d7a8c}.c-jobs{background:#f0e6dd;color:#6f4a28}.c-social{background:#f9dfe9;color:#b02858}
+.svc{display:grid;grid-template-columns:1.6fr 1.5fr 0.9fr 0.9fr;gap:16px;align-items:center;padding:13px 0;border-top:1px solid #e4ded2;font-size:14px}
+.svc .n{font-weight:600;line-height:18px}
+.svc .s{font-size:12px;color:#667085;line-height:16px;margin-top:2px}
+.gauge{display:flex;flex-direction:column;gap:5px}
+.gauge .bar{display:flex;gap:2px;height:8px}
+.gauge .bar span{flex:1;border-radius:2px;background:#e4ded2}
+.gauge .bar span.g0{background:#c8c8c8}.gauge .bar span.g1{background:#f0b34a}.gauge .bar span.g2{background:#9fd3a8}.gauge .bar span.g3{background:#008a05}
+.gauge .lb{font-size:12px;font-weight:600;line-height:14px}
+.gauge .ev{font-size:11px;color:#667085;line-height:14px}
+.fact{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:6px 0;border-bottom:1px solid #e4ded2}
+.fact .k{color:#667085;flex-shrink:0}
+.fact .v{text-align:right;font-weight:500}
+.post{display:flex;gap:14px;padding:18px 0;border-top:1px solid #e4ded2}
+.vote{display:flex;flex-direction:column;align-items:center;gap:2px;width:34px;flex-shrink:0;color:#667085}
+.vote .n{font-size:14px;font-weight:600;color:#13203a}
+.ans{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:8px;background:#f3efe7;font-size:13px;line-height:19px}
+.ans .who{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;flex-shrink:0;margin-top:2px;width:86px}
+.ans .who.rec{color:#e5482d}.ans .who.com{color:#1d5bd6}
+.slot{display:inline-flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 12px;border-radius:8px;border:1px dashed #c8c8c8;color:#9a9a9a;font-size:12px;font-style:italic}
+.slot b{font-style:normal;font-weight:600;color:#9a9a9a}
+.hm{display:grid;grid-template-columns:44px repeat(7,1fr);gap:3px}
+.hm .hd{font-size:10px;font-weight:700;color:#667085;text-align:center;padding-bottom:2px}
+.hm .hr{font-size:10px;color:#667085;display:flex;align-items:center}
+.hm .c{height:22px;border-radius:3px}
+.h0{background:#e9f0fb}.h1{background:#c5d8f6}.h2c{background:#8fb4ee}.h3c{background:#4f86df}.h4{background:#1d5bd6}
+.kw{display:grid;grid-template-columns:1.8fr 1fr 1.2fr 1.2fr;gap:10px;align-items:center;padding:10px 12px;border-top:1px solid #e4ded2;font-size:13px}
+.kw.hd{font-size:11px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:0.05em;border-top:none;padding:6px 12px}
+.don{display:inline-flex;align-items:center;gap:6px}
+.don svg{flex-shrink:0}
+.oc{border:1px solid #e4ded2;border-radius:8px;min-height:104px;padding:5px;display:flex;flex-direction:column;gap:3px;box-sizing:border-box;overflow:hidden}
+.oc .d{font-size:11px;font-weight:600;color:#667085}
+.ob{display:flex;align-items:center;gap:4px;height:18px;padding:0 5px;border-radius:4px;background:#f1f1f1;border:1px dashed #c4c4c4;font-size:10px;font-weight:600;color:#5f5f5f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-sizing:border-box}
+.ob span{overflow:hidden;text-overflow:ellipsis}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.pulse{box-shadow:0 0 0 0 rgba(255,56,92,0.6);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,56,92,0.5)}70%{box-shadow:0 0 0 7px rgba(255,56,92,0)}100%{box-shadow:0 0 0 0 rgba(255,56,92,0)}}
+.rd{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+.live-n{position:relative;display:inline-block;width:26px;height:20px;overflow:hidden;vertical-align:bottom}
+.live-n span{position:absolute;left:0;top:0;width:26px;line-height:20px;opacity:0;animation:cnt 12s infinite}
+.live-n span:nth-child(2){animation-delay:4s}.live-n span:nth-child(3){animation-delay:8s}
+@keyframes cnt{0%{opacity:0;transform:translateY(8px)}6%{opacity:1;transform:translateY(0)}33%{opacity:1;transform:translateY(0)}39%{opacity:0;transform:translateY(-8px)}100%{opacity:0}}
+.tick{height:54px;overflow:hidden;position:relative}
+.tick ul{list-style:none;margin:0;padding:0;animation:tick 15s steps(1) infinite}
+.tick li{height:18px;line-height:18px;font-size:12px;display:flex;gap:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tick li .t{color:#9a9a9a;width:44px;flex-shrink:0}
+@keyframes tick{0%{transform:translateY(0)}20%{transform:translateY(-18px)}40%{transform:translateY(-36px)}60%{transform:translateY(-54px)}80%{transform:translateY(-72px)}100%{transform:translateY(-90px)}}
+.toast{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;background:#13203a;color:#ffffff;font-size:12px;font-weight:600;animation:toast 12s infinite;transform-origin:top}
+@keyframes toast{0%{opacity:0;transform:translateY(6px)}5%{opacity:1;transform:translateY(0)}45%{opacity:1}52%{opacity:0;transform:translateY(-4px)}100%{opacity:0}}
+.bar-live{height:6px;border-radius:3px;background:#e4ded2;overflow:hidden}
+.bar-live i{display:block;height:100%;background:#e5482d;animation:grow 6s ease-in-out infinite alternate}
+@keyframes grow{0%{width:52%}100%{width:71%}}
+.sec-h{display:flex;align-items:center;gap:12px;padding-top:6px}
+.sec-h .num{width:28px;height:28px;border-radius:50%;background:#13203a;color:#ffffff;font-weight:700;font-size:13px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.sec-h .num.red{background:#c13515}.sec-h .num.grn{background:#008a05}
+.bu{background:#fff7f3;border-left:3px solid #e5482d;border-radius:0 10px 10px 0;padding:14px 14px 14px 12px;margin:6px 0}
+.c-bu{background:#e5482d;color:#ffffff}
+.cta-line{display:flex;gap:14px;font-size:12px;color:#667085;align-items:center}
+.cta-line a,.cta-line label{color:#13203a;font-weight:600;text-decoration:underline;cursor:pointer;font-size:12px}
+.grp{font-size:11px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:0.05em;margin-right:2px}
+.pin{position:absolute;width:22px;height:22px;border-radius:50% 50% 50% 0;background:#13203a;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center}
+.pin span{transform:rotate(45deg);color:#ffffff;font-size:10px;font-weight:700}
+.pin.you{background:#e5482d;width:28px;height:28px}
+.cmp{display:grid;grid-template-columns:1.4fr 0.6fr 0.9fr 1fr;gap:8px;align-items:center;padding:8px 0;border-top:1px solid #e4ded2;font-size:12px}
+.cmp .hd{font-size:10px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:0.05em}
+.otp{width:52px;height:60px;border:1px solid #dcd5c7;border-radius:10px;font-size:24px;font-weight:600;text-align:center;font-family:inherit}
+.fld{display:flex;align-items:center;gap:10px;height:50px;border:1px solid #dcd5c7;border-radius:10px;padding:0 14px;font-size:14px}
+.fld input{border:none;outline:none;flex-grow:1;font-family:inherit;font-size:14px;background:transparent}
+.day{height:36px;display:flex;align-items:center;justify-content:center;font-size:13px;border-radius:50%;cursor:pointer}
+.day.on{background:#13203a;color:#ffffff;font-weight:600}.day.off{color:#c8c8c8}
+.slotb{height:40px;border:1px solid #13203a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer}
+.slotb.on{background:#13203a;color:#ffffff}
+.big{font-size:44px;font-weight:600;line-height:48px}
+.themeCell{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;text-align:center;line-height:12px;color:#3d4658}
+.themeCell .av{width:36px;height:36px;border-radius:50%;border:1px solid #dcd5c7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:#ffffff}
+.themeCell .av.you{background:#e5482d;color:#ffffff;border-color:#e5482d}
+.swot{border:1px solid #e4ded2;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:19px}
+.swot h4{margin:0;font-size:14px}
+.cit{display:grid;grid-template-columns:2fr 1fr 1.4fr;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid #e4ded2;font-size:13px}
+
+
+.srf{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;letter-spacing:-0.01em;color:#13203a}
+.srf em{font-style:italic;color:#ff5a3c}
+.mk{position:relative;display:inline-block;width:11px;height:11px;margin:0 5px 1px 0;vertical-align:middle;flex-shrink:0}
+.mk::after{content:"";position:absolute;inset:0}
+.mk-site::after{inset:2px;background:#008a05;border-radius:50%}
+.mk-vis::after{inset:2px;border:1.6px solid #e8740c;border-radius:50%}
+.mk-ai::after{inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Cpath d='M11 3.5L19.5 18.5H2.5Z' fill='none' stroke='%238a8a8a' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat}
+.mk-none{display:none}
+.top{height:68px;padding:0 40px;display:flex;align-items:center;gap:16px;border-bottom:1px solid #e4ded2;background:#f3efe7;flex-shrink:0}
+.ask{display:flex;align-items:center;gap:10px;height:44px;flex-grow:1;max-width:560px;padding:0 16px;border:1px solid #dcd5c7;border-radius:22px;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
+.ask input{flex-grow:1;border:none;outline:none;font-family:inherit;font-size:15px;background:transparent;color:#13203a}
+.nl{font-size:14px;font-weight:600;color:#13203a;text-decoration:none;white-space:nowrap}
+.hdr{padding:22px 32px 18px;display:flex;flex-direction:column;gap:10px}
+.bc{font-size:13px;color:#667085}
+.bc a{color:#667085}
+.stats{display:flex;gap:36px;padding-top:6px}
+.stats div{display:flex;flex-direction:column;gap:2px}
+.stats b{font-size:22px;font-weight:600}
+.stats span{font-size:12px;color:#667085}
+.below{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;padding:36px 32px 56px}
+.faq{display:flex;flex-direction:column;border-top:1px solid #e4ded2}
+.faq div{padding:16px 0;border-bottom:1px solid #e4ded2;display:flex;flex-direction:column;gap:6px}
+.faq strong{font-size:16px}
+.faq span{font-size:14px;line-height:21px;color:#3d4658}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.row1{display:flex;align-items:center;gap:14px;padding:12px 20px;border-bottom:1px solid #ece6da;background:#ffffff;flex-shrink:0}
+.seg{display:inline-flex;padding:3px;border-radius:18px;background:#efeae0}
+.seg span{height:30px;padding:0 14px;border-radius:15px;display:inline-flex;align-items:center;font-size:13px;font-weight:600;color:#667085;cursor:pointer}
+.seg span.on{background:#ffffff;color:#13203a;box-shadow:0 1px 3px rgba(0,0,0,0.12)}
+.itm{display:inline-flex;align-items:center;height:36px;padding:0 16px;border:1px solid #dcd5c7;border-radius:18px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;background:#ffffff}
+.itm.on{background:#13203a;border-color:#13203a;color:#ffffff}
+.row2{display:flex;align-items:center;gap:8px;padding:10px 20px;border-bottom:1px solid #e4ded2;background:#ffffff;flex-shrink:0}
+.flt{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border:1px solid #dcd5c7;border-radius:8px;font-size:13px;cursor:pointer;white-space:nowrap;background:#ffffff}
+.flt .bx{width:14px;height:14px;border-radius:4px;border:1.5px solid #b0b0b0;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center}
+.flt.on{border-color:#13203a;background:#f3efe7;font-weight:600}
+.flt.on .bx{background:#13203a;border-color:#13203a}
+.flt.on .bx::after{content:"";width:6px;height:3px;border-left:2px solid #ffffff;border-bottom:2px solid #ffffff;transform:rotate(-45deg) translate(1px,-1px)}
+.flt.sp{border-style:dashed}
+.dv{width:1px;height:22px;background:#e4ded2;margin:0 4px}
+.sort{margin-left:auto;display:inline-flex;align-items:center;gap:4px;font-size:13px;color:#667085}
+.sort span{padding:5px 9px;border-radius:6px;cursor:pointer;font-weight:600}
+.sort span.on{background:#13203a;color:#ffffff}
+.body{display:grid;grid-template-columns:460px 1fr;height:760px;border-top:1px solid #e4ded2;border-bottom:1px solid #e4ded2}
+.panel{border-right:1px solid #e4ded2;overflow-y:auto;background:#ffffff}
+.pad{padding:18px 20px 24px;display:flex;flex-direction:column;gap:10px}
+.pst{position:relative;height:34px;margin:4px 6px 0}
+.pst .ln{position:absolute;left:0;right:0;top:9px;height:4px;border-radius:2px;background:#ececec}
+.pst .pd{position:absolute;top:4px;width:14px;height:14px;border-radius:50%;background:#13203a;border:2px solid #ffffff;transform:translateX(-50%);box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,0.3);cursor:pointer}
+.pst .pd.sel{background:#ff5a3c;width:18px;height:18px;top:2px}
+.pst .lo,.pst .hi{position:absolute;top:22px;font-size:11px;font-weight:600;color:#667085}
+.pst .hi{right:0}
+.rc{display:grid;grid-template-columns:28px 1fr auto;gap:12px;padding:14px 12px;border-radius:12px;border:1px solid transparent;cursor:pointer;align-items:start}
+.rc:hover{background:#f7f4ee}
+.rc.on{border-color:#13203a;background:#ffffff}
+.rk{width:26px;height:26px;border-radius:50%;background:#efeae0;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.rc.on .rk{background:#ff5a3c;color:#ffffff}
+.pr{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.pr b{font-size:20px;line-height:22px;display:flex;align-items:center}
+.pr .un{font-size:11px;color:#8a8a8a}
+.pr .ask2{font-size:13px;font-weight:600;color:#8a8a8a;padding:3px 8px;border-radius:6px;background:#efeae0}
+.tg{display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:10px;background:#efeae0;font-size:11px;font-weight:600;color:#3d4658}
+.love{font-size:12px;font-weight:600;color:#c2410c}
+.map{position:relative;overflow:hidden;background:#e9ede6}
+.road{position:absolute;background:#ffffff}
+.hood{position:absolute;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#8a9885}
+.pin{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;height:30px;padding:0 12px;border-radius:15px;background:#ffffff;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.22);white-space:nowrap;color:#13203a}
+.pin.np{background:#efeae0;color:#8a8a8a;box-shadow:0 1px 4px rgba(0,0,0,0.15)}
+.pin.sel{background:#13203a;color:#ffffff;z-index:6;transform:translate(-50%,-50%) scale(1.12)}
+.pop{position:absolute;width:300px;padding:16px;border-radius:14px;background:#ffffff;box-shadow:0 10px 30px rgba(0,0,0,0.2);display:flex;flex-direction:column;gap:7px;z-index:10}
+.empty{padding:18px;border-radius:12px;background:#f3efe7;font-size:13px;line-height:19px;color:#3d4658}
+
+
+/*palette:lair*/body{background:#f3efe7 !important}
+h1,.ttl1,h2.h2{font-family:"Cormorant Garamond",Georgia,serif !important;font-weight:500 !important;letter-spacing:0 !important}
+
+/*ds:lair*/.btn{border-radius:9999px !important;font-weight:600 !important;box-shadow:none !important;letter-spacing:0 !important;background-image:none !important}
+.btn.b-dark,.btn.b-coral,.btn.grad,.btn.b-lock,.grad{background:#13203a !important;background-image:none !important;color:#ffffff !important;border-color:#13203a !important}
+.btn:not(.b-dark):not(.b-coral):not(.grad):not(.b-lock){background:#ffffff !important;border:1px solid #13203a !important;color:#13203a !important}
+h1{font-family:"Cormorant Garamond",Georgia,serif !important;font-weight:500 !important;letter-spacing:0 !important}
+body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
+
+/*wrap*/h1,h2,h3,.ttl1,.T,.T2,.sh{text-wrap:balance}p,.v4-sub,.sub,.lead{text-wrap:pretty}
+</style>
+</head><body style="margin:0">
+<div style="width: 1440px; box-sizing: border-box; display: flex; flex-direction: column; background: #f3efe7; position: relative;">
+<div class="top"><a href="Home.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M15 3 27.5 27h-8.2L15 18.6 10.7 27H2.5L15 3Z" fill="#2b59d9"></path><path d="M15 18.6 19.3 27h-8.6L15 18.6Z" fill="#e5482d"></path></svg><span style="font-weight: 800; font-size: 16px; letter-spacing: -0.01em; color: #13203a; font-weight: 600;">Local AI Registry</span></a>
+<div class="ask"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#13203a" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input type="text" value="Birria tacos" placeholder="Search a dish, a treatment or a service" aria-label="Search"><span class="mu" style="font-size: 12px; white-space: nowrap;">Irvine, CA</span></div>
+<span style="margin-left: auto; display: flex; align-items: center; gap: 18px;"><a href="Request.html" class="nl">Post a request</a><a href="Business.html" class="nl">For business</a><a href="#" class="nl">Sign in</a></span></div>
+<div class="hdr"><span class="bc"><a href="Explore.html">Irvine</a> › <a href="Explore.html">Food</a> › Birria tacos</span>
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;"><div style="display: flex; flex-direction: column; gap: 8px;"><h1 class="srf" style="margin: 0; font-size: 48px; line-height: 50px;">Birria tacos <em>in Irvine</em></h1><span style="font-size: 15px; line-height: 22px; color: #3d4658; max-width: 720px;">Five places in Irvine make birria tacos. Reviews keep coming back to crispy edges and whether the consommé comes free.</span></div><span class="mu" style="font-size: 12px; white-space: nowrap;">Prototype: <a href="#" onClick="" style="margin-left: 6px; font-weight: 700;">Birria tacos</a><a href="#" onClick="" style="margin-left: 6px; font-weight: 500;">Ramen</a><a href="#" onClick="" style="margin-left: 6px; font-weight: 500;">Botox</a><a href="#" onClick="" style="margin-left: 6px; font-weight: 500;">Lip filler</a><a href="#" onClick="" style="margin-left: 6px; font-weight: 500;">Synthetic oil change</a></span></div>
+<div class="stats"><div><b>5</b><span>places have it</span></div><div><b>$3.25 to $6.00</b><span>price range each</span></div><div><b>Backyard Tacos</b><span>most loved for it</span></div><div><b>108</b><span>reviews mention it</span></div></div></div>
+<div class="row2"><span class="flt " onClick=""><span class="bx"></span>Price listed</span><span class="flt " onClick=""><span class="bx"></span>Confirmed price</span><span class="flt " onClick=""><span class="bx"></span>Known for it</span><span class="flt " onClick=""><span class="bx"></span>Open now</span><span class="dv"></span><span class="flt sp " onClick=""><span class="bx"></span>Comes with consommé</span><span class="flt sp " onClick=""><span class="bx"></span>Has quesabirria</span><span class="sort">Sort<span class="on" onClick="">Most loved</span><span class="" onClick="">Lowest price</span><span class="" onClick="">Closest</span></span></div>
+<div class="body">
+<div class="panel"><div class="pad">
+<span style="font-size: 14px; color: #3d4658;"><strong style="color: #13203a;">5 places</strong> · $3.25 to $6.00 each<span style="color: #c13515; font-weight: 600;"></span></span>
+<div class="pst"><span class="ln"></span><span class="pd sel" style="left: 27%;" onClick="" title="Backyard Tacos $4.00"></span><span class="pd " style="left: 45%;" onClick="" title="La Birrieria OC $4.50"></span><span class="pd " style="left: 9%;" onClick="" title="Tacos El Guero $3.50"></span><span class="pd " style="left: 0%;" onClick="" title="Taqueria Tlaquepaque $3.25"></span><span class="pd " style="left: 100%;" onClick="" title="Sol Cocina $6.00"></span><span class="lo">$3.25</span><span class="hi">$6.00</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding-top: 8px;"><div class="rc on" onClick=""><span class="rk">1</span><span style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><strong style="font-size: 15px;">Backyard Tacos</strong><span class="mu" style="font-size: 12px;">★ 4.7 · 1.0 mi · Open now</span><span class="love">Loved for its birria tacos in 40 reviews</span><span style="font-size: 13px; line-height: 18px; color: #3d4658;">Crispy edges. Consommé comes with every order.</span><span style="display: flex; gap: 5px; flex-wrap: wrap;"><span class="tg">Comes with consommé</span><span class="tg">Has quesabirria</span></span></span><span class="pr"><b><span class="mk mk-site" title="Confirmed"></span>$4.00</b><span class="un">Confirmed on their menu</span></span></div><div class="rc " onClick=""><span class="rk">2</span><span style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><strong style="font-size: 15px;">La Birrieria OC</strong><span class="mu" style="font-size: 12px;">★ 4.5 · 2.2 mi · Closed now</span><span class="love">Loved for its birria tacos in 31 reviews</span><span style="font-size: 13px; line-height: 18px; color: #3d4658;">Birria ramen on weekends too.</span><span style="display: flex; gap: 5px; flex-wrap: wrap;"><span class="tg">Comes with consommé</span><span class="tg">Has quesabirria</span></span></span><span class="pr"><b><span class="mk mk-site" title="Confirmed"></span>$4.50</b><span class="un">Confirmed on their menu</span></span></div><div class="rc " onClick=""><span class="rk">3</span><span style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><strong style="font-size: 15px;">Tacos El Guero</strong><span class="mu" style="font-size: 12px;">★ 4.6 · 1.8 mi · Open now</span><span class="love">Loved for its birria tacos in 22 reviews</span><span style="font-size: 13px; line-height: 18px; color: #3d4658;">A cash-only truck. The line moves fast.</span><span style="display: flex; gap: 5px; flex-wrap: wrap;"><span class="tg">Comes with consommé</span></span></span><span class="pr"><b><span class="mk mk-vis" title="Visitor submitted"></span>$3.50</b><span class="un">A visitor paid this, Sep 19</span></span></div><div class="rc " onClick=""><span class="rk">4</span><span style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><strong style="font-size: 15px;">Taqueria Tlaquepaque</strong><span class="mu" style="font-size: 12px;">★ 4.3 · 2.9 mi · Open now</span><span class="love">Mentioned in 9 reviews</span><span style="font-size: 13px; line-height: 18px; color: #3d4658;">Cheapest, but the price is from an old menu photo.</span><span style="display: flex; gap: 5px; flex-wrap: wrap;"></span></span><span class="pr"><b><span class="mk mk-ai" title="AI guess"></span>$3.25</b><span class="un">AI guess from a 2025 menu photo</span></span></div><div class="rc " onClick=""><span class="rk">5</span><span style="display: flex; flex-direction: column; gap: 4px; min-width: 0;"><strong style="font-size: 15px;">Sol Cocina</strong><span class="mu" style="font-size: 12px;">★ 4.4 · 0.8 mi · Open now</span><span class="love">Mentioned in 6 reviews</span><span style="font-size: 13px; line-height: 18px; color: #3d4658;">Sit-down and pricier. Big plates.</span><span style="display: flex; gap: 5px; flex-wrap: wrap;"><span class="tg">Has quesabirria</span></span></span><span class="pr"><b><span class="mk mk-site" title="Confirmed"></span>$6.00</b><span class="un">Confirmed on their menu</span></span></div></div>
+
+<div class="empty" style="margin-top: 6px;"><strong>Know a price?</strong> Add what you paid and when. It shows with a hollow circle until someone else or the business confirms it.</div>
+</div></div>
+<div class="map">
+<span class="road" style="left: -5%; right: -5%; top: 30%; height: 12px; transform: rotate(-9deg);"></span><span class="road" style="top: -5%; bottom: -5%; left: 40%; width: 14px; transform: rotate(14deg);"></span><span class="road" style="left: 0; right: 0; top: 66%; height: 8px; transform: rotate(3deg);"></span><span class="road" style="top: 0; bottom: 0; left: 76%; width: 8px;"></span><span class="road" style="top: 0; bottom: 0; left: 18%; width: 6px; transform: rotate(-6deg);"></span>
+<span style="position: absolute; left: 46%; top: 40%; width: 120px; height: 80px; border-radius: 16px; background: #d9e6d3;"></span>
+<span class="hood" style="left: 44%; top: 56%;">Irvine Spectrum</span><span class="hood" style="left: 10%; top: 14%;">Woodbridge</span><span class="hood" style="left: 64%; top: 10%;">Great Park</span><span class="hood" style="left: 22%; top: 84%;">University Park</span><span class="hood" style="left: 82%; top: 80%;">Quail Hill</span>
+<span class="pin  sel" style="left: 26%; top: 62%;" onClick="">$4.00</span><span class="pin " style="left: 62%; top: 70%;" onClick="">$4.50</span><span class="pin " style="left: 38%; top: 74%;" onClick="">$3.50</span><span class="pin " style="left: 18%; top: 40%;" onClick="">$3.25</span><span class="pin " style="left: 55%; top: 30%;" onClick="">$6.00</span>
+<div class="pop" style="left: 26%; top: 62%; transform: translate(-50%, calc(-100% - 26px));"><span style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px;"><strong style="font-size: 16px;">Backyard Tacos</strong><span style="font-size: 18px; font-weight: 700; display: flex; align-items: center;"><span class="mk mk-site" title="Confirmed"></span>$4.00</span></span><span class="mu" style="font-size: 12px;">Birria tacos · each · ★ 4.7</span><span class="love">40 reviews mention it</span><span style="font-size: 13px; line-height: 18px; color: #3d4658;">Crispy edges. Consommé comes with every order.</span><span class="mu" style="font-size: 11px;">Confirmed on their menu</span><a href="Main.html" class="btn b-sm b-dark" style="margin-top: 4px;">See it on their page</a></div>
+</div>
+</div>
+<div class="below"><div style="display: flex; flex-direction: column; gap: 14px;"><h2 style="margin: 0; font-size: 22px; font-weight: 600;">Questions people ask about birria tacos in Irvine</h2><div class="faq"><div><strong>Where is the best birria in Irvine?</strong><span>Backyard Tacos is mentioned most, in 40 reviews, for crispy edges and free consommé. Tacos El Guero is the cheapest confirmed option at about $3.50.</span></div><div><strong>Does birria usually come with consommé?</strong><span>At 3 of 5 places, yes. Filter by Comes with consommé to see which.</span></div><div><strong>What does birria cost in Irvine?</strong><span>About $3.25 to $6.00 a taco. Sit-down places cost more.</span></div></div></div>
+<div style="display: flex; flex-direction: column; gap: 18px;"><div style="display: flex; flex-direction: column; gap: 10px;"><h2 style="margin: 0; font-size: 22px; font-weight: 600;">Also known for nearby</h2><div class="rel"><a href="#" class="itm" onClick="" style="text-decoration: none; color: #13203a;">Quesabirria</a><a href="#" class="itm" onClick="" style="text-decoration: none; color: #13203a;">Street tacos</a><a href="#" class="itm" onClick="" style="text-decoration: none; color: #13203a;">Carne asada</a><a href="#" class="itm" onClick="" style="text-decoration: none; color: #13203a;">Horchata</a></div></div><div class="empty"><strong>Do you offer birria tacos?</strong> Add your price and it shows here and in AI answers. <a href="Claim.html" style="font-weight: 600;">Add your business</a></div></div></div>
+</div>
+</body></html>
