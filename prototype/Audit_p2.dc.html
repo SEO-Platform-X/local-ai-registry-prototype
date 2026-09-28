@@ -2,126 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Lumen Aesthetics on Local AI Registry</title>
+<title>Unused board</title>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&amp;display=swap">
 <style>
-body{margin:0;font-family:Figtree,"Airbnb Cereal VF","Helvetica Neue",Helvetica,sans-serif;color:#13203a;background:#ffffff;-webkit-font-smoothing:antialiased}
-a{color:#13203a;text-decoration:underline;text-underline-offset:2px;font-weight:600}
-.mu{color:#667085}
-.h2{margin:0;font-size:22px;font-weight:600;line-height:26px}
-.h3{margin:0;font-size:16px;font-weight:600;line-height:20px}
-.sub{font-size:13px;color:#667085;line-height:18px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 20px;border-radius:8px;font-size:15px;font-weight:600;border:1px solid #13203a;background:#ffffff;color:#13203a;font-family:inherit;cursor:pointer;white-space:nowrap;text-decoration:none}
-.btn:hover{background:#f3efe7;color:#13203a}
-.b-coral{background:#e5482d;border-color:#e5482d;color:#ffffff}.b-coral:hover{background:#e00b41;border-color:#e00b41;color:#ffffff}
-.b-dark{background:#13203a;border-color:#13203a;color:#ffffff}.b-dark:hover{background:#000000;color:#ffffff}
-.b-lock{background:#f3efe7;border-color:#dcd5c7;color:#667085;cursor:not-allowed}.b-lock:hover{background:#f3efe7;color:#667085}
-.b-sm{height:36px;padding:0 14px;font-size:13px}
-.tag{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:6px;font-size:12px;font-weight:600;background:#f3efe7;color:#13203a;white-space:nowrap}
-.tag.red{background:#fbe9e7;color:#c13515}.tag.grn{background:#ddf1e1;color:#237233}.tag.amb{background:#fdeeda;color:#b86a00}.tag.gry{background:#f3efe7;color:#667085}
-.fail{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;font-size:12px;font-weight:600;background:#fbe9e7;color:#c13515}
-.pass{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;font-size:12px;font-weight:600;background:#ddf1e1;color:#237233}
-.vs{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:9999px;font-size:11px;font-weight:600;white-space:nowrap;box-sizing:border-box}
-.vs.un{background:#ffffff;border:1px dashed #b0b0b0;color:#667085}
-.vs.ok{background:#ddf1e1;border:1px solid #ddf1e1;color:#237233}
-.vs.pp{background:#ffffff;border:1px solid #dcd5c7;color:#3d4658}
-.card{border:1px solid #dcd5c7;border-radius:12px;background:#ffffff}
-.shadow{box-shadow:0 6px 16px rgba(0,0,0,0.12)}
-.tabl{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 14px;font-size:15px;font-weight:600;color:#667085;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;margin-bottom:-1px}
-.tabl:hover{color:#13203a}
-.tabl .ct{font-size:12px;font-weight:600;color:#9a9a9a}
-.tp{display:none}
-.pill{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 12px;border-radius:30px;font-size:13px;font-weight:600;border:1px solid #dcd5c7;background:#ffffff;color:#13203a;cursor:pointer;white-space:nowrap;font-family:inherit}
-.pill:hover{border-color:#13203a}
-.pill.on{border:2px solid #13203a}
-.pill.zero{border-color:#c13515;color:#c13515;background:#fff5f2}
-.cat{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
-.c-reviews{background:#ddf1e1;color:#237233}.c-qa{background:#fdeeda;color:#b86a00}.c-posts{background:#ddf1ee;color:#0d6b62}.c-replies{background:#e9e2fb;color:#5a37c4}.c-events{background:#fce6d9;color:#b8460a}.c-media{background:#f3e1f7;color:#7a2b8c}.c-articles{background:#e1e6fb;color:#2f49b8}.c-website{background:#eaf5dc;color:#4a7a0a}.c-directories{background:#e4e7ec;color:#4a5466}.c-press{background:#f8dfdf;color:#a32222}.c-backlinks{background:#dceff3;color:#0d7a8c}.c-jobs{background:#f0e6dd;color:#6f4a28}.c-social{background:#f9dfe9;color:#b02858}
-.svc{display:grid;grid-template-columns:1.6fr 1.5fr 0.9fr 0.9fr;gap:16px;align-items:center;padding:13px 0;border-top:1px solid #e4ded2;font-size:14px}
-.svc .n{font-weight:600;line-height:18px}
-.svc .s{font-size:12px;color:#667085;line-height:16px;margin-top:2px}
-.gauge{display:flex;flex-direction:column;gap:5px}
-.gauge .bar{display:flex;gap:2px;height:8px}
-.gauge .bar span{flex:1;border-radius:2px;background:#e4ded2}
-.gauge .bar span.g0{background:#c8c8c8}.gauge .bar span.g1{background:#f0b34a}.gauge .bar span.g2{background:#9fd3a8}.gauge .bar span.g3{background:#008a05}
-.gauge .lb{font-size:12px;font-weight:600;line-height:14px}
-.gauge .ev{font-size:11px;color:#667085;line-height:14px}
-.fact{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:6px 0;border-bottom:1px solid #e4ded2}
-.fact .k{color:#667085;flex-shrink:0}
-.fact .v{text-align:right;font-weight:500}
-.post{display:flex;gap:14px;padding:18px 0;border-top:1px solid #e4ded2}
-.vote{display:flex;flex-direction:column;align-items:center;gap:2px;width:34px;flex-shrink:0;color:#667085}
-.vote .n{font-size:14px;font-weight:600;color:#13203a}
-.ans{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:8px;background:#f3efe7;font-size:13px;line-height:19px}
-.ans .who{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;flex-shrink:0;margin-top:2px;width:86px}
-.ans .who.rec{color:#e5482d}.ans .who.com{color:#1d5bd6}
-.slot{display:inline-flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 12px;border-radius:8px;border:1px dashed #c8c8c8;color:#9a9a9a;font-size:12px;font-style:italic}
-.slot b{font-style:normal;font-weight:600;color:#9a9a9a}
-.hm{display:grid;grid-template-columns:44px repeat(7,1fr);gap:3px}
-.hm .hd{font-size:10px;font-weight:700;color:#667085;text-align:center;padding-bottom:2px}
-.hm .hr{font-size:10px;color:#667085;display:flex;align-items:center}
-.hm .c{height:22px;border-radius:3px}
-.h0{background:#e9f0fb}.h1{background:#c5d8f6}.h2c{background:#8fb4ee}.h3c{background:#4f86df}.h4{background:#1d5bd6}
-.kw{display:grid;grid-template-columns:1.8fr 1fr 1.2fr 1.2fr;gap:10px;align-items:center;padding:10px 12px;border-top:1px solid #e4ded2;font-size:13px}
-.kw.hd{font-size:11px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:0.05em;border-top:none;padding:6px 12px}
-.don{display:inline-flex;align-items:center;gap:6px}
-.don svg{flex-shrink:0}
-.oc{border:1px solid #e4ded2;border-radius:8px;min-height:104px;padding:5px;display:flex;flex-direction:column;gap:3px;box-sizing:border-box;overflow:hidden}
-.oc .d{font-size:11px;font-weight:600;color:#667085}
-.ob{display:flex;align-items:center;gap:4px;height:18px;padding:0 5px;border-radius:4px;background:#f1f1f1;border:1px dashed #c4c4c4;font-size:10px;font-weight:600;color:#5f5f5f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-sizing:border-box}
-.ob span{overflow:hidden;text-overflow:ellipsis}
-.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.pulse{box-shadow:0 0 0 0 rgba(255,56,92,0.6);animation:pulse 1.8s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,56,92,0.5)}70%{box-shadow:0 0 0 7px rgba(255,56,92,0)}100%{box-shadow:0 0 0 0 rgba(255,56,92,0)}}
-.rd{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
-.live-n{position:relative;display:inline-block;width:26px;height:20px;overflow:hidden;vertical-align:bottom}
-.live-n span{position:absolute;left:0;top:0;width:26px;line-height:20px;opacity:0;animation:cnt 12s infinite}
-.live-n span:nth-child(2){animation-delay:4s}.live-n span:nth-child(3){animation-delay:8s}
-@keyframes cnt{0%{opacity:0;transform:translateY(8px)}6%{opacity:1;transform:translateY(0)}33%{opacity:1;transform:translateY(0)}39%{opacity:0;transform:translateY(-8px)}100%{opacity:0}}
-.tick{height:54px;overflow:hidden;position:relative}
-.tick ul{list-style:none;margin:0;padding:0;animation:tick 15s steps(1) infinite}
-.tick li{height:18px;line-height:18px;font-size:12px;display:flex;gap:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tick li .t{color:#9a9a9a;width:44px;flex-shrink:0}
-@keyframes tick{0%{transform:translateY(0)}20%{transform:translateY(-18px)}40%{transform:translateY(-36px)}60%{transform:translateY(-54px)}80%{transform:translateY(-72px)}100%{transform:translateY(-90px)}}
-.toast{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;background:#13203a;color:#ffffff;font-size:12px;font-weight:600;animation:toast 12s infinite;transform-origin:top}
-@keyframes toast{0%{opacity:0;transform:translateY(6px)}5%{opacity:1;transform:translateY(0)}45%{opacity:1}52%{opacity:0;transform:translateY(-4px)}100%{opacity:0}}
-.bar-live{height:6px;border-radius:3px;background:#e4ded2;overflow:hidden}
-.bar-live i{display:block;height:100%;background:#e5482d;animation:grow 6s ease-in-out infinite alternate}
-@keyframes grow{0%{width:52%}100%{width:71%}}
-.sec-h{display:flex;align-items:center;gap:12px;padding-top:6px}
-.sec-h .num{width:28px;height:28px;border-radius:50%;background:#13203a;color:#ffffff;font-weight:700;font-size:13px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
-.sec-h .num.red{background:#c13515}.sec-h .num.grn{background:#008a05}
-.bu{background:#fff7f3;border-left:3px solid #e5482d;border-radius:0 10px 10px 0;padding:14px 14px 14px 12px;margin:6px 0}
-.c-bu{background:#e5482d;color:#ffffff}
-.cta-line{display:flex;gap:14px;font-size:12px;color:#667085;align-items:center}
-.cta-line a,.cta-line label{color:#13203a;font-weight:600;text-decoration:underline;cursor:pointer;font-size:12px}
-.grp{font-size:11px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:0.05em;margin-right:2px}
-.pin{position:absolute;width:22px;height:22px;border-radius:50% 50% 50% 0;background:#13203a;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center}
-.pin span{transform:rotate(45deg);color:#ffffff;font-size:10px;font-weight:700}
-.pin.you{background:#e5482d;width:28px;height:28px}
-.cmp{display:grid;grid-template-columns:1.4fr 0.6fr 0.9fr 1fr;gap:8px;align-items:center;padding:8px 0;border-top:1px solid #e4ded2;font-size:12px}
-.cmp .hd{font-size:10px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:0.05em}
-.otp{width:52px;height:60px;border:1px solid #dcd5c7;border-radius:10px;font-size:24px;font-weight:600;text-align:center;font-family:inherit}
-.fld{display:flex;align-items:center;gap:10px;height:50px;border:1px solid #dcd5c7;border-radius:10px;padding:0 14px;font-size:14px}
-.fld input{border:none;outline:none;flex-grow:1;font-family:inherit;font-size:14px;background:transparent}
-.day{height:36px;display:flex;align-items:center;justify-content:center;font-size:13px;border-radius:50%;cursor:pointer}
-.day.on{background:#13203a;color:#ffffff;font-weight:600}.day.off{color:#c8c8c8}
-.slotb{height:40px;border:1px solid #13203a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer}
-.slotb.on{background:#13203a;color:#ffffff}
-.big{font-size:44px;font-weight:600;line-height:48px}
-.themeCell{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;text-align:center;line-height:12px;color:#3d4658}
-.themeCell .av{width:36px;height:36px;border-radius:50%;border:1px solid #dcd5c7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:#ffffff}
-.themeCell .av.off{border-color:transparent;background:transparent}
-.themeCell .av.you{background:#e5482d;color:#ffffff;border-color:#e5482d}
-.swot{border:1px solid #e4ded2;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:19px}
-.swot h4{margin:0;font-size:14px}
-.cit{display:grid;grid-template-columns:2fr 1fr 1.4fr;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid #e4ded2;font-size:13px}
-
+body{margin:0;font-family:Figtree,sans-serif;background:#ece6da}
 
 /*palette:lair*/body{background:#f3efe7 !important}
 h1,.ttl1,h2.h2{font-family:"Cormorant Garamond",Georgia,serif !important;font-weight:500 !important;letter-spacing:0 !important}
@@ -135,84 +23,15 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 /*wrap*/h1,h2,h3,.ttl1,.T,.T2,.sh{text-wrap:balance}p,.v4-sub,.sub,.lead{text-wrap:pretty}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></helmet>
-<div style="margin-top: -2080px; width: 1440px; height: 3200px; box-sizing: border-box; display: flex; flex-direction: column; background: #f3efe7; position: relative;">
-<header style="height: 68px; flex-shrink: 0; box-sizing: border-box; padding: 0 40px; background: #f3efe7; border-bottom: 1px solid #e4ded2; display: flex; align-items: center; gap: 24px; gap: 18px;"><a href="OwnerHome.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0;"><svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M15 3 27.5 27h-8.2L15 18.6 10.7 27H2.5L15 3Z" fill="#2b59d9"></path><path d="M15 18.6 19.3 27h-8.6L15 18.6Z" fill="#e5482d"></path></svg><span style="font-weight: 700; font-size: 16px; color: #13203a;">Local AI Registry</span></a><span style="display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 12px 0 6px; border: 1px solid #e4ded2; border-radius: 12px; background: #ffffff; flex-shrink: 0;"><span style="width: 30px; height: 30px; border-radius: 8px; background: #13203a; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">L</span><span style="display: flex; flex-direction: column; line-height: 16px;"><strong style="font-size: 13px; color: #13203a;">Lumen Aesthetics</strong><span style="font-size: 11px; color: #667085;">Irvine Spectrum</span></span><span style="font-size: 9px; color: #667085;">▾</span></span><nav style="display: flex; align-items: center;"><a href="OwnerHome.dc.html" style="display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; height: 68px; padding: 0 16px; box-sizing: border-box; font-size: 12px; font-weight: 600; color: #667085; text-decoration: none; border-bottom: 2px solid transparent;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/></svg>Dashboard</a><a href="Dashboard.dc.html" style="display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; height: 68px; padding: 0 16px; box-sizing: border-box; font-size: 12px; font-weight: 600; color: #667085; text-decoration: none; border-bottom: 2px solid transparent;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16l-1.5-4h-13z"/><path d="M5 9v11h14V9"/><path d="M10 20v-6h4v6"/></svg>My business</a><a href="OwnerInbox.dc.html" style="display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; height: 68px; padding: 0 16px; box-sizing: border-box; font-size: 12px; font-weight: 600; color: #667085; text-decoration: none; border-bottom: 2px solid transparent;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13h5l2 3h4l2-3h5"/><path d="M5 5h14l2 8v6H3v-6z"/></svg>Inbox</a><a href="OwnerPremium.dc.html" style="display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; height: 68px; padding: 0 16px; box-sizing: border-box; font-size: 12px; font-weight: 700; color: #13203a; text-decoration: none; border-bottom: 2px solid #13203a;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/><path d="m9 15 2 2 4-4"/></svg>Premium</a></nav><span style="margin-left: auto; display: flex; align-items: center; gap: 14px;"><a href="Upgrade.dc.html" style="height: 38px; padding: 0 18px; border-radius: 9999px; background: #13203a; color: #ffffff; display: inline-flex; align-items: center; font-size: 14px; font-weight: 600; text-decoration: none;">See plans</a><span style="font-size: 18px;">🔔</span><span style="width: 34px; height: 34px; border-radius: 50%; background: #e4ded2; color: #13203a; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700;">PN</span></span></header>
-
-<div style="padding: 36px 120px 40px; display: flex; flex-direction: column; gap: 32px;">
-<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding-bottom: 24px; border-bottom: 1px solid #e4ded2;"><div style="display: flex; flex-direction: column; gap: 6px;"><span class="mu" style="font-size: 12px; font-weight: 600;">Lumen Aesthetics · Irvine Spectrum · run Sep 24, 2026, 4 engines, 30 prompts</span><h1 style="margin: 0; font-size: 34px; font-weight: 600; line-height: 38px; letter-spacing: -0.01em;">AI Visibility Report</h1></div><span class="tag" style="height: 30px;">Your free AI audit · reviewed with Kody</span></div>
-
-<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
-<div class="card" style="padding: 22px; display: flex; flex-direction: column; gap: 6px;"><span class="mu" style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;">Visibility</span><span class="big" style="color: #c13515;">38%</span><span class="sub">of AI answers about Irvine med spas mention Lumen. Coastline 78%.</span></div>
-<div class="card" style="padding: 22px; display: flex; flex-direction: column; gap: 6px;"><span class="mu" style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;">Accuracy</span><span class="big" style="color: #b86a00;">60%</span><span class="sub">of your business details are right when AI states them. Hours and website are wrong.</span></div>
-<div class="card" style="padding: 22px; display: flex; flex-direction: column; gap: 6px;"><span class="mu" style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;">Sentiment</span><span class="big" style="color: #008a05;">79%</span><span class="sub">positive when AI describes Lumen. Driven by results and Dr. Nair. Dragged by the front desk.</span></div>
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 14px;"><div style="display: flex; flex-direction: column; gap: 4px;"><h2 class="h2">Your visibility compared to competitors</h2><span class="sub">How often each business appears in the same 30 AI answers.</span></div>
-<div class="card" style="padding: 18px 20px; display: flex; flex-direction: column; gap: 10px;"><sc-for list="{{vis}}" as="v" hint-placeholder-count="6"><div style="display: grid; grid-template-columns: 220px 1fr 60px; gap: 14px; align-items: center; font-size: 13px;"><span style="font-weight: {{v.fw}}; color: {{v.fc}};">{{v.n}}</span><div style="height: 10px; border-radius: 5px; background: #e4ded2; overflow: hidden;"><div style="width: {{v.w}}%; height: 100%; background: {{v.bar}};"></div></div><strong style="text-align: right; color: {{v.fc}};">{{v.w}}%</strong></div></sc-for></div>
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 14px;"><div style="display: flex; flex-direction: column; gap: 4px;"><h2 class="h2">Where you rank by theme</h2><span class="sub">Position in AI answers, by the topics people ask about. You are in red.</span></div>
-<div class="card" style="overflow: hidden;"><div style="display: grid; grid-template-columns: 200px repeat(10, 1fr); gap: 6px; padding: 10px 16px; border-bottom: 1px solid #e4ded2; font-size: 11px; font-weight: 700; color: #667085; text-transform: uppercase; letter-spacing: 0.05em;"><span>Theme</span><sc-for list="{{rankHd}}" as="h" hint-placeholder-count="10"><span style="text-align: center;">#{{h}}</span></sc-for></div><sc-for list="{{themes}}" as="t" hint-placeholder-count="3"><div style="display: grid; grid-template-columns: 200px repeat(10, 1fr); gap: 6px; padding: 14px 16px; border-bottom: 1px solid #e4ded2; align-items: start;"><span style="font-size: 14px; font-weight: 600; line-height: 18px;">{{t.n}}</span><sc-for list="{{t.r}}" as="c" hint-placeholder-count="10"><div class="themeCell"><span class="av {{c.y}}">{{c.a}}</span><span>{{c.n}}</span></div></sc-for></div></sc-for></div>
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 14px;"><div style="display: flex; flex-direction: column; gap: 4px;"><h2 class="h2">Themes and prompts</h2><span class="sub">The questions people ask AI that you should be the answer to. Low visibility is 0 to 49%, partial 50 to 79%, high 80% and up.</span></div>
-<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;"><sc-for list="{{themes}}" as="t" hint-placeholder-count="3"><div class="card" style="padding: 16px 18px; display: flex; flex-direction: column; gap: 10px;"><div style="display: flex; align-items: center; justify-content: space-between;"><span style="font-weight: 600; font-size: 15px;">{{t.n}}</span><span class="tag {{t.vc}}">{{t.v}}</span></div><div style="display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{t.p}}" as="q" hint-placeholder-count="3"><div style="font-size: 13px; line-height: 18px; color: #3d4658; padding: 8px 10px; border-radius: 8px; background: #f3efe7;">"{{q}}"</div></sc-for></div></div></sc-for></div>
-</div>
-
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-<div style="display: flex; flex-direction: column; gap: 14px;"><div style="display: flex; flex-direction: column; gap: 4px;"><h2 class="h2">How accurate are your business details</h2><span class="sub">What AI says when asked directly, against the record.</span></div>
-<div class="card" style="padding: 6px 18px;"><sc-for list="{{acc}}" as="a" hint-placeholder-count="5"><div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #e4ded2; font-size: 14px;"><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-weight: 600;">{{a.n}}</span><span class="mu" style="font-size: 12px;">{{a.d}}</span></div><span class="{{a.c}}">{{a.s}}</span></div></sc-for></div>
-</div>
-<div style="display: flex; flex-direction: column; gap: 14px;"><div style="display: flex; flex-direction: column; gap: 4px;"><h2 class="h2">How AI describes you</h2><span class="sub">The summary ChatGPT gives when asked about Lumen, Sep 22.</span></div>
-<div class="card" style="padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;"><div style="font-size: 15px; line-height: 23px; font-style: italic; color: #3d4658;">"Lumen Aesthetics is a physician-led med spa in Irvine praised for natural-looking filler and conservative Botox. Reviews consistently mention Dr. Nair's honesty about what not to do. Some clients note slow check-in and confusing parking. Injections are performed by licensed aestheticians."</div><div style="display: flex; gap: 8px; flex-wrap: wrap;"><span class="tag grn">Known for: right</span><span class="tag grn">Dr. Nair: right</span><span class="tag amb">Front desk: fair</span><span class="tag red">"Aestheticians inject": wrong</span></div></div>
-</div>
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 14px;"><div style="display: flex; flex-direction: column; gap: 4px;"><h2 class="h2">How AI platforms evaluate your brand</h2><span class="sub">Strengths, weaknesses, opportunities and threats, as the engines state them.</span></div>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-<div class="swot"><h4 style="color: #008a05;">Strengths</h4><span><strong>Results.</strong> "You cannot tell I had anything done" is the most repeated sentiment.</span><span><strong>The doctor.</strong> A dermatologist who does the consult and says no.</span><span><strong>Location.</strong> Irvine Spectrum, foot traffic and easy directions.</span></div>
-<div class="swot"><h4 style="color: #c13515;">Weaknesses</h4><span><strong>Front desk.</strong> "Slow" 14 times, "confusing" 6.</span><span><strong>Silence.</strong> 0 of 612 reviews answered, so AI quotes complaints unrebutted.</span><span><strong>Unreadable photos.</strong> 48 photos, 4 with any text AI can use.</span></div>
-<div class="swot"><h4 style="color: #1d5bd6;">Opportunities</h4><span><strong>Morpheus8 Body.</strong> No Irvine med spa owns the answer yet.</span><span><strong>Consult price.</strong> Seven people asked. Answer it once and AI repeats it.</span><span><strong>Same-day replies.</strong> Coastline answers questions within hours. You have not answered any yet.</span></div>
-<div class="swot"><h4 style="color: #b86a00;">Threats</h4><span><strong>Coastline.</strong> 78% visibility, replies same day, claimed page.</span><span><strong>Wrong facts compounding.</strong> Gemini's "aestheticians" line is being repeated by Perplexity.</span><span><strong>Hours.</strong> Six listings disagree, so AI hedges or picks one.</span></div>
-</div>
-</div>
-
-<div style="display: flex; flex-direction: column; gap: 14px;"><div style="display: flex; flex-direction: column; gap: 4px;"><h2 class="h2">Citations</h2><span class="sub">The pages AI leans on when it talks about Irvine med spas. Yours is not one of them.</span></div>
-<div class="card" style="overflow: hidden;"><div class="cit" style="border-top: none; font-size: 11px; font-weight: 700; color: #667085; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 16px;"><span>Top citation sources</span><span>Unique citations</span><span>AI share of voice</span></div><sc-for list="{{cites}}" as="c" hint-placeholder-count="7"><div class="cit"><div style="display: flex; align-items: center; gap: 10px;"><span style="width: 32px; height: 32px; border-radius: 8px; background: {{c.bg}}; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">{{c.a}}</span><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-weight: 600;">{{c.n}}</span><span class="tag" style="height: 20px; font-size: 11px; align-self: flex-start;">{{c.k}}</span></div></div><span>{{c.u}}</span><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 12px;">{{c.sov}}%</span><div style="height: 6px; border-radius: 3px; background: #e4ded2; overflow: hidden;"><div style="width: {{c.sovw}}%; height: 100%; background: {{c.bar}};"></div></div></div></div></sc-for></div>
-</div>
-
-<div class="card" style="padding: 40px; background: #13203a; border-color: #13203a; color: #ffffff; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center;"><span style="font-size: 32px; font-weight: 600; line-height: 36px; letter-spacing: -0.01em;">Lead the shift. Don't chase it.</span><span style="font-size: 15px; color: #b0b0b0; max-width: 560px; line-height: 22px;">AI is answering for you today with 60% of the facts right and nobody from Lumen in the room. Thirty minutes with Kody fixes the wrong five and starts October.</span><span style="display: flex; gap: 10px; margin-top: 8px;"><a href="Upgrade.dc.html" class="btn b-coral" style="height: 52px; padding: 0 28px; font-size: 16px;">See the plan to fix this</a><a href="Next.dc.html" class="btn" style="height: 52px; padding: 0 28px; font-size: 16px;">Book 30 minutes</a></span></div>
-</div>
-
+<div style="width: 800px; height: 400px; box-sizing: border-box; padding: 48px; display: flex; flex-direction: column; gap: 12px; justify-content: center; background: #ece6da; color: #13203a;">
+<span style="font-size: 28px; font-weight: 700;">Unused</span>
+<span style="font-size: 16px; line-height: 24px;">This board is no longer part of the prototype. Safe to delete.</span>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3200}}'>
+<script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   renderVals() {
-    const vis = [
-      { n: 'Coastline MedSpa', w: 78, bar: '#7a5af5', fw: 500, fc: '#13203a' }, { n: 'Derm + Co', w: 56, bar: '#9a9a9a', fw: 500, fc: '#13203a' },
-      { n: 'Lumen Aesthetics (You)', w: 38, bar: '#c13515', fw: 700, fc: '#c13515' }, { n: 'Pacific Skin Studio', w: 33, bar: '#9a9a9a', fw: 500, fc: '#13203a' },
-      { n: 'Glow Bar Irvine', w: 22, bar: '#9a9a9a', fw: 500, fc: '#13203a' }, { n: 'Spectrum Skin + Laser', w: 11, bar: '#9a9a9a', fw: 500, fc: '#13203a' }
-    ];
-    const rankHd = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const B = { CM: 'Coastline MedSpa', DC: 'Derm + Co', LA: 'Lumen (You)', PS: 'Pacific Skin', GB: 'Glow Bar', SS: 'Spectrum Skin', BV: 'Belle Vie', NB: 'Newport Beauty', TB: 'TrimBody', '': '' };
-    const row = (n, v, vc, order, p) => ({ n, v, vc, p, r: rankHd.map((_, i) => ({ a: order[i] || '', n: B[order[i] || ''], y: order[i] === 'LA' ? 'you' : (order[i] ? '' : 'off') })) });
-    const themes = [
-      row('Botox and neurotoxin', 'Partial visibility', 'amb', ['CM', 'DC', 'BV', 'LA', 'PS', 'GB', 'NB', 'SS'], ['Best place for Botox near Irvine Spectrum', 'Botox that does not look frozen, Orange County', 'How much is Botox per unit in Irvine']),
-      row('Dermal filler and lips', 'High visibility', 'grn', ['LA', 'CM', 'DC', 'NB', 'BV', 'PS', 'GB'], ['Natural-looking lip filler Irvine', 'Who does subtle cheek filler in Orange County', 'Filler dissolving near me']),
-      row('Skin tightening and body', 'Low visibility', 'red', ['DC', 'CM', 'TB', 'PS', 'GB', 'SS', 'BV'], ['Morpheus8 Irvine cost', 'Best med spa for skin tightening Orange County', 'Where to get Sculptra in Irvine'])
-    ];
-    const acc = [
-      { n: 'Business name', d: 'All 4 engines', s: 'Accurate', c: 'pass' }, { n: 'Full address', d: 'Suite 210 present in 4 of 4', s: 'Accurate', c: 'pass' }, { n: 'Phone number', d: '4 of 4', s: 'Accurate', c: 'pass' },
-      { n: 'Hours of operation', d: 'Gemini says open Monday. Claude says 8 PM close.', s: 'Not accurate', c: 'fail' }, { n: 'Website link', d: 'Perplexity links a directory page, not lumenaesthetics.com', s: 'Not accurate', c: 'fail' }
-    ];
-    const C = (n, k, u, sov, a, bg, bar) => ({ n, k, u: String(u), sov: String(sov), sovw: Math.round(sov * 4), a, bg, bar: bar || '#008a05' });
-    const cites = [
-      C('coastlinemedspa.com', 'Claimed page', 6, 23.1, 'CM', '#e5ddff'), C('yelp.com', 'Listing site', 4, 15.4, 'Y', '#fbe9e7'), C('Google Business Profile', 'Listing site', 4, 15.4, 'G', '#e8f0fe'),
-      C('dermandco.com', 'Claimed page', 3, 11.5, 'DC', '#dcecff'), C('realself.com', 'Review site', 3, 11.5, 'RS', '#ffe7d6'), C('irvineweekly.com', 'Press', 2, 7.7, 'IW', '#f8dfdf'),
-      C('lumenaesthetics.com', 'Your site', 1, 3.8, 'LA', '#ffe0e6', '#c13515')
-    ];
-    return { vis, rankHd, themes, acc, cites };
+    return {};
   }
 }
 </script>

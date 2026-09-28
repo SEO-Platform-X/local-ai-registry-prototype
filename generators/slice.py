@@ -3,7 +3,8 @@ import json,re,subprocess,sys
 from playwright.sync_api import sync_playwright
 P='/mnt/user-data/outputs/artifacts/01ea5720-d0c8-4528-b8cc-76eb1693feae/project/'
 MAXH=2400
-TARGETS=['Home.dc.html','Business.dc.html','Main.dc.html','Dashboard.dc.html','Audit.dc.html','MonthReport.dc.html','OwnerPremium.dc.html']
+TARGETS=['Home.dc.html','Business.dc.html','OwnerPremium.dc.html']
+WHOLE=['Main.dc.html','Dashboard.dc.html','Audit.dc.html','MonthReport.dc.html']  # interactive: never slice, tabs must stay on one board
 c=json.load(open(P+'canvas.json'))
 # drop old parts
 for k in [k for k in c['boards'] if re.search(r'_p\d\.dc\.html$',k) and k.split('_p')[0]+'.dc.html' in TARGETS]:
