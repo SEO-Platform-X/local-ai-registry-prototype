@@ -244,4 +244,14 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 </div></div>
 </div>
 </div>
-</body></html>
+<script>
+document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
+  var box=inp.closest('label')||inp.parentElement;
+  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
+  if(sug){sug.style.display='none';
+    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
+    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
+    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
+});
+</script></body></html>

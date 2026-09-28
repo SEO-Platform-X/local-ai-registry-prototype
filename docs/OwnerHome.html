@@ -303,4 +303,14 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 <div class="chk"><div class="chr"><span class="cst now">1</span><span style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1;"><strong style="font-size: 15px;">Verify ownership</strong><span class="mu" style="font-size: 13px;">Connect Google Business Profile. About 30 seconds.</span></span><a href="Verify.html" class="btn b-sm" onClick="">Verify</a></div><div class="chr"><span class="cst ">2</span><span style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1;"><strong style="font-size: 15px;">Add the Verified badge to your website</strong><span class="mu" style="font-size: 13px;">Points AI to your verified record. Without it, AI keeps pulling old info from other sites.</span></span><a href="#verified" class="btn b-sm" onClick="">Get the code</a></div><div class="chr"><span class="cst ">3</span><span style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1;"><strong style="font-size: 15px;">Add the schema code to your homepage</strong><span class="mu" style="font-size: 13px;">Tells ChatGPT, Gemini and Claude which facts are the right ones: yours, verified.</span></span><a href="#verified" class="btn b-sm" onClick="">Get the code</a></div><div class="chr"><span class="cst ">4</span><span style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1;"><strong style="font-size: 15px;">Invite your marketing person</strong><span class="mu" style="font-size: 13px;">They get the approvals, so work never waits on you.</span></span><a href="OwnerSettings.html#team" class="btn b-sm" onClick="">Invite</a></div><div class="chr"><span class="cst ">5</span><span style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1;"><strong style="font-size: 15px;">Get your free AI audit</strong><span class="mu" style="font-size: 13px;">What ChatGPT, Gemini and Claude say about Lumen. Kody reviews it with you.</span></span><a href="Next.html" class="btn b-sm" onClick="">Run it free</a></div>
 </div></div>
 </div>
-</body></html>
+<script>
+document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
+  var box=inp.closest('label')||inp.parentElement;
+  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
+  if(sug){sug.style.display='none';
+    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
+    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
+    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
+});
+</script></body></html>

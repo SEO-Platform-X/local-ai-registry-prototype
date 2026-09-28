@@ -384,4 +384,14 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 <div class="rfv"><svg viewBox="0 0 260 170" width="260" height="170" aria-hidden="true" fill="none" stroke="#13203a" stroke-width="1.4"><rect x="16" y="70" width="70" height="80" fill="#fbf4ea"/><path d="M10 70h82l-6-14H16z" fill="#e5482d" fill-opacity="0.2" stroke="#e5482d"/><rect x="40" y="110" width="22" height="40" fill="#dfe8f5"/><rect x="174" y="70" width="70" height="80" fill="#fbf4ea"/><path d="M168 70h82l-6-14h-70z" fill="#e5482d" fill-opacity="0.2" stroke="#e5482d"/><rect x="198" y="110" width="22" height="40" fill="#dfe8f5"/><path d="M96 100c24-30 44-30 68 0" stroke-dasharray="4 4"/><path d="M158 94l6 6-8 3" /><circle cx="130" cy="62" r="18" fill="#f5e3cc"/><text x="130" y="67" font-size="13" text-anchor="middle" fill="#13203a" stroke="none" font-family="Figtree,sans-serif" font-weight="700">15%</text><path d="M4 150h252" stroke-width="1"/></svg><div class="rfs"><span><b>1 referral</b> 15% off</span><span><b>3 referrals</b> 45% off</span><span><b>7 referrals</b> free</span></div></div></div>
 <div class="card" style="flex-direction: row; align-items: center; gap: 18px; padding: 18px 22px;"><span style="display: flex; flex-direction: column; gap: 3px; flex-grow: 1;"><strong style="font-size: 15px;">Want to offer your customers cashback?</strong><span class="mu" style="font-size: 14px;">Our partner OrbitBack runs cashback programs for local businesses. It is a separate company.</span></span><a href="#" class="btn b-sm">Book a call with OrbitBack</a></div></div>
 </div>
-</body></html>
+<script>
+document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
+  var box=inp.closest('label')||inp.parentElement;
+  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
+  if(sug){sug.style.display='none';
+    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
+    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
+    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
+});
+</script></body></html>

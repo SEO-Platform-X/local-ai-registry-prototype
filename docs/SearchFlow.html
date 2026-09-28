@@ -233,4 +233,14 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 <a href="QResults.html" class="sf-rule"><span class="k" style="background: #e5482d;">4</span><b>Press Enter</b><span>A name ("lumen") shows matching places on the map. A question ("natural lip filler") shows the short answer from locals, their top answers, and the places they named.</span><span class="go">Results ›</span></a>
 <a href="Search.html" class="sf-rule"><span class="k" style="background: #8a93a3;">5</span><b>No match or a typo</b><span>Suggests the closest name ("Did you mean Lumen Aesthetics?"). If nothing matches, offers "Add it" for owners and "Ask locals" for everyone.</span><span class="go">Edge cases ›</span></a>
 </div></div></div></div>
-</body></html>
+<script>
+document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
+  var box=inp.closest('label')||inp.parentElement;
+  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
+  if(sug){sug.style.display='none';
+    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
+    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
+    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
+});
+</script></body></html>

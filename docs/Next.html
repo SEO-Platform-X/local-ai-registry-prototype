@@ -166,4 +166,14 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 <span style="flex-grow: 1;"></span><div class="sup">Rather write? Email support at <a href="mailto:support@localairegistry.com">support@localairegistry.com</a></div></div><div class="at-r"><div class="at-body"><span class="ey">Running your audit</span><h1 class="st">Checking what AI says about <em>Lumen</em>.</h1><p class="lead">About 2 minutes. You can book with Kody on the left while it runs.</p><div class="crd load"><div style="height: 8px; border-radius: 4px; background: #ece6da; overflow: hidden;"><div style="width: 62%; height: 100%; background: #2b59d9;"></div></div>
 <span class="ln d"><i>✓</i>Asked ChatGPT 40 questions people ask about med spas in Irvine</span><span class="ln d"><i>✓</i>Asked Gemini the same 40</span><span class="ln r"><i></i>Asking Claude, 26 of 40</span><span class="ln q"><i></i>Reading 612 reviews on 6 sites</span><span class="ln q"><i></i>Checking your website and 31 directories</span><span class="ln q"><i></i>Finding who AI names instead of you</span></div></div><div class="at-foot"><span class="bk" onClick="" style="visibility: hidden;">‹ Back</span><span class="dots"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span><span class="nx" onClick="">Show me the results <span>⟶</span></span></div></div></div>
 </div>
-</body></html>
+<script>
+document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
+  var box=inp.closest('label')||inp.parentElement;
+  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
+  if(sug){sug.style.display='none';
+    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
+    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
+    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
+});
+</script></body></html>

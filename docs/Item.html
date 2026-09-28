@@ -224,4 +224,14 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 <div class="below"><div style="display: flex; flex-direction: column; gap: 14px;"><h2 style="margin: 0; font-size: 22px; font-weight: 600;">Questions people ask about birria tacos in Irvine</h2><div class="faq"><div><strong>Where is the best birria in Irvine?</strong><span>Backyard Tacos is mentioned most, in 40 reviews, for crispy edges and free consommé. Tacos El Guero is the cheapest confirmed option at about $3.50.</span></div><div><strong>Does birria usually come with consommé?</strong><span>At 3 of 5 places, yes. Filter by Comes with consommé to see which.</span></div><div><strong>What does birria cost in Irvine?</strong><span>About $3.25 to $6.00 a taco. Sit-down places cost more.</span></div></div></div>
 <div style="display: flex; flex-direction: column; gap: 18px;"><div style="display: flex; flex-direction: column; gap: 10px;"><h2 style="margin: 0; font-size: 22px; font-weight: 600;">Also known for nearby</h2><div class="rel"><a href="#" class="itm" onClick="" style="text-decoration: none; color: #13203a;">Quesabirria</a><a href="#" class="itm" onClick="" style="text-decoration: none; color: #13203a;">Street tacos</a><a href="#" class="itm" onClick="" style="text-decoration: none; color: #13203a;">Carne asada</a><a href="#" class="itm" onClick="" style="text-decoration: none; color: #13203a;">Horchata</a></div></div><div class="empty"><strong>Do you offer birria tacos?</strong> Add your price and it shows here and in AI answers. <a href="Claim.html" style="font-weight: 600;">Add your business</a></div></div></div>
 </div>
-</body></html>
+<script>
+document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
+  var box=inp.closest('label')||inp.parentElement;
+  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
+  if(sug){sug.style.display='none';
+    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
+    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
+    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
+});
+</script></body></html>

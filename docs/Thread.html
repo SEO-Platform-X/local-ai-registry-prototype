@@ -194,4 +194,14 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 <div class="card2" style="background: #f7f4ee;"><strong style="font-size: 14px;">Cite this post</strong><span style="font-size: 13px; color: #3d4658;">localairegistry.com/irvine/lumen-aesthetics/locals/t/4790 · Permanent link, listed in Lumen's AI references.</span></div>
 <div style="display: flex; flex-direction: column; gap: 8px;"><strong style="font-size: 17px;">More about Lumen</strong><a href="#" style="font-size: 14px;">Is parking validated?</a><a href="#" style="font-size: 14px;">Morpheus8 Body wait list?</a><a href="#" style="font-size: 14px;">Real doctors or aestheticians?</a></div></div>
 </div>
-</body></html>
+<script>
+document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
+  var box=inp.closest('label')||inp.parentElement;
+  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
+  if(sug){sug.style.display='none';
+    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
+    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
+    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
+});
+</script></body></html>

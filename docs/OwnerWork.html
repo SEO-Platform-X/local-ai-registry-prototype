@@ -255,4 +255,14 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 <div class=""><div class="apv"><span style="display: flex; justify-content: space-between;"><span class="ty">Google post</span><span class="mu" style="font-size: 12px;">Tue, Sep 29</span></span><strong style="font-size: 14px;">Morpheus8 Body is here</strong><p>Arms, stomach and knees. Consults start October 1. Most people feel mild warmth, and there is no downtime for most.</p><span class="acts"><span class="btn b-sm b-dark">Approve</span><a href="OwnerNotes.html" class="btn b-sm">Give feedback</a><span class="btn b-sm">Skip</span></span></div><div class="apv"><span style="display: flex; justify-content: space-between;"><span class="ty">Review reply</span><span class="mu" style="font-size: 12px;">Wed, Sep 30</span></span><strong style="font-size: 14px;">Reply to Sarah K., 5 stars</strong><p>Thank you, Sarah! Dr. Nair loved seeing your results. See you in the spring. Priya and the Lumen team</p><span class="acts"><span class="btn b-sm b-dark">Approve</span><a href="OwnerNotes.html" class="btn b-sm">Give feedback</a><span class="btn b-sm">Skip</span></span></div><div class="apv"><span style="display: flex; justify-content: space-between;"><span class="ty">Fix</span><span class="mu" style="font-size: 12px;">Fri, Oct 2</span></span><strong style="font-size: 14px;">Push new Monday hours to 40 sources</strong><p>Closed Mondays, replacing 9 AM to 6 PM on Google, Apple Maps, Yelp, Bing and directories.</p><span class="acts"><span class="btn b-sm b-dark">Approve</span><a href="OwnerNotes.html" class="btn b-sm">Give feedback</a><span class="btn b-sm">Skip</span></span></div><div class="apv"><span style="display: flex; justify-content: space-between;"><span class="ty">Review dispute</span><span class="mu" style="font-size: 12px;">Fri, Oct 9</span></span><strong style="font-size: 14px;">Challenge a 1-star review</strong><p>The reviewer says they were never a patient. We will ask Google to remove it under its conflict of interest policy.</p><span class="acts"><span class="btn b-sm b-dark">Approve</span><a href="OwnerNotes.html" class="btn b-sm">Give feedback</a><span class="btn b-sm">Skip</span></span></div></div>
 </div></div></div>
 </div>
-</body></html>
+<script>
+document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
+  var box=inp.closest('label')||inp.parentElement;
+  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
+  if(sug){sug.style.display='none';
+    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
+    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
+    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
+});
+</script></body></html>

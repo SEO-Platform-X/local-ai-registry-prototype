@@ -382,4 +382,14 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 <div class="big3"><div class="hc"><strong>Getting started</strong><span>Claiming, confirming your info, verifying ownership</span></div><div class="hc"><strong>Editing your page</strong><span>Pencils, tracked changes, pushing changes to AI</span></div><div class="hc"><strong>Locals and questions</strong><span>Answering, heads-ups, reporting a post</span></div><div class="hc"><strong>Plans and billing</strong><span>What each tier includes, upgrading, canceling</span></div><div class="hc"><strong>Approvals and AI notes</strong><span>How feedback teaches AI your voice</span></div><div class="hc"><strong>Ownership disputes</strong><span>When someone else claimed your business</span></div></div>
 <div class="card" style="flex-direction: row; align-items: center; gap: 20px;"><span style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1;"><strong style="font-size: 16px;">Still stuck?</strong><span class="mu" style="font-size: 14px;">Message support, or book time with Kody, your Local AI Registry guide.</span></span><a href="OwnerInbox.html" class="btn b-sm b-dark">Message support</a><a href="OwnerInbox.html" class="btn b-sm">Book with Kody</a></div></div>
 </div>
-</body></html>
+<script>
+document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
+  var box=inp.closest('label')||inp.parentElement;
+  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
+  if(sug){sug.style.display='none';
+    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
+    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
+    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
+});
+</script></body></html>

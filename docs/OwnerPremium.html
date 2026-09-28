@@ -404,4 +404,14 @@ body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
 </div><div class="itm2 "><div class="row" onClick="" style="padding: 11px 14px;"><span class="bar2" style="background: #2d6fd6;"></span><span class="tt"><strong style="font-size: 14px;">Morpheus8 Body is here</strong><span>Google posts · Google Business Profile</span></span><span class="pill p-ap">Needs approval</span><span style="font-size: 12px; color: #667085;">▼</span></div>
 </div></div><div style="display: flex; justify-content: space-between; align-items: center; padding-top: 6px;"><span class="btn b-sm" onClick="" style="opacity: 0.35;">‹ Previous</span><span class="mu" style="font-size: 13px;">Page 1 of 5</span><span class="btn b-sm" onClick="" style="opacity: 1;">Next ›</span></div></div></div></div></div>
 </div>
-</body></html>
+<script>
+document.querySelectorAll('input[type=text],input:not([type])').forEach(function(inp){
+  var box=inp.closest('label')||inp.parentElement;
+  var sug=box&&box.parentElement?box.parentElement.querySelector('.sug'):null;
+  if(sug){sug.style.display='none';
+    inp.addEventListener('input',function(){sug.style.display=inp.value.trim()?'':'none';});
+    inp.addEventListener('focus',function(){if(inp.value.trim())sug.style.display='';});
+    document.addEventListener('click',function(e){if(!box.contains(e.target)&&!sug.contains(e.target))sug.style.display='none';});}
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=inp.value.trim();if(!v)return;e.preventDefault();location.href=/\s/.test(v)?'QResults.html':'ExploreSearch.html';}});
+});
+</script></body></html>
