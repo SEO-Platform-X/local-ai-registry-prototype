@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Unused board</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;font-family:Figtree,sans-serif;background:#ece6da}
+
+/*palette:lair*/body{background:#f3efe7 !important}
+h1,.ttl1,h2.h2{font-family:"Cormorant Garamond",Georgia,serif !important;font-weight:500 !important;letter-spacing:0 !important}
+
+/*ds:lair*/.btn{border-radius:9999px !important;font-weight:600 !important;box-shadow:none !important;letter-spacing:0 !important;background-image:none !important}
+.btn.b-dark,.btn.b-coral,.btn.grad,.btn.b-lock,.grad{background:#13203a !important;background-image:none !important;color:#ffffff !important;border-color:#13203a !important}
+.btn:not(.b-dark):not(.b-coral):not(.grad):not(.b-lock){background:#ffffff !important;border:1px solid #13203a !important;color:#13203a !important}
+h1{font-family:"Cormorant Garamond",Georgia,serif !important;font-weight:500 !important;letter-spacing:0 !important}
+body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
+
+/*wrap*/h1,h2,h3,.ttl1,.T,.T2,.sh{text-wrap:balance}p,.v4-sub,.sub,.lead{text-wrap:pretty}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></helmet>
+<div style="width: 800px; height: 400px; box-sizing: border-box; padding: 48px; display: flex; flex-direction: column; gap: 12px; justify-content: center; background: #ece6da; color: #13203a;">
+<span style="font-size: 28px; font-weight: 700;">Unused</span>
+<span style="font-size: 16px; line-height: 24px;">This board is no longer part of the prototype. Safe to delete.</span>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

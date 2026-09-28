@@ -1,0 +1,11 @@
+import sys; sys.path.insert(0,'/tmp/gen'); from common import *; from community import *
+s=open(P+'Home.dc.html').read()
+s=s.replace('<title>Local AI Registry: ask about local businesses</title>','<title>Explore: Local AI Registry</title>')
+s=s.replace('<a href="Main.dc.html" class="btn b-sm" style="border-color: transparent;">Explore</a><a href="Claim.dc.html" class="btn b-sm" style="border-color: #dddddd;">For businesses</a>','<a href="Home.dc.html" class="btn b-sm" style="border-color: transparent;">Home</a><a href="Explore.dc.html" class="btn b-sm" style="border-color: transparent; font-weight: 700;">Explore</a><a href="Claim.dc.html" class="btn b-sm" style="border-color: #dddddd;">For businesses</a>',1)
+i=s.index('<div style="display: flex; flex-direction: column; gap: 12px;"><h2 style="margin: 0; font-size: 22px; font-weight: 600;">New nearby</h2>'); j=s.index('</div></div>',i)+len('</div></div>')
+COMM=f'''<div style="display: flex; flex-direction: column; gap: 12px;"><div style="display: flex; align-items: baseline; justify-content: space-between;"><h2 style="margin: 0; font-size: 22px; font-weight: 600;">Fixed by neighbors near you</h2><span class="sub"><strong style="color: #222222;">312</strong> fixes in Irvine this week</span></div><div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;"><sc-for list="{{{{fixes}}}}" as="x" hint-placeholder-count="6">{FIX_CARD}</sc-for></div></div>
+<div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: start;"><div style="display: flex; flex-direction: column; gap: 10px;"><h2 style="margin: 0; font-size: 22px; font-weight: 600;">Questions waiting near you</h2><sc-for list="{{{{openQs}}}}" as="x" hint-placeholder-count="4">{OQ}</sc-for></div><div style="display: flex; flex-direction: column; gap: 10px;"><h2 style="margin: 0; font-size: 22px; font-weight: 600;">Local experts</h2><sc-for list="{{{{experts}}}}" as="x" hint-placeholder-count="4">{EX}</sc-for></div></div>'''
+s=s[:i]+COMM+s[j:]
+s=s.replace('</style>',CSS.replace('#e6e1d8','#ebebeb').replace('#f0ece5','#f0f0f0')+'</style>',1)
+s=s.replace("    return { q, chips, cats, cities, news };",FIXES_JS+"    return { q, chips, cats, cities, news, fixes, openQs, experts };")
+open(P+'Explore.dc.html','w').write(s); print('ok')

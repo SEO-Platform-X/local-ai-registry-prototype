@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Claim</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;font-family:Figtree,"Airbnb Cereal VF","Helvetica Neue",Helvetica,sans-serif;color:#13203a;background:#ffffff;-webkit-font-smoothing:antialiased}
+a{color:#13203a;text-decoration:underline;text-underline-offset:2px;font-weight:600}
+.mu{color:#667085}
+.h2{margin:0;font-size:22px;font-weight:600;line-height:26px}
+.h3{margin:0;font-size:16px;font-weight:600;line-height:20px}
+.sub{font-size:13px;color:#667085;line-height:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 20px;border-radius:8px;font-size:15px;font-weight:600;border:1px solid #13203a;background:#ffffff;color:#13203a;font-family:inherit;cursor:pointer;white-space:nowrap;text-decoration:none}
+.btn:hover{background:#f3efe7;color:#13203a}
+.b-coral{background:#e5482d;border-color:#e5482d;color:#ffffff}.b-coral:hover{background:#e00b41;border-color:#e00b41;color:#ffffff}
+.b-dark{background:#13203a;border-color:#13203a;color:#ffffff}.b-dark:hover{background:#000000;color:#ffffff}
+.b-lock{background:#f3efe7;border-color:#dcd5c7;color:#667085;cursor:not-allowed}.b-lock:hover{background:#f3efe7;color:#667085}
+.b-sm{height:36px;padding:0 14px;font-size:13px}
+.tag{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:6px;font-size:12px;font-weight:600;background:#f3efe7;color:#13203a;white-space:nowrap}
+.tag.red{background:#fbe9e7;color:#c13515}.tag.grn{background:#ddf1e1;color:#237233}.tag.amb{background:#fdeeda;color:#b86a00}.tag.gry{background:#f3efe7;color:#667085}
+.fail{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;font-size:12px;font-weight:600;background:#fbe9e7;color:#c13515}
+.pass{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;font-size:12px;font-weight:600;background:#ddf1e1;color:#237233}
+.vs{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:9999px;font-size:11px;font-weight:600;white-space:nowrap;box-sizing:border-box}
+.vs.un{background:#ffffff;border:1px dashed #b0b0b0;color:#667085}
+.vs.ok{background:#ddf1e1;border:1px solid #ddf1e1;color:#237233}
+.vs.pp{background:#ffffff;border:1px solid #dcd5c7;color:#3d4658}
+.card{border:1px solid #dcd5c7;border-radius:12px;background:#ffffff}
+.shadow{box-shadow:0 6px 16px rgba(0,0,0,0.12)}
+.tabl{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 14px;font-size:15px;font-weight:600;color:#667085;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;margin-bottom:-1px}
+.tabl:hover{color:#13203a}
+.tabl .ct{font-size:12px;font-weight:600;color:#9a9a9a}
+.tp{display:none}
+.pill{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 12px;border-radius:30px;font-size:13px;font-weight:600;border:1px solid #dcd5c7;background:#ffffff;color:#13203a;cursor:pointer;white-space:nowrap;font-family:inherit}
+.pill:hover{border-color:#13203a}
+.pill.on{border:2px solid #13203a}
+.pill.zero{border-color:#c13515;color:#c13515;background:#fff5f2}
+.cat{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
+.c-reviews{background:#ddf1e1;color:#237233}.c-qa{background:#fdeeda;color:#b86a00}.c-posts{background:#ddf1ee;color:#0d6b62}.c-replies{background:#e9e2fb;color:#5a37c4}.c-events{background:#fce6d9;color:#b8460a}.c-media{background:#f3e1f7;color:#7a2b8c}.c-articles{background:#e1e6fb;color:#2f49b8}.c-website{background:#eaf5dc;color:#4a7a0a}.c-directories{background:#e4e7ec;color:#4a5466}.c-press{background:#f8dfdf;color:#a32222}.c-backlinks{background:#dceff3;color:#0d7a8c}.c-jobs{background:#f0e6dd;color:#6f4a28}.c-social{background:#f9dfe9;color:#b02858}
+.svc{display:grid;grid-template-columns:1.6fr 1.5fr 0.9fr 0.9fr;gap:16px;align-items:center;padding:13px 0;border-top:1px solid #e4ded2;font-size:14px}
+.svc .n{font-weight:600;line-height:18px}
+.svc .s{font-size:12px;color:#667085;line-height:16px;margin-top:2px}
+.gauge{display:flex;flex-direction:column;gap:5px}
+.gauge .bar{display:flex;gap:2px;height:8px}
+.gauge .bar span{flex:1;border-radius:2px;background:#e4ded2}
+.gauge .bar span.g0{background:#c8c8c8}.gauge .bar span.g1{background:#f0b34a}.gauge .bar span.g2{background:#9fd3a8}.gauge .bar span.g3{background:#008a05}
+.gauge .lb{font-size:12px;font-weight:600;line-height:14px}
+.gauge .ev{font-size:11px;color:#667085;line-height:14px}
+.fact{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:6px 0;border-bottom:1px solid #e4ded2}
+.fact .k{color:#667085;flex-shrink:0}
+.fact .v{text-align:right;font-weight:500}
+.post{display:flex;gap:14px;padding:18px 0;border-top:1px solid #e4ded2}
+.vote{display:flex;flex-direction:column;align-items:center;gap:2px;width:34px;flex-shrink:0;color:#667085}
+.vote .n{font-size:14px;font-weight:600;color:#13203a}
+.ans{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:8px;background:#f3efe7;font-size:13px;line-height:19px}
+.ans .who{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;flex-shrink:0;margin-top:2px;width:86px}
+.ans .who.rec{color:#e5482d}.ans .who.com{color:#1d5bd6}
+.slot{display:inline-flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 12px;border-radius:8px;border:1px dashed #c8c8c8;color:#9a9a9a;font-size:12px;font-style:italic}
+.slot b{font-style:normal;font-weight:600;color:#9a9a9a}
+.hm{display:grid;grid-template-columns:44px repeat(7,1fr);gap:3px}
+.hm .hd{font-size:10px;font-weight:700;color:#667085;text-align:center;padding-bottom:2px}
+.hm .hr{font-size:10px;color:#667085;display:flex;align-items:center}
+.hm .c{height:22px;border-radius:3px}
+.h0{background:#e9f0fb}.h1{background:#c5d8f6}.h2c{background:#8fb4ee}.h3c{background:#4f86df}.h4{background:#1d5bd6}
+.kw{display:grid;grid-template-columns:1.8fr 1fr 1.2fr 1.2fr;gap:10px;align-items:center;padding:10px 12px;border-top:1px solid #e4ded2;font-size:13px}
+.kw.hd{font-size:11px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:0.05em;border-top:none;padding:6px 12px}
+.don{display:inline-flex;align-items:center;gap:6px}
+.don svg{flex-shrink:0}
+.oc{border:1px solid #e4ded2;border-radius:8px;min-height:104px;padding:5px;display:flex;flex-direction:column;gap:3px;box-sizing:border-box;overflow:hidden}
+.oc .d{font-size:11px;font-weight:600;color:#667085}
+.ob{display:flex;align-items:center;gap:4px;height:18px;padding:0 5px;border-radius:4px;background:#f1f1f1;border:1px dashed #c4c4c4;font-size:10px;font-weight:600;color:#5f5f5f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-sizing:border-box}
+.ob span{overflow:hidden;text-overflow:ellipsis}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.pulse{box-shadow:0 0 0 0 rgba(255,56,92,0.6);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,56,92,0.5)}70%{box-shadow:0 0 0 7px rgba(255,56,92,0)}100%{box-shadow:0 0 0 0 rgba(255,56,92,0)}}
+.rd{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+.live-n{position:relative;display:inline-block;width:26px;height:20px;overflow:hidden;vertical-align:bottom}
+.live-n span{position:absolute;left:0;top:0;width:26px;line-height:20px;opacity:0;animation:cnt 12s infinite}
+.live-n span:nth-child(2){animation-delay:4s}.live-n span:nth-child(3){animation-delay:8s}
+@keyframes cnt{0%{opacity:0;transform:translateY(8px)}6%{opacity:1;transform:translateY(0)}33%{opacity:1;transform:translateY(0)}39%{opacity:0;transform:translateY(-8px)}100%{opacity:0}}
+.tick{height:54px;overflow:hidden;position:relative}
+.tick ul{list-style:none;margin:0;padding:0;animation:tick 15s steps(1) infinite}
+.tick li{height:18px;line-height:18px;font-size:12px;display:flex;gap:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tick li .t{color:#9a9a9a;width:44px;flex-shrink:0}
+@keyframes tick{0%{transform:translateY(0)}20%{transform:translateY(-18px)}40%{transform:translateY(-36px)}60%{transform:translateY(-54px)}80%{transform:translateY(-72px)}100%{transform:translateY(-90px)}}
+.toast{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;background:#13203a;color:#ffffff;font-size:12px;font-weight:600;animation:toast 12s infinite;transform-origin:top}
+@keyframes toast{0%{opacity:0;transform:translateY(6px)}5%{opacity:1;transform:translateY(0)}45%{opacity:1}52%{opacity:0;transform:translateY(-4px)}100%{opacity:0}}
+.bar-live{height:6px;border-radius:3px;background:#e4ded2;overflow:hidden}
+.bar-live i{display:block;height:100%;background:#e5482d;animation:grow 6s ease-in-out infinite alternate}
+@keyframes grow{0%{width:52%}100%{width:71%}}
+.sec-h{display:flex;align-items:center;gap:12px;padding-top:6px}
+.sec-h .num{width:28px;height:28px;border-radius:50%;background:#13203a;color:#ffffff;font-weight:700;font-size:13px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.sec-h .num.red{background:#c13515}.sec-h .num.grn{background:#008a05}
+.bu{background:#fff7f3;border-left:3px solid #e5482d;border-radius:0 10px 10px 0;padding:14px 14px 14px 12px;margin:6px 0}
+.c-bu{background:#e5482d;color:#ffffff}
+.cta-line{display:flex;gap:14px;font-size:12px;color:#667085;align-items:center}
+.cta-line a,.cta-line label{color:#13203a;font-weight:600;text-decoration:underline;cursor:pointer;font-size:12px}
+.grp{font-size:11px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:0.05em;margin-right:2px}
+.pin{position:absolute;width:22px;height:22px;border-radius:50% 50% 50% 0;background:#13203a;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center}
+.pin span{transform:rotate(45deg);color:#ffffff;font-size:10px;font-weight:700}
+.pin.you{background:#e5482d;width:28px;height:28px}
+.cmp{display:grid;grid-template-columns:1.4fr 0.6fr 0.9fr 1fr;gap:8px;align-items:center;padding:8px 0;border-top:1px solid #e4ded2;font-size:12px}
+.cmp .hd{font-size:10px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:0.05em}
+.fld{display:flex;align-items:center;gap:10px;height:50px;border:1px solid #dcd5c7;border-radius:10px;padding:0 14px;font-size:14px}
+.fld input{border:none;outline:none;flex-grow:1;font-family:inherit;font-size:14px;background:transparent}
+.day{height:36px;display:flex;align-items:center;justify-content:center;font-size:13px;border-radius:50%;cursor:pointer}
+.day.on{background:#13203a;color:#ffffff;font-weight:600}.day.off{color:#c8c8c8}
+.slotb{height:40px;border:1px solid #13203a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer}
+.slotb.on{background:#13203a;color:#ffffff}
+.big{font-size:44px;font-weight:600;line-height:48px}
+.themeCell{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;text-align:center;line-height:12px;color:#3d4658}
+.themeCell .av{width:36px;height:36px;border-radius:50%;border:1px solid #dcd5c7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:#ffffff}
+.themeCell .av.you{background:#e5482d;color:#ffffff;border-color:#e5482d}
+.swot{border:1px solid #e4ded2;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:19px}
+.swot h4{margin:0;font-size:14px}
+.cit{display:grid;grid-template-columns:2fr 1fr 1.4fr;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid #e4ded2;font-size:13px}
+
+
+
+
+.mb{display:flex;flex-direction:column;background:#e9e3d8;padding:40px 48px 56px;box-sizing:border-box;gap:28px;font-family:Figtree,sans-serif}
+.mb-h{display:flex;align-items:baseline;gap:18px}.mb-h h1{margin:0;font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:48px;color:#13203a}.mb-h p{margin:0;font-size:15px;color:#3d4658;max-width:900px}
+.mrow{display:flex;gap:44px;align-items:flex-start}
+.ph{display:flex;flex-direction:column;gap:12px;width:390px;flex-shrink:0}
+.ph-l{display:flex;flex-direction:column;gap:3px;min-height:52px}.ph-l b{font-size:14px;color:#13203a}.ph-l span{font-size:12px;line-height:17px;color:#5b6474}
+.scr{width:390px;height:844px;border-radius:44px;background:#f3efe7;box-shadow:0 0 0 10px #13203a,0 30px 60px rgba(19,32,58,0.28);overflow:hidden;position:relative;display:flex;flex-direction:column;color:#13203a;font-size:17px;line-height:25px}
+.scr{font-family:Figtree,sans-serif;font-weight:400}
+.scr a{color:inherit;text-decoration:none;font-weight:inherit}
+.scr .lk{text-decoration:underline}
+.ab .t{font-family:Figtree,sans-serif}
+.sb{height:47px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 30px 0 34px;font-size:16px;font-weight:600;box-sizing:border-box}
+.sb i{font-style:normal;display:flex;gap:6px;align-items:center}.sb i s{display:block;width:26px;height:12px;border-radius:3px;border:1.5px solid #13203a;box-sizing:border-box;text-decoration:none;position:relative}.sb i s::after{content:"";position:absolute;inset:1.5px;right:5px;background:#13203a;border-radius:1px}
+.sb.dk{color:#fff}.sb.dk i s{border-color:#fff}.sb.dk i s::after{background:#fff}
+.ab{height:56px;flex-shrink:0;display:flex;align-items:center;gap:12px;padding:0 16px;box-sizing:border-box}
+.ab .t{font-size:17px;font-weight:700;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ab .t.c{text-align:center}
+.icb{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#13203a;text-decoration:none;position:relative}
+.icb.w{background:#ffffff;box-shadow:0 1px 4px rgba(19,32,58,0.12)}
+.dot{position:absolute;top:6px;right:6px;min-width:18px;height:18px;border-radius:9px;background:#e5482d;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 4px;box-sizing:border-box}
+.bd{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;padding:4px 20px 20px;gap:16px;box-sizing:border-box}
+.bd.np{padding:0}
+.tb{height:84px;flex-shrink:0;border-top:1px solid #e4ded2;background:#fbf8f3;display:grid;grid-template-columns:repeat(5,1fr);padding:6px 4px 0;box-sizing:border-box}
+.tb a{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;font-weight:600;color:#8a93a3;text-decoration:none;position:relative}
+.tb a.on{color:#13203a}.tb a.on::before{content:"";position:absolute;top:-6px;width:28px;height:3px;border-radius:2px;background:#13203a}
+.tb a.pp span.pl{width:48px;height:34px;border-radius:17px;background:#e5482d;color:#fff;display:flex;align-items:center;justify-content:center}
+.tb .n{position:absolute;top:-2px;left:52%;min-width:16px;height:16px;border-radius:8px;background:#e5482d;color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center;padding:0 3px;box-sizing:border-box}
+.hi{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:#13203a;opacity:0.9;z-index:9}
+.cta{flex-shrink:0;padding:12px 20px 34px;border-top:1px solid #e4ded2;background:#f3efe7;display:flex;flex-direction:column;gap:10px;box-sizing:border-box}
+.bp{height:56px;border-radius:9999px;background:#13203a;color:#fff !important;display:flex;align-items:center;justify-content:center;gap:10px;font-size:17px;font-weight:600;text-decoration:none;flex-shrink:0}
+.bp.r{background:#e5482d}.bp.o{background:#ffffff;color:#13203a !important;border:1.5px solid #13203a}.bp.sm{height:44px;font-size:15px;padding:0 18px}
+.lk{font-size:15px;font-weight:600;text-align:center;text-decoration:underline;text-underline-offset:3px}
+.T{margin:0;font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:38px;line-height:40px;letter-spacing:-0.01em}
+.T em{color:#e5482d}.T2{margin:0;font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:28px;line-height:31px}
+.ey{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#5b6474}
+.mu{color:#5b6474}.sm{font-size:14px;line-height:20px}.xs{font-size:12px;line-height:17px}
+.cd{background:#ffffff;border:1px solid #e4ded2;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.cd.pe{background:#f5e3cc;border-color:#e6cfb2}.cd.nv{background:#13203a;border-color:#13203a;color:#fff}
+.rw{display:flex;align-items:center;gap:12px;min-height:56px;border-bottom:1px solid #ece6da;text-decoration:none}.rw:last-child{border-bottom:none}
+.rw .g:not(.pill){flex:1;min-width:0;display:flex;flex-direction:column}.rw .g b{font-size:16px;line-height:21px;font-weight:600}.rw .g span{font-size:13px;line-height:18px;color:#5b6474}
+.av{width:40px;height:40px;border-radius:50%;background:#13203a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.av.lt{background:#e4ded2;color:#13203a}.av.bl{background:#dfe8f5;color:#13203a}
+.chs{display:flex;gap:8px;overflow:hidden;flex-shrink:0}.ch{height:40px;padding:0 16px;border-radius:9999px;border:1px solid #dcd5c7;background:#fff;display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;white-space:nowrap;flex-shrink:0}.ch.on{background:#13203a;border-color:#13203a;color:#fff}
+.srch{height:52px;border-radius:26px;background:#fff;box-shadow:0 2px 10px rgba(19,32,58,0.12);display:flex;align-items:center;gap:10px;padding:0 18px;font-size:16px;color:#8a93a3;flex-shrink:0}
+.srch.f{box-shadow:0 0 0 2px #13203a;color:#13203a}
+.inp{height:56px;border-radius:12px;border:1.5px solid #cfc8ba;background:#fff;display:flex;align-items:center;padding:0 16px;font-size:17px;box-sizing:border-box}.inp.f{border:2px solid #13203a}.inp.ta{height:auto;min-height:96px;align-items:flex-start;padding:14px 16px}
+.lb{font-size:14px;font-weight:700;margin-bottom:-8px}
+.mk{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:6px;vertical-align:1px}.mk.c{background:#237233}.mk.v{border:1.5px solid #e8740c;box-sizing:border-box}.mk.a{width:0;height:0;border-radius:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:9px solid #8a93a3}
+.sh{position:absolute;left:0;right:0;bottom:0;background:#fbf8f3;border-radius:22px 22px 0 0;box-shadow:0 -10px 40px rgba(19,32,58,0.22);display:flex;flex-direction:column;gap:14px;padding:10px 20px 40px;box-sizing:border-box;z-index:5}
+.sh .gr{width:40px;height:5px;border-radius:3px;background:#cfc8ba;align-self:center;margin-bottom:4px}
+.scrim{position:absolute;inset:0;background:rgba(19,32,58,0.42);z-index:4}
+.tabs{display:flex;gap:22px;border-bottom:1px solid #e4ded2;padding:0 20px;flex-shrink:0;overflow:hidden}.tabs span{height:46px;display:flex;align-items:center;font-size:15px;font-weight:600;color:#8a93a3;white-space:nowrap;border-bottom:2.5px solid transparent}.tabs span.on{color:#13203a;border-color:#13203a}
+.pill{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:13px;font-size:12px;font-weight:700}.pill.g{background:#e6f2e8;color:#1c5f2a}.pill.o{background:#fff1e0;color:#9a5200}.pill.r{background:#fdecea;color:#b42318}.pill.n{background:#13203a;color:#fff}.pill.l{background:#ece6da;color:#3d4658}
+.fr{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid #ece6da;font-size:16px}.fr:last-child{border-bottom:none}.fr .k{color:#5b6474}.fr .v{font-weight:600;text-align:right;white-space:nowrap}
+.vote{display:flex;flex-direction:column;align-items:center;gap:0;width:34px;flex-shrink:0;font-size:13px;font-weight:700}
+.post{display:flex;gap:10px;padding:14px 0;border-bottom:1px solid #ece6da}.post > .g{flex:1;display:flex;flex-direction:column;gap:4px}.post b{font-size:16px;line-height:21px}
+.meta{font-size:12px;color:#5b6474;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.stp{display:flex;gap:6px;flex-shrink:0}.stp i{flex:1;height:4px;border-radius:2px;background:#dcd5c7}.stp i.on{background:#13203a}
+.ph-img{border-radius:14px;display:flex;align-items:flex-end;padding:10px;font-size:11px;font-weight:700;color:#5b6474;box-sizing:border-box}
+.sw{width:44px;height:26px;border-radius:13px;background:#dcd5c7;position:relative;flex-shrink:0}.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff}.sw.on{background:#13203a}.sw.on::after{left:21px}
+.kbar{flex-shrink:0;margin:0 16px 8px;padding:10px 10px 10px 12px;border-radius:14px;background:#f5e3cc;border:1px solid #e6cfb2;display:flex;align-items:center;gap:10px}
+.otp{display:flex;gap:10px}.otp span{flex:1;height:64px;border-radius:12px;border:1.5px solid #cfc8ba;background:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700}.otp span.f{border:2px solid #13203a}
+.key{display:grid;grid-template-columns:repeat(3,1fr);background:#d6d0c4;padding:6px 6px 30px;gap:6px;flex-shrink:0}.key span{height:46px;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:22px}
+.kb{background:#d6d0c4;padding:8px 4px 34px;display:flex;flex-direction:column;gap:10px;flex-shrink:0}.kb div{display:flex;gap:6px;justify-content:center}.kb span{flex:1;max-width:34px;height:42px;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 1px 0 #a9a298}.kb div:last-child span{max-width:none;font-size:14px}
+.big{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:52px;line-height:52px}
+
+
+/*palette:lair*/body{background:#f3efe7 !important}
+h1,.ttl1,h2.h2{font-family:"Cormorant Garamond",Georgia,serif !important;font-weight:500 !important;letter-spacing:0 !important}
+
+/*wrap*/h1,h2,h3,.ttl1,.T,.T2,.sh{text-wrap:balance}p,.v4-sub,.sub,.lead{text-wrap:pretty}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></helmet>
+<div style="width: 2656px; box-sizing: border-box; display: flex; flex-direction: column; background: #f3efe7; position: relative;">
+<div class="mb"><div class="mb-h"><h1>Mobile · Posting and locals</h1><p>Post is the red button in the middle of the tab bar. No account, no code. Contact info is only asked after posting, and only to get reply alerts.</p></div><div class="mrow"><div class="ph"><div class="ph-l"><b>Write a post</b><span>Type, pick how you know, post. Three taps.</span></div><div class="scr"><div class="sb"><span>9:41</span><i>●●● <s></s></i></div><div class="ab"><a class="icb" href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a><span class="t c">Post about Lumen</span><span class="sm" style="font-weight: 700; color: #8a93a3; padding-right: 8px;">Post</span></div><div class="bd" style="gap: 14px;"><div class="chs"><span class="ch on">Question</span><span class="ch">Tip</span><span class="ch">Heads-up</span></div><div class="inp ta f" style="min-height: 110px; font-size: 19px; line-height: 26px;">Does Dr. Nair do the lip filler herself or a nurse?</div><span class="lb">How do you know Lumen?</span><div class="chs"><span class="ch">I went</span><span class="ch">Going soon</span><span class="ch on">Researching</span></div><span class="xs mu">No account needed. You will post as irvine_regular_42.</span></div><div class="cta"><a class="bp" href="#">Post it</a></div><div class="hi"></div></div></div><div class="ph"><div class="ph-l"><b>Posted, want replies?</b><span>Optional email or mobile, asked after it is already live.</span></div><div class="scr"><div class="sb"><span>9:41</span><i>●●● <s></s></i></div><div class="ab"><span class="t c">Posted</span><a class="icb" href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div><div class="bd" style="gap: 16px; align-items: stretch;"><span style="align-self: center; width: 72px; height: 72px; border-radius: 50%; background: #e6f2e8; color: #237233; display: flex; align-items: center; justify-content: center;"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><h1 class="T" style="text-align: center;">Your question <em>is live</em>.</h1><p class="mu" style="margin: 0; text-align: center;">Lumen and 312 locals who follow med spas were told.</p><div class="cd pe" style="gap: 12px;"><b style="font-size: 17px;">Want to know when someone answers?</b><span class="lb">Email or mobile <span class="mu" style="font-weight: 400;">(optional)</span></span><div class="inp f">maya.t@gmail.com</div><span class="xs">Only used to tell you about replies.</span></div></div><div class="cta"><a class="bp" href="#">Notify me</a><a class="lk" href="#">No thanks</a></div><div class="hi"></div></div></div><div class="ph"><div class="ph-l"><b>Single post</b><span>Owner answer is outlined and labeled. Reply box pinned to the bottom.</span></div><div class="scr"><div class="sb"><span>9:41</span><i>●●● <s></s></i></div><div class="ab"><a class="icb" href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><span class="t c">Question</span><a class="icb" href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 13v7h14v-7"/></svg></a></div><div class="bd" style="gap: 12px;"><span class="meta"><span class="pill l" style="height: 20px;">Lumen Aesthetics</span>irvine_regular_42 · 1h · researching</span><b style="font-size: 21px; line-height: 27px;">Does Dr. Nair do the lip filler herself or a nurse?</b><span class="meta">▲ 7 · <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg> 2 answers</span>
+<div class="cd" style="gap: 6px; border-color: #13203a;"><span class="meta"><span class="pill n" style="height: 20px;">Owner</span><b style="color: #13203a;">Lumen Aesthetics</b> · 20m</span><span style="font-size: 16px;">Dr. Nair does every lip filler herself. Consults are $75, credited if you book.</span><span class="meta">▲ 12 · Reply</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding-left: 14px; border-left: 2px solid #dcd5c7;"><span class="meta"><b style="color: #13203a;">aisha_m</b> · went · 10m</span><span style="font-size: 16px;">Can confirm. She did mine in August.</span><span class="meta">▲ 4 · Reply</span></div></div><div class="cta" style="flex-direction: row; padding-top: 10px;"><div class="inp" style="flex: 1; height: 48px; border-radius: 24px; color: #8a93a3;">Add an answer</div></div><div class="hi"></div></div></div><div class="ph"><div class="ph-l"><b>Report a post</b><span>A sheet with four plain reasons.</span></div><div class="scr"><div class="sb"><span>9:41</span><i>●●● <s></s></i></div><div class="bd np" style="position: relative;"><div style="opacity: 0.5;"><div class="ab"><a class="icb" href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><span class="t c">Question</span><a class="icb" href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 13v7h14v-7"/></svg></a></div><div class="bd" style="gap: 12px;"><span class="meta"><span class="pill l" style="height: 20px;">Lumen Aesthetics</span>irvine_regular_42 · 1h · researching</span><b style="font-size: 21px; line-height: 27px;">Does Dr. Nair do the lip filler herself or a nurse?</b><span class="meta">▲ 7 · <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg> 2 answers</span>
+<div class="cd" style="gap: 6px; border-color: #13203a;"><span class="meta"><span class="pill n" style="height: 20px;">Owner</span><b style="color: #13203a;">Lumen Aesthetics</b> · 20m</span><span style="font-size: 16px;">Dr. Nair does every lip filler herself. Consults are $75, credited if you book.</span><span class="meta">▲ 12 · Reply</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding-left: 14px; border-left: 2px solid #dcd5c7;"><span class="meta"><b style="color: #13203a;">aisha_m</b> · went · 10m</span><span style="font-size: 16px;">Can confirm. She did mine in August.</span><span class="meta">▲ 4 · Reply</span></div></div></div><div class="scrim"></div><div class="sh"><span class="gr"></span><b style="font-size: 20px;">Report this post</b><a class="rw" href="#"><span class="g"><b>Not true</b><span>Something in it is wrong</span></span><span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid #cfc8ba; box-sizing: border-box; "></span></a><a class="rw" href="#"><span class="g"><b>Spam or an ad</b><span>Selling, not sharing</span></span><span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid #13203a; box-sizing: border-box; background: radial-gradient(#13203a 45%, transparent 50%);"></span></a><a class="rw" href="#"><span class="g"><b>Rude or hateful</b><span>Attacks a person</span></span><span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid #cfc8ba; box-sizing: border-box; "></span></a><a class="rw" href="#"><span class="g"><b>Private info</b><span>Names, numbers, addresses</span></span><span style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid #cfc8ba; box-sizing: border-box; "></span></a><a class="bp" href="#">Send report</a></div></div><div class="hi"></div></div></div><div class="ph"><div class="ph-l"><b>Your profile</b><span>Username, stats, Local expert badge, then your posts.</span></div><div class="scr"><div class="sb"><span>9:41</span><i>●●● <s></s></i></div><div class="ab"><a class="icb" href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></a><span class="t"></span><a class="icb" href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 13v7h14v-7"/></svg></a></div><div class="bd" style="gap: 12px; padding-top: 0; flex: 0 0 auto;"><div style="display: flex; gap: 14px; align-items: center;"><span class="av" style="width: 68px; height: 68px; font-size: 22px; background: #2b59d9;">MT</span><span style="display: flex; flex-direction: column;"><b style="font-size: 21px;">maya_t</b><span class="sm mu">Active in Irvine · Joined March 2026</span></span></div><span class="sm">Irvine mom of two. Honest about everything.</span><div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 8px;"><span class="cd" style="padding: 10px; gap: 0; align-items: center;"><b style="font-size: 22px;">38</b><span class="xs mu">fixes accepted</span></span><span class="cd" style="padding: 10px; gap: 0; align-items: center;"><b style="font-size: 22px;">112</b><span class="xs mu">answers</span></span><span class="cd" style="padding: 10px; gap: 0; align-items: center;"><b style="font-size: 22px;">9</b><span class="xs mu">posts</span></span></div><span class="pill g" style="align-self: flex-start; height: 30px;">★ Local expert · Beauty</span></div><div class="tabs"><span class="on">Posts</span><span>Replies</span><span>Places</span><span>Edits</span></div><div class="bd" style="gap: 0; padding-top: 4px;"><div class="post"><div class="vote"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5l7 8H5z"/></svg>41</div><div class="g"><b>Which Irvine med spa is honest about how much filler you need?</b><span class="meta">Lumen · 2d · 23 answers</span></div></div><div class="post"><div class="vote"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5l7 8H5z"/></svg>12</div><div class="g"><b>Culver Trader Joe's is quiet before 9 on Sundays</b><span class="meta">Tip · 1w · 4 answers</span></div></div></div><div class="tb"><a href="MExplore.dc.html" class=""><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Explore</a><a href="MExplore.dc.html" class=""><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Search</a><a href="MLocals.dc.html" class="pp"><span class="pl"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>Post</a><a href="MLocals.dc.html" class=""><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>Alerts</a><a href="MLocals.dc.html" class="on"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>Me</a></div><div class="hi"></div></div></div><div class="ph"><div class="ph-l"><b>Alerts</b><span>Newest on top, unread tinted peach.</span></div><div class="scr"><div class="sb"><span>9:41</span><i>●●● <s></s></i></div><div class="ab"><span class="t c">Alerts</span></div><div class="bd" style="gap: 0;"><a class="rw" href="#" style="align-items: flex-start; padding: 12px 0; background: #fbf4ea; margin: 0 -20px; padding: 12px 20px;"><span class="av ">LA</span><span class="g"><b style="font-weight: 500; font-size: 15px;"><b>Lumen Aesthetics</b> answered your question about lip filler</b><span>20m</span></span></a><a class="rw" href="#" style="align-items: flex-start; padding: 12px 0; background: #fbf4ea; margin: 0 -20px; padding: 12px 20px;"><span class="av bl">✓</span><span class="g"><b style="font-weight: 500; font-size: 15px;">Lumen accepted your fix: <b>Mondays are closed</b>. You earned Local expert.</b><span>2h</span></span></a><a class="rw" href="#" style="align-items: flex-start; padding: 12px 0; "><span class="av lt">AM</span><span class="g"><b style="font-weight: 500; font-size: 15px;"><b>aisha_m</b> replied: "Can confirm. She did mine in August."</b><span>10m</span></span></a><a class="rw" href="#" style="align-items: flex-start; padding: 12px 0; "><span class="av lt">▲</span><span class="g"><b style="font-weight: 500; font-size: 15px;">Your tip about Trader Joe's got 12 upvotes</b><span>1d</span></span></a><a class="rw" href="#" style="align-items: flex-start; padding: 12px 0; "><span class="av lt">DC</span><span class="g"><b style="font-weight: 500; font-size: 15px;"><b>Derm + Co</b> posted: new evening hours on Thursdays</b><span>2d</span></span></a></div><div class="tb"><a href="MExplore.dc.html" class=""><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Explore</a><a href="MExplore.dc.html" class=""><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Search</a><a href="MLocals.dc.html" class="pp"><span class="pl"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>Post</a><a href="MLocals.dc.html" class="on"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><span class="n">2</span>Alerts</a><a href="MLocals.dc.html" class=""><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>Me</a></div><div class="hi"></div></div></div></div></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

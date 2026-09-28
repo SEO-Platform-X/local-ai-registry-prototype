@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Post a request</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0;font-family:Figtree,"Airbnb Cereal VF","Helvetica Neue",Helvetica,sans-serif;color:#13203a;background:#ffffff;-webkit-font-smoothing:antialiased}
+a{color:#13203a;text-decoration:underline;text-underline-offset:2px;font-weight:600}
+.mu{color:#667085}
+.h2{margin:0;font-size:22px;font-weight:600;line-height:26px}
+.h3{margin:0;font-size:16px;font-weight:600;line-height:20px}
+.sub{font-size:13px;color:#667085;line-height:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 20px;border-radius:8px;font-size:15px;font-weight:600;border:1px solid #13203a;background:#ffffff;color:#13203a;font-family:inherit;cursor:pointer;white-space:nowrap;text-decoration:none}
+.btn:hover{background:#f3efe7;color:#13203a}
+.b-coral{background:#e5482d;border-color:#e5482d;color:#ffffff}.b-coral:hover{background:#e00b41;border-color:#e00b41;color:#ffffff}
+.b-dark{background:#13203a;border-color:#13203a;color:#ffffff}.b-dark:hover{background:#000000;color:#ffffff}
+.b-lock{background:#f3efe7;border-color:#dcd5c7;color:#667085;cursor:not-allowed}.b-lock:hover{background:#f3efe7;color:#667085}
+.b-sm{height:36px;padding:0 14px;font-size:13px}
+.tag{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:6px;font-size:12px;font-weight:600;background:#f3efe7;color:#13203a;white-space:nowrap}
+.tag.red{background:#fbe9e7;color:#c13515}.tag.grn{background:#ddf1e1;color:#237233}.tag.amb{background:#fdeeda;color:#b86a00}.tag.gry{background:#f3efe7;color:#667085}
+.fail{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;font-size:12px;font-weight:600;background:#fbe9e7;color:#c13515}
+.pass{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;font-size:12px;font-weight:600;background:#ddf1e1;color:#237233}
+.vs{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:9999px;font-size:11px;font-weight:600;white-space:nowrap;box-sizing:border-box}
+.vs.un{background:#ffffff;border:1px dashed #b0b0b0;color:#667085}
+.vs.ok{background:#ddf1e1;border:1px solid #ddf1e1;color:#237233}
+.vs.pp{background:#ffffff;border:1px solid #dcd5c7;color:#3d4658}
+.card{border:1px solid #dcd5c7;border-radius:12px;background:#ffffff}
+.shadow{box-shadow:0 6px 16px rgba(0,0,0,0.12)}
+.tabl{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 14px;font-size:15px;font-weight:600;color:#667085;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;margin-bottom:-1px}
+.tabl:hover{color:#13203a}
+.tabl .ct{font-size:12px;font-weight:600;color:#9a9a9a}
+.tp{display:none}
+.pill{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 12px;border-radius:30px;font-size:13px;font-weight:600;border:1px solid #dcd5c7;background:#ffffff;color:#13203a;cursor:pointer;white-space:nowrap;font-family:inherit}
+.pill:hover{border-color:#13203a}
+.pill.on{border:2px solid #13203a}
+.pill.zero{border-color:#c13515;color:#c13515;background:#fff5f2}
+.cat{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
+.c-reviews{background:#ddf1e1;color:#237233}.c-qa{background:#fdeeda;color:#b86a00}.c-posts{background:#ddf1ee;color:#0d6b62}.c-replies{background:#e9e2fb;color:#5a37c4}.c-events{background:#fce6d9;color:#b8460a}.c-media{background:#f3e1f7;color:#7a2b8c}.c-articles{background:#e1e6fb;color:#2f49b8}.c-website{background:#eaf5dc;color:#4a7a0a}.c-directories{background:#e4e7ec;color:#4a5466}.c-press{background:#f8dfdf;color:#a32222}.c-backlinks{background:#dceff3;color:#0d7a8c}.c-jobs{background:#f0e6dd;color:#6f4a28}.c-social{background:#f9dfe9;color:#b02858}
+.svc{display:grid;grid-template-columns:1.6fr 1.5fr 0.9fr 0.9fr;gap:16px;align-items:center;padding:13px 0;border-top:1px solid #e4ded2;font-size:14px}
+.svc .n{font-weight:600;line-height:18px}
+.svc .s{font-size:12px;color:#667085;line-height:16px;margin-top:2px}
+.gauge{display:flex;flex-direction:column;gap:5px}
+.gauge .bar{display:flex;gap:2px;height:8px}
+.gauge .bar span{flex:1;border-radius:2px;background:#e4ded2}
+.gauge .bar span.g0{background:#c8c8c8}.gauge .bar span.g1{background:#f0b34a}.gauge .bar span.g2{background:#9fd3a8}.gauge .bar span.g3{background:#008a05}
+.gauge .lb{font-size:12px;font-weight:600;line-height:14px}
+.gauge .ev{font-size:11px;color:#667085;line-height:14px}
+.fact{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:6px 0;border-bottom:1px solid #e4ded2}
+.fact .k{color:#667085;flex-shrink:0}
+.fact .v{text-align:right;font-weight:500}
+.post{display:flex;gap:14px;padding:18px 0;border-top:1px solid #e4ded2}
+.vote{display:flex;flex-direction:column;align-items:center;gap:2px;width:34px;flex-shrink:0;color:#667085}
+.vote .n{font-size:14px;font-weight:600;color:#13203a}
+.ans{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:8px;background:#f3efe7;font-size:13px;line-height:19px}
+.ans .who{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;flex-shrink:0;margin-top:2px;width:86px}
+.ans .who.rec{color:#e5482d}.ans .who.com{color:#1d5bd6}
+.slot{display:inline-flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 12px;border-radius:8px;border:1px dashed #c8c8c8;color:#9a9a9a;font-size:12px;font-style:italic}
+.slot b{font-style:normal;font-weight:600;color:#9a9a9a}
+.hm{display:grid;grid-template-columns:44px repeat(7,1fr);gap:3px}
+.hm .hd{font-size:10px;font-weight:700;color:#667085;text-align:center;padding-bottom:2px}
+.hm .hr{font-size:10px;color:#667085;display:flex;align-items:center}
+.hm .c{height:22px;border-radius:3px}
+.h0{background:#e9f0fb}.h1{background:#c5d8f6}.h2c{background:#8fb4ee}.h3c{background:#4f86df}.h4{background:#1d5bd6}
+.kw{display:grid;grid-template-columns:1.8fr 1fr 1.2fr 1.2fr;gap:10px;align-items:center;padding:10px 12px;border-top:1px solid #e4ded2;font-size:13px}
+.kw.hd{font-size:11px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:0.05em;border-top:none;padding:6px 12px}
+.don{display:inline-flex;align-items:center;gap:6px}
+.don svg{flex-shrink:0}
+.oc{border:1px solid #e4ded2;border-radius:8px;min-height:104px;padding:5px;display:flex;flex-direction:column;gap:3px;box-sizing:border-box;overflow:hidden}
+.oc .d{font-size:11px;font-weight:600;color:#667085}
+.ob{display:flex;align-items:center;gap:4px;height:18px;padding:0 5px;border-radius:4px;background:#f1f1f1;border:1px dashed #c4c4c4;font-size:10px;font-weight:600;color:#5f5f5f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-sizing:border-box}
+.ob span{overflow:hidden;text-overflow:ellipsis}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.pulse{box-shadow:0 0 0 0 rgba(255,56,92,0.6);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,56,92,0.5)}70%{box-shadow:0 0 0 7px rgba(255,56,92,0)}100%{box-shadow:0 0 0 0 rgba(255,56,92,0)}}
+.rd{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+.live-n{position:relative;display:inline-block;width:26px;height:20px;overflow:hidden;vertical-align:bottom}
+.live-n span{position:absolute;left:0;top:0;width:26px;line-height:20px;opacity:0;animation:cnt 12s infinite}
+.live-n span:nth-child(2){animation-delay:4s}.live-n span:nth-child(3){animation-delay:8s}
+@keyframes cnt{0%{opacity:0;transform:translateY(8px)}6%{opacity:1;transform:translateY(0)}33%{opacity:1;transform:translateY(0)}39%{opacity:0;transform:translateY(-8px)}100%{opacity:0}}
+.tick{height:54px;overflow:hidden;position:relative}
+.tick ul{list-style:none;margin:0;padding:0;animation:tick 15s steps(1) infinite}
+.tick li{height:18px;line-height:18px;font-size:12px;display:flex;gap:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tick li .t{color:#9a9a9a;width:44px;flex-shrink:0}
+@keyframes tick{0%{transform:translateY(0)}20%{transform:translateY(-18px)}40%{transform:translateY(-36px)}60%{transform:translateY(-54px)}80%{transform:translateY(-72px)}100%{transform:translateY(-90px)}}
+.toast{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;background:#13203a;color:#ffffff;font-size:12px;font-weight:600;animation:toast 12s infinite;transform-origin:top}
+@keyframes toast{0%{opacity:0;transform:translateY(6px)}5%{opacity:1;transform:translateY(0)}45%{opacity:1}52%{opacity:0;transform:translateY(-4px)}100%{opacity:0}}
+.bar-live{height:6px;border-radius:3px;background:#e4ded2;overflow:hidden}
+.bar-live i{display:block;height:100%;background:#e5482d;animation:grow 6s ease-in-out infinite alternate}
+@keyframes grow{0%{width:52%}100%{width:71%}}
+.sec-h{display:flex;align-items:center;gap:12px;padding-top:6px}
+.sec-h .num{width:28px;height:28px;border-radius:50%;background:#13203a;color:#ffffff;font-weight:700;font-size:13px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.sec-h .num.red{background:#c13515}.sec-h .num.grn{background:#008a05}
+.bu{background:#fff7f3;border-left:3px solid #e5482d;border-radius:0 10px 10px 0;padding:14px 14px 14px 12px;margin:6px 0}
+.c-bu{background:#e5482d;color:#ffffff}
+.cta-line{display:flex;gap:14px;font-size:12px;color:#667085;align-items:center}
+.cta-line a,.cta-line label{color:#13203a;font-weight:600;text-decoration:underline;cursor:pointer;font-size:12px}
+.grp{font-size:11px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:0.05em;margin-right:2px}
+.pin{position:absolute;width:22px;height:22px;border-radius:50% 50% 50% 0;background:#13203a;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center}
+.pin span{transform:rotate(45deg);color:#ffffff;font-size:10px;font-weight:700}
+.pin.you{background:#e5482d;width:28px;height:28px}
+.cmp{display:grid;grid-template-columns:1.4fr 0.6fr 0.9fr 1fr;gap:8px;align-items:center;padding:8px 0;border-top:1px solid #e4ded2;font-size:12px}
+.cmp .hd{font-size:10px;font-weight:700;color:#667085;text-transform:uppercase;letter-spacing:0.05em}
+.otp{width:52px;height:60px;border:1px solid #dcd5c7;border-radius:10px;font-size:24px;font-weight:600;text-align:center;font-family:inherit}
+.fld{display:flex;align-items:center;gap:10px;height:50px;border:1px solid #dcd5c7;border-radius:10px;padding:0 14px;font-size:14px}
+.fld input{border:none;outline:none;flex-grow:1;font-family:inherit;font-size:14px;background:transparent}
+.day{height:36px;display:flex;align-items:center;justify-content:center;font-size:13px;border-radius:50%;cursor:pointer}
+.day.on{background:#13203a;color:#ffffff;font-weight:600}.day.off{color:#c8c8c8}
+.slotb{height:40px;border:1px solid #13203a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer}
+.slotb.on{background:#13203a;color:#ffffff}
+.big{font-size:44px;font-weight:600;line-height:48px}
+.themeCell{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;text-align:center;line-height:12px;color:#3d4658}
+.themeCell .av{width:36px;height:36px;border-radius:50%;border:1px solid #dcd5c7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:#ffffff}
+.themeCell .av.you{background:#e5482d;color:#ffffff;border-color:#e5482d}
+.swot{border:1px solid #e4ded2;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:19px}
+.swot h4{margin:0;font-size:14px}
+.cit{display:grid;grid-template-columns:2fr 1fr 1.4fr;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid #e4ded2;font-size:13px}
+
+
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label{font-size:13px;font-weight:700}
+.inp{height:46px;border:1px solid #b0b0b0;border-radius:8px;padding:0 14px;font-family:inherit;font-size:15px;display:flex;align-items:center;background:#ffffff}
+.chip{display:inline-flex;align-items:center;height:34px;padding:0 14px;border:1px solid #dcd5c7;border-radius:17px;font-size:13px;background:#ffffff}
+.chip.on{border:2px solid #13203a;padding:0 13px;font-weight:600}
+.rsp{display:grid;grid-template-columns:1fr auto;gap:16px;padding:18px 20px;border:1px solid #dcd5c7;border-radius:14px;align-items:center}
+.sc{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:11px;font-size:12px;font-weight:700;background:#ddf1e1;color:#237233}
+
+
+/*palette:lair*/body{background:#f3efe7 !important}
+h1,.ttl1,h2.h2{font-family:"Cormorant Garamond",Georgia,serif !important;font-weight:500 !important;letter-spacing:0 !important}
+
+/*ds:lair*/.btn{border-radius:9999px !important;font-weight:600 !important;box-shadow:none !important;letter-spacing:0 !important;background-image:none !important}
+.btn.b-dark,.btn.b-coral,.btn.grad,.btn.b-lock,.grad{background:#13203a !important;background-image:none !important;color:#ffffff !important;border-color:#13203a !important}
+.btn:not(.b-dark):not(.b-coral):not(.grad):not(.b-lock){background:#ffffff !important;border:1px solid #13203a !important;color:#13203a !important}
+h1{font-family:"Cormorant Garamond",Georgia,serif !important;font-weight:500 !important;letter-spacing:0 !important}
+body{font-family:Figtree,"Helvetica Neue",Helvetica,sans-serif}
+
+/*wrap*/h1,h2,h3,.ttl1,.T,.T2,.sh{text-wrap:balance}p,.v4-sub,.sub,.lead{text-wrap:pretty}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet"></helmet>
+<div style="width: 1440px; box-sizing: border-box; display: flex; flex-direction: column; background: #f3efe7; position: relative;">
+<header style="height: 68px; flex-shrink: 0; padding: 0 40px; background: #f3efe7; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid #e4ded2;">
+<a href="Home.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M15 3 27.5 27h-8.2L15 18.6 10.7 27H2.5L15 3Z" fill="#2b59d9"></path><path d="M15 18.6 19.3 27h-8.6L15 18.6Z" fill="#e5482d"></path></svg><span style="font-weight: 800; font-size: 16px; letter-spacing: -0.01em; color: #13203a; font-weight: 600;">Local AI Registry</span></a>
+<div style="display: flex; align-items: center; gap: 8px;"><a href="Explore.dc.html" class="btn b-sm" style="border-color: #dcd5c7;">Back to results</a></div>
+</header>
+<div style="padding: 36px 120px 56px; display: grid; grid-template-columns: 1fr 420px; gap: 40px; align-items: start;">
+<div style="display: flex; flex-direction: column; gap: 22px;">
+<div style="display: flex; flex-direction: column; gap: 6px;"><span class="mu" style="font-size: 13px; font-weight: 600;">Post a request</span><h1 style="margin: 0; font-size: 32px; line-height: 38px; font-weight: 600;">Tell businesses what you want. They come to you.</h1><span style="font-size: 15px; line-height: 23px; color: #3d4658;">This is not an auction. Businesses reply with a real opening and a price range, and you choose on fit, reviews and AI Score, not just the lowest number.</span></div>
+<sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+<div class="card" style="padding: 24px; display: flex; flex-direction: column; gap: 18px;">
+<div class="fld"><label>What do you want?</label><span class="inp">Lip filler, first time</span></div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;"><div class="fld"><label>Where</label><span class="inp">Irvine, within 10 miles</span></div><div class="fld"><label>When</label><span class="inp">Saturdays in October</span></div></div>
+<div class="fld"><label>Budget</label><span class="inp">$400 to $700</span></div>
+<div class="fld"><label>What matters to you</label><div style="display: flex; gap: 8px; flex-wrap: wrap;"><span class="chip on">Natural-looking</span><span class="chip on">A nurse or doctor injects</span><span class="chip on">Takes HSA</span><span class="chip">Free parking</span><span class="chip">Speaks Spanish</span><span class="chip">Can dissolve if needed</span></div></div>
+<div class="fld"><label>Anything else</label><span class="inp" style="height: 80px; align-items: flex-start; padding-top: 12px; color: #667085;">I've never had filler. I want small and subtle.</span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 4px;"><span class="sub" style="max-width: 420px;">Your name and contact stay hidden. Businesses only see the request. You choose who to reveal yourself to.</span><span class="btn b-coral" onClick="{{send}}">Send to 6 matching businesses</span></div>
+</div>
+</sc-if>
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px;"><div style="display: flex; align-items: baseline; justify-content: space-between;"><h2 style="margin: 0; font-size: 22px; font-weight: 600;">3 replies so far</h2><span class="mu" style="font-size: 13px;">Sent 2 hours ago to 6 businesses · <span onClick="{{reset}}" style="text-decoration: underline; cursor: pointer;">Edit request</span></span></div>
+<sc-for list="{{replies}}" as="r" hint-placeholder-count="3"><div class="rsp"><div style="display: flex; flex-direction: column; gap: 6px;"><span style="display: flex; align-items: center; gap: 10px;"><strong style="font-size: 17px;">{{r.n}}</strong><span class="sc" style="background: {{r.sbg}}; color: {{r.sc}};">AI {{r.s}}</span><span class="mu" style="font-size: 13px;">★ {{r.r}} · {{r.d}}</span></span><span style="font-size: 14px; line-height: 21px;">"{{r.msg}}"</span><span style="display: flex; gap: 16px; font-size: 13px; color: #3d4658; flex-wrap: wrap;"><span><strong>Opening:</strong> {{r.when}}</span><span><strong>Price:</strong> {{r.price}}</span><span><strong>Injector:</strong> {{r.who}}</span></span></div><div style="display: flex; flex-direction: column; gap: 8px;"><a href="{{r.href}}" class="btn b-dark b-sm">Choose and reveal me</a><a href="Main.dc.html" class="btn b-sm">See their page</a></div></div></sc-for>
+<span class="sub">3 more businesses have seen it. Unclaimed businesses cannot reply until they claim their page.</span></div>
+</sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; position: sticky; top: 20px;">
+<div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 10px;"><strong style="font-size: 15px;">Who sees your request</strong><span style="font-size: 14px; line-height: 21px; color: #3d4658;">6 med spas within 10 miles whose records match: they offer lip filler, a licensed nurse or doctor injects, and they take HSA.</span><span class="sub">Matching uses each business's verified record, not who pays the most.</span></div>
+<div class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 10px;"><strong style="font-size: 15px;">How it works</strong><ol style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 22px; color: #3d4658;"><li>You post what you want. Nobody sees your name.</li><li>Matching businesses reply within a day with a real opening and a price range.</li><li>You pick one. Only then do they get your name and number.</li><li>Book through the registry and get cashback where it is on.</li></ol></div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const sent = !!(this.state && this.state.sent);
+    const replies = [
+      ['Lumen Aesthetics', 58, '4.9', '0.4 mi', "Most first-timers start with a half syringe. Nadia has Saturday Oct 10 at 11 AM. You can always add more later, but you can't take it back as easily.", 'Sat, Oct 10, 11 AM', '$450 half, $780 full', 'Nadia R., NP', 'Main.dc.html'],
+      ['Spectrum Aesthetics MD', 81, '4.8', '0.9 mi', 'Dr. Chen does every first lip appointment. Saturday Oct 17 at 9 AM is open.', 'Sat, Oct 17, 9 AM', '$500 to $820', 'Dr. Alan Chen, MD', 'Main.dc.html'],
+      ['Coastline MedSpa', 84, '4.8', '6.1 mi', 'We can do Saturday Oct 24. 20% cashback applies if you book through the registry.', 'Sat, Oct 24, 1 PM', '$600 to $850', 'Registered nurse', 'Main.dc.html']
+    ].map(x => ({ n: x[0], s: String(x[1]), sbg: x[1] >= 75 ? '#ddf1e1' : '#fbe9e7', sc: x[1] >= 75 ? '#237233' : '#c13515', r: x[2], d: x[3], msg: x[4], when: x[5], price: x[6], who: x[7], href: x[8] }));
+    return { sent, notSent: !sent, replies, send: () => this.setState({ sent: true }), reset: () => this.setState({ sent: false }) };
+  }
+}
+</script>
+</body>
+</html>
