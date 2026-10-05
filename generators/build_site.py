@@ -10,6 +10,7 @@ def links(h):
 for f in keep:
     s=open(P+f).read()
     js=s[s.index('class Component extends DCLogic'):s.rindex('</script>')]
+    s=s.replace(' height: 2300px; overflow-y: auto; overscroll-behavior: contain;',' min-height: 2300px;')
     head=s[s.index('<helmet>')+8:s.index('</helmet>')]
     body=links(s[s.index('</helmet>')+9:s.index('</x-dc>')]).replace('</script','<\\/script')
     w=c['boards'][f].get('w',1440); t=c['boards'][f].get('title',f)
