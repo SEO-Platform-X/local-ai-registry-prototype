@@ -85,7 +85,13 @@ body{margin:0;color:var(--navy);font-family:"Hanken Grotesk","Helvetica Neue",Ar
 .srow{display:flex;flex-direction:column;gap:2px;width:64px}.srow i{display:block;height:2px;background:var(--navy)}.srow i.o{background:rgba(15,26,51,0.25)}
 .ghg{display:grid;grid-template-columns:repeat(14,4px);gap:1.5px}.ghg i{height:4px;background:rgba(15,26,51,0.2)}
 .spk{display:flex;align-items:flex-end;gap:3px}.spk i{width:5px;background:rgba(15,26,51,0.25);border-radius:1px}.spk i.on{background:#1f8a2e}
-.dotg{display:inline-block;width:9px;height:9px;border-radius:50%;background:#1f8a2e;margin-right:6px;vertical-align:8px;box-shadow:0 0 0 4px rgba(31,138,46,0.18)}
+a.ai{color:inherit}
+.ai-top{display:flex;align-items:center;gap:14px;padding:0 18px}.ai-top .big{font-family:"Cormorant Garamond",Georgia,serif;font-size:56px;line-height:52px;color:#c13515}.ai-top .l{font-size:12.5px;color:var(--ink2)}
+.grid{display:grid;grid-template-columns:1fr 1fr;margin:0 18px;border-top:1px solid rgba(15,26,51,0.14)}
+.gc{display:flex;flex-direction:column;gap:3px;padding:10px 0 8px}.gc:nth-child(odd){padding-right:12px;border-right:1px solid rgba(15,26,51,0.14)}.gc:nth-child(even){padding-left:14px}.gc:nth-child(n+3){border-top:1px solid rgba(15,26,51,0.14)}
+.gc .v{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;line-height:32px;white-space:nowrap}.gc .x{height:18px;display:flex;align-items:flex-end}.gc .l{font-size:12px;line-height:15px;color:var(--ink2);white-space:nowrap}
+.ai .more{display:flex;align-items:center;justify-content:space-between;margin:0 18px;padding-top:10px;border-top:1px solid rgba(15,26,51,0.14);font-size:14px;font-weight:600}
+.dotg{display:inline-block;width:8px;height:8px;border-radius:50%;background:#1f8a2e;margin-right:8px;vertical-align:middle;box-shadow:0 0 0 4px rgba(31,138,46,0.18)}
 /* owner */
 .own{display:flex;align-items:center;gap:12px}
 .ava{width:42px;height:42px;border-radius:50%;background:#c9d3cf;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--ink2);flex-shrink:0}
@@ -183,6 +189,28 @@ body{margin:0;color:var(--navy);font-family:"Hanken Grotesk","Helvetica Neue",Ar
 .acc{display:block;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0}.acc + .acc{border-top:0}
 .acc summary{list-style:none;display:flex;align-items:center;cursor:pointer}.acc summary::-webkit-details-marker{display:none}
 .acc[open] summary svg{transform:rotate(180deg)}
+.refbox{display:flex;flex-direction:column;gap:8px}
+.more-refs summary{list-style:none;cursor:pointer;display:flex;flex-direction:column}.more-refs summary::-webkit-details-marker{display:none}
+.more-refs .peek{display:block;max-height:40px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 10%,transparent);mask-image:linear-gradient(180deg,#000 10%,transparent)}
+.more-refs .showall{display:flex;align-items:center;justify-content:center;gap:6px;height:44px;border-radius:14px;background:#f6f1e8;border:1px solid rgba(15,26,51,0.22);font-size:14.5px;font-weight:600;margin-top:2px}
+.more-refs[open] .peek{max-height:none;-webkit-mask-image:none;mask-image:none}.more-refs[open] .showall{display:none}
+.sig{display:flex;flex-direction:column}.sg{display:grid;grid-template-columns:1fr 92px 28px;gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--line);font-size:13.5px}.sg:first-child{border-top:0}
+.sg .nm em{font-style:normal;font-size:11px;font-weight:700;color:var(--ink3);margin-left:6px}.sg b{text-align:right;font-size:14px}
+.br{display:block;height:6px;border-radius:3px;background:rgba(15,26,51,0.1);position:relative;overflow:hidden}.br u{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:#0f1a33}
+.eng{display:flex;flex-direction:column}.er{display:grid;grid-template-columns:132px 1fr 38px;gap:10px;align-items:center;padding:6px 0;font-size:13.5px}.er b{text-align:right}
+.pdots{display:grid;grid-template-columns:repeat(11,1fr);gap:5px}.pdots i{height:18px;border-radius:5px;background:rgba(15,26,51,0.12)}.pdots i.on{background:#c13515}
+.pq{display:flex;flex-direction:column;gap:4px;padding:10px 0;border-top:1px solid var(--line)}
+.ok{font-size:12px;font-weight:700;color:#2f6b3a;background:rgba(47,107,58,0.1);padding:2px 8px;border-radius:999px}.no{font-size:12px;font-weight:700;color:#c13515;background:rgba(193,53,21,0.08);padding:2px 8px;border-radius:999px}
+.bub{background:#fbf8f3;border:1px solid var(--line);border-radius:18px 18px 18px 4px;padding:12px 14px;font-size:14px;line-height:20px}.bub .who{display:block;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink2);margin-bottom:4px}
+.bub mark{background:rgba(239,91,60,0.16);color:#a3270f;text-decoration:underline;text-decoration-color:#c13515;text-underline-offset:3px}
+.fc{display:flex;flex-direction:column;gap:2px;padding:8px 0;border-top:1px solid var(--line)}.fc .f{font-size:12px;font-weight:700;color:var(--ink2)}.fc .row{display:flex;justify-content:space-between;gap:10px;font-size:13.5px}
+.fc .fa{color:var(--navy)}.fc .fa.bad{color:#a3270f;text-decoration:line-through;text-decoration-color:rgba(193,53,21,0.6)}.fc .rc{text-align:right;font-weight:600}
+.ddots{display:grid;grid-template-columns:repeat(20,1fr);gap:4px}.ddots i{height:12px;border-radius:3px;background:rgba(15,26,51,0.12)}.ddots i.on{background:#0f1a33}.ddots i.bad{background:#c13515}
+.sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin:0 5px 0 8px;vertical-align:0}
+.sov{display:flex;height:14px;border-radius:7px;overflow:hidden;gap:2px}.sov u{display:block}
+.sovl{display:flex;flex-wrap:wrap;gap:4px 6px;font-size:12.5px;color:var(--ink2)}.sovl .sw{margin-left:0}
+.ed{padding:14px 16px;display:flex;flex-direction:column;gap:6px;border-radius:18px}
+.kt{display:grid;grid-template-columns:70px 1fr;font-size:13px}.kt span{padding:5px 0;border-top:1px solid var(--line)}.kt span:nth-child(odd){color:var(--ink2)}
 /* history */
 .hs{display:flex;gap:10px;padding:12px 0;border-top:1px solid var(--line)}
 .hs .mk{margin:6px 0 0}
@@ -199,7 +227,7 @@ TABS = [('Locals', '22'), ('Services', '34'), ('Team', '14'), ('Visit', ''), ('R
 def tabs(on, shift=0):
     out = ''
     for t, n in TABS:
-        lab = (ic(I['lock'], 13) + ' ' + t) if t == 'AI' else t
+        lab = t
         out += f'<span class="{"on" if t == on else ""}">{lab}{f"<sup>{n}</sup>" if n else ""}</span>'
     return f'<div class="tabs" style="margin-left:-{shift}px">{out}</div>'
 def topbar(on, shift=0):
@@ -209,14 +237,18 @@ BAR = f'<div class="bar"><span class="cb"><span class="ti">{ic(I["tag"], 15)}</s
 
 def stat(v, x, l, cls=''):
     return f'<div class="st"><span class="v {cls}">{v}</span><span class="x">{x}</span><span class="l">{l}</span></div>'
-AISCORE = (f'<div class="ai"><div class="ai-h"><span class="ai-b">{laurel()}</span><span style="display:flex;flex-direction:column"><span class="t">AI names Lumen less than most Irvine med spas</span><span class="sub">Scored from 8 signals across search and AI.</span></span></div>'
-  f'<div class="ai-s">'
-  + stat('58', '<svg width="60" height="18" viewBox="0 0 60 18"><path d="M1 17 C15 17 22 2 36 2 C48 2 53 17 59 17 Z" fill="rgba(15,26,51,0.14)"/><line x1="28.5" y1="5" x2="28.5" y2="17" stroke="#c13515" stroke-width="2.4" stroke-linecap="round"/></svg>', 'Irvine avg 71' + MK['c'], 'r')
-  + stat('<span style="color:#c13515">0</span>', '<span class="segb">' + '<i></i>' * 22 + '</span>', 'answered of 22')
-  + stat('78%', '<span class="srow"><i></i><i></i><i></i><i></i><i class="o"></i></span>', 'would go back' + MK['c'])
-  + stat('0', '<span class="ghg">' + '<i></i>' * 42 + '</span>', 'updates, last 30 days' + MK['c'])
-  + stat('<span class="dotg"></span>Quiet', '<span class="spk">' + ''.join(f'<i class="{"on" if k==1 else ""}" style="height:{h}px"></i>' for k, h in enumerate([5, 8, 14, 18, 16, 13, 10, 12, 9])) + '</span>', 'right now' + MK['c'])
-  + '</div></div>')
+def cell(v, x, l):
+    return f'<div class="gc"><span class="v">{v}</span><span class="x">{x}</span><span class="l">{l}</span></div>'
+AISCORE = (f'<a class="ai" href="#ai"><div class="ai-h"><span class="ai-b">{laurel()}</span><span style="display:flex;flex-direction:column"><span class="t">AI names Lumen less than most Irvine med spas</span><span class="sub">Scored from 8 signals across search and AI.</span></span></div>'
+  '<div class="ai-top"><span class="big">58</span><span style="flex:1;display:flex;flex-direction:column;gap:4px">'
+  '<svg width="100%" height="22" viewBox="0 0 200 22" preserveAspectRatio="none"><rect x="0" y="9" width="200" height="4" rx="2" fill="rgba(15,26,51,0.14)"/><rect x="0" y="9" width="116" height="4" rx="2" fill="#c13515"/><line x1="142" y1="3" x2="142" y2="19" stroke="#0f1a33" stroke-width="2"/></svg>'
+  f'<span class="l">Lumen 58 · Irvine avg 71{MK["c"]}</span></span></div>'
+  '<div class="grid">'
+  + cell('<span style="color:#c13515">0</span>', '<span class="segb">' + '<i></i>' * 22 + '</span>', 'answered of 22')
+  + cell('78%', '<span class="srow"><i></i><i></i><i></i><i></i><i class="o"></i></span>', 'would go back' + MK['c'])
+  + cell('0', '<span class="ghg">' + '<i></i>' * 42 + '</span>', 'updates, last 30 days' + MK['c'])
+  + cell('<span class="dotg"></span>Quiet', '<span class="spk">' + ''.join(f'<i class="{"on" if k==1 else ""}" style="height:{h}px"></i>' for k, h in enumerate([5, 8, 14, 18, 16, 13, 10, 12, 9])) + '</span>', 'right now' + MK['c'])
+  + f'</div><span class="more">See how the score works{ic(I["chev"], 16)}</span></a>')
 OWNER = (f'<div class="own"><span class="ava">[Photo]</span><span style="flex:1;min-width:0;display:flex;flex-direction:column"><b style="font-size:14px;white-space:nowrap">Owned by Dr. Priya Nair, MD{MK["a"]}</b>'
          f'<span class="sub" style="white-space:nowrap;font-size:12.5px"><b style="color:var(--navy)">Unclaimed · Never replied</b> · 10 yrs{MK["a"]}</span></span><a class="btn" href="Claim.html" style="height:34px;padding:0 10px;font-size:13px">Claim it</a></div>')
 LEGEND = f'<div class="legend"><span><i class="mk c"></i>Confirmed</span><span><i class="mk v"></i>Visitor submitted</span><span><i class="mk a" style="margin-right:5px"></i>AI guess</span></div>'
@@ -352,6 +384,13 @@ p_photos = sb() + (f'<div class="ab"><a class="icb" href="Main.html">{ic(I["back
   f'<div class="cbc" style="background:rgba(15,26,51,0.06);display:flex;gap:10px;align-items:center;padding:11px 14px"><span style="flex:1" class="sub"><b style="color:var(--navy)">No code detected</b> on any photo. AI can\'t tell what they show.</span><span class="btn" style="height:34px;font-size:13px">{ic(I["lock"], 14)}Add media</span></div></div>'
   '<div class="pg">' + ''.join(photo(k) for i, k in enumerate(list(PH) * 4)) + '</div>')
 
+REFS = [f'<div class="rf"><span class="n">[{n}]</span><span><i class="mk {m}" style="margin:0 6px 0 0"></i><span class="k">{k}</span><b>{t}</b> <span class="mu">{d}</span></span></div>' for n, m, k, t, d in [
+      (1, 'c', 'LOCALS', 'Answers about hours, prices and services', 'Lumen\'s website and Google Business Profile. Checked Sep 25, 2026.'),
+      (2, 'v', 'LOCALS', 'First consult is $75 and credited', 'Marcus D., in person, Mar 12, 2026.'),
+      (3, 'v', 'LOCALS', 'Nadia is the one to see for lips', '3 visitors, after treatment, Aug 2026.'),
+      (4, 'v', 'LOCALS', 'Coastline replies faster than Lumen', 'Sam K., called both, Sep 10, 2026.'),
+      (5, 'a', 'LOCALS', 'Answers marked AI', 'Summaries of reviews and the record. Not medical advice.'),
+      (6, 'c', 'SERVICES', 'Botox $12 per unit, filler $780 per syringe', 'lumenaesthetics.com/pricing. Checked Sep 25, 2026.')]]
 def pal(lg, bg, n, sub, sc, col, me=False):
     return f'<div class="r{" me" if me else ""}"><span class="lg" style="background:{bg}">{lg}</span><span class="g"><b>{n}</b><span>{sub}</span></span><span class="sc"><i><u style="width:{sc}%;background:{col}"></u></i><span style="color:{"#2f6b3a" if sc>70 else "var(--navy)"}">{sc}</span></span></div>'
 p_end = sb() + ('<div class="bd" style="padding-top:6px;gap:14px">'
@@ -361,16 +400,10 @@ p_end = sb() + ('<div class="bd" style="padding-top:6px;gap:14px">'
   + pal('DC', '#dce9fa', 'Derm + Co', '640 reviews · Tustin, 5 mi', 79, '#1f8a2e')
   + pal('PS', '#dff0e4', 'Pacific Skin Studio', '217 reviews · Irvine, 3 mi', 44, '#c13515')
   + '</div></div>'
-  + '<details class="acc"><summary><span style="flex:1;display:flex;flex-direction:column"><span class="S" style="font-size:24px;line-height:28px">References</span><span class="sub">53 sources behind every fact on this page</span></span>' + ic(I['down'], 20) + '</summary>'
-  + '<div style="padding-top:10px;display:flex;flex-direction:column;gap:10px">' + LEGEND + '<div class="refs">'
-  + ''.join(f'<div class="rf"><span class="n">[{n}]</span><span><i class="mk {m}" style="margin:0 6px 0 0"></i><span class="k">{k}</span><b>{t}</b> <span class="mu">{s}</span></span></div>' for n, m, k, t, s in [
-      (1, 'c', 'LOCALS', 'Answers about hours, prices and services', 'Lumen\'s website and Google Business Profile. Checked Sep 25, 2026.'),
-      (2, 'v', 'LOCALS', 'First consult is $75 and credited', 'Marcus D., in person, Mar 12, 2026.'),
-      (3, 'v', 'LOCALS', 'Nadia is the one to see for lips', '3 visitors, after treatment, Aug 2026.'),
-      (4, 'v', 'LOCALS', 'Coastline replies faster than Lumen', 'Sam K., called both, Sep 10, 2026.'),
-      (5, 'a', 'LOCALS', 'Answers marked AI', 'Summaries of reviews and the record. Not medical advice.'),
-      (6, 'c', 'SERVICES', 'Botox $12 per unit, filler $780 per syringe', 'lumenaesthetics.com/pricing. Checked Sep 25, 2026.')])
-  + f'</div><a class="btn" style="height:34px;font-size:13px;align-self:flex-start">{ic(I["plus"], 13)}Add a reference</a></div></details>'
+  + '<div class="refbox"><div class="hrow"><span class="S" style="font-size:26px;line-height:30px">References</span><span class="sub">53 sources</span></div>' + LEGEND
+  + '<div class="refs">' + ''.join(REFS[:2]) + '</div>'
+  + '<details class="more-refs"><summary><span class="peek refs">' + REFS[2] + '</span><span class="showall">Show all 53 references' + ic(I['down'], 16) + '</span></summary>'
+  + '<div class="refs">' + ''.join(REFS[3:]) + f'</div><a class="btn" style="height:34px;font-size:13px;margin-top:8px">{ic(I["plus"], 13)}Add a reference</a></details></div>'
   + f'<a class="acc" href="History.html" style="display:flex;align-items:center"><span style="flex:1;display:flex;flex-direction:column"><span class="S" style="font-size:24px;line-height:28px">Change history</span><span class="sub">Every change to every fact, newest first</span></span>{ic(I["chev"], 20)}</a>'
   + '</div>' + BAR)
 
@@ -387,9 +420,93 @@ p_hist = sb() + (f'<div class="ab"><a class="icb" href="Main.html">{ic(I["back"]
   + hs('Aug 2', 'Monday hours', '9 AM to 6 PM', '', 'What ChatGPT and Gemini said on this date', 'a')
   + '</div></div>')
 
+
+# ---------------- AI tab (where the AI Score card goes)
+SIG = [('Retrieval grounding', 26, 60, 'Can AI find a clear, matching answer about Lumen when it searches?'),
+       ('Off-property attestation', 20, 50, 'Do other sites say the same things Lumen says?'),
+       ('AI visibility', 14, 45, 'How often AI names Lumen when people ask'),
+       ('Reviews and response', 12, 70, 'Volume, rating, recency and owner replies'),
+       ('Backlink and citation authority', 8, 60, 'Trusted sites that link to or mention Lumen'),
+       ('Google Business Profile', 8, 72, 'Complete, current and active'),
+       ('Speed and mobile', 7, 80, 'How fast their site loads on a phone'),
+       ('Content freshness and schema', 5, 30, 'Recent content and code AI can read')]
+def col(v): return '#2f6b3a' if v >= 70 else ('#0f1a33' if v >= 50 else '#c13515')
+gauge = ('<svg width="300" height="160" viewBox="0 0 300 160" aria-hidden="true">'
+  '<path d="M30 150 A120 120 0 0 1 270 150" fill="none" stroke="rgba(15,26,51,0.12)" stroke-width="16" stroke-linecap="round"/>'
+  '<path d="M30 150 A120 120 0 0 1 270 150" fill="none" stroke="#c13515" stroke-width="16" stroke-linecap="round" pathLength="100" stroke-dasharray="58 100"/>'
+  + ''.join(f'<g transform="rotate({-180 + v*1.8} 150 150)"><line x1="262" y1="150" x2="286" y2="150" stroke="#0f1a33" stroke-width="2"/></g>' for v in (71, 84))
+  + '<text x="236" y="38" font-family="Hanken Grotesk, sans-serif" font-size="11" font-weight="700" fill="#0f1a33">71</text><text x="284" y="88" font-family="Hanken Grotesk, sans-serif" font-size="11" font-weight="700" fill="#0f1a33">84</text>'
+  + '<text x="150" y="132" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="68" fill="#c13515">58</text>'
+  + '<text x="150" y="152" text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12" fill="#4a5570">out of 100</text></svg>')
+p_ai1 = topbar('AI', 330) + ('<div class="bd" style="padding-top:14px;gap:10px">'
+  '<div><h2 class="h2 S">How AI sees Lumen</h2><span class="sub">The AI Score, how it is built, and what AI engines say about Lumen. Checked Sep 25, 2026.</span></div>'
+  '<div class="gl" style="padding:14px 16px 12px;display:flex;flex-direction:column;align-items:center;gap:4px">' + gauge +
+  '<div style="display:flex;gap:16px;font-size:12.5px;color:var(--ink2)"><span><b style="color:var(--navy)">71</b> Irvine avg</span><span><b style="color:var(--navy)">84</b> Coastline, top in Irvine</span></div></div>'
+  '<div class="hrow" style="margin-top:4px"><h3 class="h3 S">8 signals</h3><span class="sub" style="font-size:12px">weight · Lumen\'s score</span></div><div class="sig">'
+  + ''.join(f'<div class="sg"><span class="nm">{n}<em>{w}%</em></span><span class="br"><u style="width:{v}%;background:{col(v)}"></u></span><b style="color:{col(v)}">{v}</b></div>' for n, w, v, d in SIG)
+  + '</div><span class="sub" style="font-size:12px">Each signal is scored 0 to 100, then weighted. Same method for every business, never for sale.</span>'
+  '</div>' + BAR)
+
+ENG = [('ChatGPT', 36), ('Gemini', 41), ('Perplexity', 27), ('Google AI Overviews', 23), ('Claude', 32)]
+PROMPTS = [('Best med spa in Irvine', None, 'Coastline, Derm + Co, Pacific Skin'),
+           ('Natural-looking lip filler in Irvine', 2, ''),
+           ('Board-certified dermatologist for Botox near Irvine Spectrum', 1, ''),
+           ('Where can I get Morpheus8 near Irvine?', None, 'Coastline, Derm + Co'),
+           ('Affordable Botox in Orange County', None, 'Pacific Skin, Coastline')]
+def pr(q, rank, others):
+    tag = (f'<span class="ok">Named #{rank}</span>' if rank else f'<span class="no">Not named</span><span class="mu" style="font-size:12px">AI named {others}</span>')
+    return f'<div class="pq"><span class="S" style="font-size:19px;line-height:22px">“{q}”</span><span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">{tag}</span></div>'
+dots = ''.join(f'<i class="{"on" if k in (2, 5, 8, 11, 14, 17, 20) else ""}"></i>' for k in range(22))
+p_ai2 = topbar('AI', 330) + ('<div class="bd" style="padding-top:14px;gap:12px">'
+  '<div><h3 class="h3 S">What AI says when people ask</h3><span class="sub">22 questions people ask about Irvine med spas, asked in 5 AI engines.</span></div>'
+  '<div class="gl" style="padding:14px 16px;display:flex;flex-direction:column;gap:8px"><div style="display:flex;align-items:baseline;gap:8px"><span class="S" style="font-size:44px;line-height:44px;color:#c13515">7</span><span style="font-size:15px">of 22 answers name Lumen</span></div>'
+  f'<div class="pdots">{dots}</div><span class="sub" style="font-size:12px">Coastline is named in 15 of 22.</span></div>'
+  '<div class="eng">' + ''.join(f'<div class="er"><span>{n}</span><span class="br"><u style="width:{v}%"></u></span><b>{v}%</b></div>' for n, v in ENG) + '</div>'
+  '<div>' + ''.join(pr(*x) for x in PROMPTS[:4]) + '</div>'
+  '</div>' + BAR)
+
+def fc(field, ai, rec, mk, right):
+    return (f'<div class="fc"><span class="f">{field}</span><span class="row"><span class="fa {"" if right else "bad"}">AI: {ai}</span>'
+            f'<span class="rc">Record: {rec}{MK[mk]}</span></span></div>')
+THEMES = [('Results', 92), ('Staff', 88), ('Price', 54), ('Wait time', 41), ('Calling back', 22)]
+p_ai3 = topbar('AI', 330) + ('<div class="bd" style="padding-top:14px;gap:12px">'
+  '<div><h3 class="h3 S">What AI gets wrong</h3><span class="sub">How ChatGPT described Lumen on Sep 25, checked against the record.</span></div>'
+  '<div class="bub"><span class="who">ChatGPT</span>Lumen Aesthetics is a med spa at the Irvine Spectrum known for natural-looking filler. '
+  'It is <mark>open Monday, 9 AM to 6 PM</mark>, and Botox runs about <mark>$14 a unit</mark>. Reviewers praise the results but say the front desk is slow to call back.</div>'
+  '<div>' + fc('Monday hours', 'Open 9 AM to 6 PM', 'Closed', 'v', False) + fc('Botox', '$14 a unit', '$12 a unit', 'c', False)
+  + fc('Known for', 'Natural-looking filler', 'Dermal filler, Botox, lip filler', 'c', True) + fc('Parking', 'Not mentioned', 'Structure B, level 3', 'v', False) + '</div>'
+  '<div class="hrow"><h3 class="h3 S">How AI reads reviews</h3><span class="sub" style="font-size:12px">% positive</span></div>'
+  '<div class="eng">' + ''.join(f'<div class="er"><span>{n}</span><span class="br"><u style="width:{v}%;background:{col(v)}"></u></span><b style="color:{col(v)}">{v}%</b></div>' for n, v in THEMES) + '</div>'
+  '</div>' + BAR)
+
+CITES = [('Google profile', 41), ('Yelp', 22), ('RealSelf', 14), ('lumenaesthetics.com', 9), ('Local AI Registry', 8), ('OC Register', 6)]
+SOV = [('Coastline', 34, '#0f1a33'), ('Derm + Co', 26, '#4a5570'), ('Lumen', 14, '#c13515'), ('Pacific Skin', 8, '#9aa3b5'), ('Others', 18, 'rgba(15,26,51,0.14)')]
+dirs = ''.join(f'<i class="{"on" if k < 4 else ("bad" if k < 7 else "")}"></i>' for k in range(40))
+p_ai4 = topbar('AI', 330) + ('<div class="bd" style="padding-top:14px;gap:12px">'
+  '<div><h3 class="h3 S">Where AI gets its answers</h3><span class="sub">The sites AI cited when it talked about Lumen.</span></div>'
+  '<div class="eng">' + ''.join(f'<div class="er"><span>{n}</span><span class="br"><u style="width:{v*2}%"></u></span><b>{v}%</b></div>' for n, v in CITES) + '</div>'
+  '<div class="gl" style="padding:14px 16px;display:flex;flex-direction:column;gap:8px"><b style="font-size:15px">Listed on 7 of 40 directories AI checks</b>'
+  f'<div class="ddots">{dirs}</div><span class="sub" style="font-size:12px"><i class="sw" style="background:#0f1a33"></i>Listed, matches <i class="sw" style="background:#c13515"></i>Listed, hours disagree <i class="sw" style="background:rgba(15,26,51,0.14)"></i>Missing</span></div>'
+  '<div style="display:flex;flex-direction:column;gap:8px"><b style="font-size:15px">Share of AI answers, Irvine med spas</b>'
+  '<div class="sov">' + ''.join(f'<u style="width:{v}%;background:{c}"></u>' for n, v, c in SOV) + '</div>'
+  '<div class="sovl">' + ''.join(f'<span><i class="sw" style="background:{c}"></i>{n} {v}%</span>' for n, v, c in SOV[:4]) + '</div></div>'
+  '<div class="cbc" style="display:flex;flex-direction:column;gap:8px"><b style="font-size:16px">Is this your business?</b><span class="sub">Claim it free, correct the record, and Local AI Registry pushes the fixes to the sites AI reads.</span><a class="bp" href="Claim.html" style="height:46px;font-size:15px">Claim it free</a></div>'
+  '</div>' + BAR)
+
+p_ai5 = topbar('AI', 330) + ('<div class="bd" style="padding-top:14px;gap:10px">'
+  '<div><h3 class="h3 S">What AI reads</h3><span class="sub">The page ChatGPT, Gemini, Perplexity and Google read about Lumen. The code version is exactly what their crawlers get.</span></div>'
+  '<div class="seg"><span class="on">Page</span><span>Code</span></div>'
+  '<div class="gl ed"><span class="lbl" style="font-size:10px">Local AI Registry · Med spas in Irvine, CA · Editorial</span>'
+  '<span class="S" style="font-size:24px;line-height:27px;font-weight:600">Lumen Aesthetics, Irvine: a physician-owned med spa at the Irvine Spectrum (2026 guide)</span>'
+  '<span class="sub" style="font-size:12px">By Steve Lee, founder and CEO of Local AI Registry. Fact-checked against 69 sources. Updated Sep 25, 2026.</span>'
+  '<b style="font-size:14px;margin-top:4px">In short</b><span style="font-size:13.5px;line-height:19px">Lumen Aesthetics is a physician-owned med spa on the second floor of the Irvine Spectrum Center in Irvine, California, open since 2016. It is led by Dr. Priya Nair, MD, a board-certified dermatologist, and is best known for natural-looking dermal filler and Botox.</span>'
+  '<b style="font-size:14px;margin-top:4px">Key facts</b><div class="kt">'
+  + ''.join(f'<span>{k}</span><span>{v}</span>' for k, v in [('Type', 'Physician-owned med spa'), ('Hours', 'Tue to Sat, 9 AM to 7 PM'), ('Rating', '4.9 across 612 reviews'), ('Prices', 'Botox $12 a unit, filler $780 a syringe')])
+  + '</div></div></div>' + BAR)
+
 ROWS = [
  [scr('Profile, top', 'Same order as desktop: photos, name and Unclaimed, category, rating and hours, description, then the AI Score strip. Cashback and booking stay pinned to the bottom.', p_top),
-  scr('Profile, scrolling', 'The AI Score strip scrolls sideways through all five stats. Owner, marks legend and the AI check line come before the tabs, as on desktop.', p_scroll),
+  scr('Profile, scrolling', 'All five stats show at once, no hidden scroll. The whole card taps through to the AI tab. Owner, legend and the AI check line come before the tabs.', p_scroll),
   scr('Locals tab', 'Name and tabs stick. Serif post titles lead, with the vote column and colored kind label from desktop.', p_locals),
   scr('Services tab', 'Known for cards, then the menu with icons, marks and the same prices as desktop.', p_svc),
   scr('Visit tab', 'When to visit, then the same day-by-hour busy grid as desktop, then parking.', p_visit),
@@ -398,12 +515,17 @@ ROWS = [
   scr('Suggest an edit', 'The desktop form as a sheet: what needs fixing, what it says now, the fix, and how you know.', p_edit),
   scr('Fix submitted', 'Same confirmation as desktop. The fix shows right away as visitor submitted.', p_done),
   scr('All photos', 'Three across with filters. Photos AI cannot read say so, with a way to add media.', p_photos),
-  scr('Bottom of the page', 'People also look at, then References and Change history as closed rows. Tap References to open it. All 53 sources stay in the page code, so search engines and AI still read them.', p_end),
+  scr('Bottom of the page', 'Two references show, the third fades out, and a full-width button says how many more there are. All 53 stay in the page code for search engines and AI.', p_end),
   scr('Change history', 'Newest first. New value, old value crossed out, who, and how they know.', p_hist)],
+ [scr('AI tab: the score', 'Tapping the AI Score card opens this tab. The score against Irvine and the top competitor, then the 8 weighted signals behind it.', p_ai1),
+  scr('AI tab: what AI says', 'How often AI names Lumen across 22 real questions and 5 engines, then the questions it wins and loses.', p_ai2),
+  scr('AI tab: what AI gets wrong', 'A real AI answer with the wrong facts marked, checked against the record, then how AI reads the reviews.', p_ai3),
+  scr('AI tab: where AI looks', 'The sites AI cites, directory coverage, and share of answers against competitors. Ends in Claim.', p_ai4),
+  scr('AI tab: what AI reads', 'The editorial page AI crawlers read, with the switch to the code version, same as desktop.', p_ai5)],
 ]
 TITLE = 'M3 · Mobile: business profile'
 H1 = 'Mobile · Business profile'
-SUB = 'Matches the desktop profile. Photos, name, AI Score, owner, then serif tabs that stick once you scroll. Cashback and Request a booking stay pinned to the bottom, and booking and edits open as sheets so you never lose your place.'
+SUB = 'Matches the desktop profile. Tapping the AI Score opens the AI tab (bottom row). Photos, name, AI Score, owner, then serif tabs that stick once you scroll. Cashback and Request a booking stay pinned to the bottom, and booking and edits open as sheets so you never lose your place.'
 n = max(len(r) for r in ROWS); W = 96 + n * 390 + (n - 1) * 44; H = 160 + len(ROWS) * (844 + 120)
 body = f'<div class="mb"><div class="mb-h"><h1>{H1}</h1><p>{SUB}</p></div>' + ''.join(f'<div class="mrow">{"".join(r)}</div>' for r in ROWS) + '</div>'
 BG = '<link rel="stylesheet" href="brand.css?v=12">'  # paper and texture only; this page has no #dc-root so the overrides skip it
