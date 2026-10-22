@@ -25,3 +25,7 @@ Clickable design prototype for localairegistry.com, desktop and mobile.
 ## Brand layer
 
 Every screen in `docs/` carries the brand look from the concept (paper background, Cormorant and Hanken Grotesk type, navy buttons, title-first Locals posts, clearer Book/Post switch). It lives in `docs/brand.css`, `docs/brand.js` and `docs/brand-photos.js`, and `generators/apply_brand.py` adds it to every page. Re-run `python3 generators/apply_brand.py` after rebuilding the site with `build_site.py`.
+
+## Mobile business profile (M3)
+
+`MProfile` was rebuilt to match the finalized desktop profile (`Main`): same order, copy, prices, AI Score strip, serif tabs, Locals posts, booking card and references. It is a standalone page with its own styles, so the brand layer skips it. Rebuild it with `python3 generators/mobile/profile_v2.py`, which writes `docs/MProfile.html` and `prototype/MProfile.dc.html`. Re-run it after `build_site.py`, which would otherwise put back the old version.
