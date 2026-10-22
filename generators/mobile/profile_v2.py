@@ -180,6 +180,9 @@ body{margin:0;color:var(--navy);font-family:"Hanken Grotesk","Helvetica Neue",Ar
 .refs .rf{display:flex;gap:8px;padding:9px 0;border-top:1px solid var(--line);font-size:12.5px;line-height:17px}.refs .rf .n{color:var(--ink3);width:22px;flex-shrink:0}
 .refs .rf .k{font-size:10px;font-weight:700;letter-spacing:0.12em;color:var(--ink2);margin-right:4px}
 .tg{display:flex;gap:18px;font-family:"Cormorant Garamond",Georgia,serif;font-size:20px}.tg span{color:var(--ink2)}.tg span.on{color:var(--navy);box-shadow:inset 0 -2px 0 var(--coral)}
+.acc{display:block;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0}.acc + .acc{border-top:0}
+.acc summary{list-style:none;display:flex;align-items:center;cursor:pointer}.acc summary::-webkit-details-marker{display:none}
+.acc[open] summary svg{transform:rotate(180deg)}
 /* history */
 .hs{display:flex;gap:10px;padding:12px 0;border-top:1px solid var(--line)}
 .hs .mk{margin:6px 0 0}
@@ -358,10 +361,8 @@ p_end = sb() + ('<div class="bd" style="padding-top:6px;gap:14px">'
   + pal('DC', '#dce9fa', 'Derm + Co', '640 reviews · Tustin, 5 mi', 79, '#1f8a2e')
   + pal('PS', '#dff0e4', 'Pacific Skin Studio', '217 reviews · Irvine, 3 mi', 44, '#c13515')
   + '</div></div>'
-  '<div class="hrow" style="align-items:center"><div class="tg"><span class="on">References</span><a href="History.html"><span>Change history</span></a></div>'
-  f'<a class="btn" style="height:32px;font-size:12.5px;padding:0 10px">{ic(I["plus"], 13)}Add</a></div>'
-  + LEGEND +
-  '<div class="refs">'
+  + '<details class="acc"><summary><span style="flex:1;display:flex;flex-direction:column"><span class="S" style="font-size:24px;line-height:28px">References</span><span class="sub">53 sources behind every fact on this page</span></span>' + ic(I['down'], 20) + '</summary>'
+  + '<div style="padding-top:10px;display:flex;flex-direction:column;gap:10px">' + LEGEND + '<div class="refs">'
   + ''.join(f'<div class="rf"><span class="n">[{n}]</span><span><i class="mk {m}" style="margin:0 6px 0 0"></i><span class="k">{k}</span><b>{t}</b> <span class="mu">{s}</span></span></div>' for n, m, k, t, s in [
       (1, 'c', 'LOCALS', 'Answers about hours, prices and services', 'Lumen\'s website and Google Business Profile. Checked Sep 25, 2026.'),
       (2, 'v', 'LOCALS', 'First consult is $75 and credited', 'Marcus D., in person, Mar 12, 2026.'),
@@ -369,7 +370,9 @@ p_end = sb() + ('<div class="bd" style="padding-top:6px;gap:14px">'
       (4, 'v', 'LOCALS', 'Coastline replies faster than Lumen', 'Sam K., called both, Sep 10, 2026.'),
       (5, 'a', 'LOCALS', 'Answers marked AI', 'Summaries of reviews and the record. Not medical advice.'),
       (6, 'c', 'SERVICES', 'Botox $12 per unit, filler $780 per syringe', 'lumenaesthetics.com/pricing. Checked Sep 25, 2026.')])
-  + '</div></div>' + BAR)
+  + f'</div><a class="btn" style="height:34px;font-size:13px;align-self:flex-start">{ic(I["plus"], 13)}Add a reference</a></div></details>'
+  + f'<a class="acc" href="History.html" style="display:flex;align-items:center"><span style="flex:1;display:flex;flex-direction:column"><span class="S" style="font-size:24px;line-height:28px">Change history</span><span class="sub">Every change to every fact, newest first</span></span>{ic(I["chev"], 20)}</a>'
+  + '</div>' + BAR)
 
 def hs(d, f, new, old, who, m):
     return f'<div class="hs"><i class="mk {m}"></i><div class="g"><b>{f}</b><span>{new}</span>{f"<s>{old}</s>" if old else ""}<span class="w">{who}</span></div><span class="d">{d}</span></div>'
@@ -395,7 +398,7 @@ ROWS = [
   scr('Suggest an edit', 'The desktop form as a sheet: what needs fixing, what it says now, the fix, and how you know.', p_edit),
   scr('Fix submitted', 'Same confirmation as desktop. The fix shows right away as visitor submitted.', p_done),
   scr('All photos', 'Three across with filters. Photos AI cannot read say so, with a way to add media.', p_photos),
-  scr('Bottom of the page', 'People also look at, then References with the switch to Change history.', p_end),
+  scr('Bottom of the page', 'People also look at, then References and Change history as closed rows. Tap References to open it. All 53 sources stay in the page code, so search engines and AI still read them.', p_end),
   scr('Change history', 'Newest first. New value, old value crossed out, who, and how they know.', p_hist)],
 ]
 TITLE = 'M3 · Mobile: business profile'
