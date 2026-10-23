@@ -391,10 +391,8 @@ scroller.addEventListener('scroll',()=>{const on=scroller.scrollTop>nameEl.offse
 const SHEETS={
 cash:()=>`<div class="sh"><b class="S" style="font-size:26px">20% cashback</b><button class="icb" data-act="close" aria-label="Close" style="width:34px;height:34px">${ic(I.x,18)}</button></div>
 <div class="cash-hero"><span class="cb" style="flex:none"><span class="ti">${ic(I.tag,15)}</span><b style="font-size:22px">20% back at Lumen</b></span><span style="font-size:15px;line-height:22px">Local AI Registry partners with <a class="ob" href="https://orbitback.com" target="_blank" rel="noopener">OrbitBack.com</a> to give you cashback at local businesses. Lumen is eligible, but cashback stays off until Lumen claims this page.</span></div>
-<div style="display:flex;flex-direction:column;gap:6px"><b style="font-size:16px">Get a text when it's on</b><span class="sub" style="font-size:14px;line-height:20px">We'll reach out to Lumen for you, then let you know the moment cashback turns on.</span></div>
-<input class="inp" style="font-family:inherit;font-size:15px" type="tel" placeholder="Phone number" aria-label="Phone number">
-<button class="bp" data-act="notify">Notify me</button><a class="btn" href="https://orbitback.com" target="_blank" rel="noopener" style="width:100%;height:48px">How OrbitBack works</a>
-<span class="note">Own Lumen? <button data-sheet="claim" style="font-weight:700;text-decoration:underline;text-underline-offset:3px">Claim this page</button> to turn on cashback.</span>`,
+<div style="display:flex;flex-direction:column;gap:6px"><b style="font-size:16px">Want it? Ask Lumen.</b><span class="sub" style="font-size:14px;line-height:20px">Next time you call or visit, ask the owner to claim their free page on Local AI Registry to set up cashback.</span></div>
+<button class="bp" data-act="close">Got it</button>`,
 book:()=>`<div class="sh"><b>Request a booking</b><button class="icb" data-act="close" aria-label="Close" style="width:34px;height:34px">${ic(I.x,18)}</button></div>
 <button data-sheet="cash" style="background:var(--peach);border-radius:16px;padding:12px 14px;display:flex;align-items:center;gap:10px"><span class="cb"><span class="ti">${ic(I.tag,15)}</span><b>Eligible for 20% cashback</b></span>${ic(I.chev,16)}</button>
 <div class="seg"><button class="on">Book a visit</button><button data-act="topost">Post</button></div>
