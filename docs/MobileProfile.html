@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Lumen Aesthetics · Mobile profile · Local AI Registry prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--paper:#f4efe6;--card:#fbf8f3;--chip:#f6f1e8;--peach:#f5dfc8;--navy:#0f1a33;--ink2:#4a5570;--ink3:#7d8599;--coral:#ef5b3c;--red:#c13515;--blue:#2b59d9;--green:#2f6b3a;--orange:#e8740c;--line:rgba(15,26,51,0.12);--top:env(safe-area-inset-top,0px);--bot:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:#e6dfd2}
+body{font-family:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;color:var(--navy);-webkit-font-smoothing:antialiased;display:flex;align-items:center;justify-content:center}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}
+a{color:inherit;text-decoration:none}
+.S{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;letter-spacing:-0.01em}
+.phone{width:390px;height:844px;border-radius:46px;box-shadow:0 0 0 10px var(--navy),0 30px 60px rgba(15,26,51,0.3);overflow:hidden;position:relative;background:var(--paper)}
+@media (max-width:500px){body{display:block}.phone{width:100%;height:100%;border-radius:0;box-shadow:none}}
+.scroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding-bottom:calc(96px + var(--bot))}
+.scroll::-webkit-scrollbar{display:none}
+.pad{padding:0 20px}
+.sub{font-size:13px;line-height:19px;color:var(--ink2)}
+.mk{display:inline-block;width:8px;height:8px;margin-left:6px;vertical-align:1px;flex-shrink:0}.mk.c{background:#1f8a2e;border-radius:50%}.mk.v{border:1.6px solid var(--orange);border-radius:50%}
+.mk.a{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:9px solid #9097a6}
+/* hero */
+.hero{position:relative;height:calc(290px + var(--top));background:linear-gradient(160deg,#9aa6bd,#6f7d98 55%,#55627d);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 35%,rgba(255,255,255,0.35),transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(15,26,51,0.35),transparent 60%)}
+.hero .cap{position:absolute;right:14px;top:calc(110px + var(--top));font-size:11px;font-weight:700;color:#fff;opacity:0.75}
+.flt{position:absolute;left:14px;right:14px;top:calc(14px + var(--top));display:flex;justify-content:space-between;z-index:2}
+.icb{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.icb.g{background:rgba(246,241,232,0.94);box-shadow:0 4px 14px -6px rgba(15,26,51,0.5)}
+.nocode{position:absolute;left:14px;top:calc(66px + var(--top));display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:999px;background:rgba(15,26,51,0.78);color:#fff;font-size:12px;font-weight:600}
+.hb{position:absolute;left:14px;right:14px;bottom:14px;display:flex;justify-content:space-between}
+.glassbtn{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 14px;border-radius:14px;background:rgba(246,241,232,0.94);font-size:13.5px;font-weight:600;box-shadow:0 6px 18px -8px rgba(15,26,51,0.5)}
+/* head */
+.crumb{font-size:13px;color:var(--ink2);margin-top:16px}.crumb u{text-decoration-color:rgba(239,91,60,0.5);text-underline-offset:3px}
+.name{margin:8px 0 6px;font-size:44px;line-height:44px}
+.unc{display:inline-flex;align-items:center;height:28px;padding:0 11px;border-radius:999px;border:1px solid rgba(239,91,60,0.35);background:var(--chip);color:var(--coral);font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:600;font-size:17px}
+.desc{margin:8px 0 0;font-size:14.5px;line-height:21px}
+/* AI score card */
+.ai{margin:16px 20px 0;background:rgba(245,223,200,0.95);border-radius:24px;padding:16px 0 12px;box-shadow:0 22px 46px -30px rgba(15,26,51,0.4)}
+.ai-h{display:flex;align-items:center;gap:12px;padding:0 18px;width:100%}
+.ai-b{display:flex;align-items:center;gap:1px;flex-shrink:0}.ai-b b{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:600;font-size:17px;line-height:16px;text-align:center}
+.ai-h .t{font-size:15px;font-weight:600;line-height:20px;display:block}
+.car{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 18px;padding:14px 64px 2px 18px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+.car::-webkit-scrollbar{display:none}
+.car > button{scroll-snap-align:start;flex-shrink:0;display:flex;flex-direction:column;gap:4px;padding:0 16px;border-left:1px solid rgba(15,26,51,0.16);min-width:112px}
+.car > button:first-child{padding-left:0;border-left:0;min-width:100px}
+.car .v{font-family:"Cormorant Garamond",Georgia,serif;font-size:40px;line-height:42px;white-space:nowrap}
+.car .x{height:22px;display:flex;align-items:flex-end}
+.car .l{font-size:13px;line-height:17px;color:var(--ink2);white-space:nowrap;display:flex;align-items:center;gap:2px}
+.car .l svg{color:var(--ink3)}
+.segb{display:grid;grid-template-columns:repeat(11,5px);gap:2px}.segb i{height:8px;background:rgba(15,26,51,0.22);border-radius:1px}
+.srow{display:flex;flex-direction:column;gap:2px;width:64px}.srow i{display:block;height:2px;background:var(--navy)}.srow i.o{background:rgba(15,26,51,0.25)}
+.ghg{display:grid;grid-template-columns:repeat(14,4px);gap:1.5px}.ghg i{height:4px;background:rgba(15,26,51,0.2)}
+.spk{display:flex;align-items:flex-end;gap:3px}.spk i{width:5px;background:rgba(15,26,51,0.25);border-radius:1px}.spk i.on{background:#1f8a2e}
+.dotg{display:inline-block;width:8px;height:8px;border-radius:50%;background:#1f8a2e;margin-right:8px;vertical-align:middle;box-shadow:0 0 0 4px rgba(31,138,46,0.18);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(31,138,46,0.05)}}
+@media (prefers-reduced-motion:reduce){.dotg{animation:none}}
+.pager{display:flex;gap:5px;justify-content:center;margin-top:10px}.pager i{width:6px;height:6px;border-radius:3px;background:rgba(15,26,51,0.2);transition:width .2s}.pager i.on{width:16px;background:var(--navy)}
+/* owner */
+.own{display:flex;align-items:center;gap:12px;margin-top:16px}
+.ava{width:42px;height:42px;border-radius:50%;background:#c9d3cf;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--ink2);flex-shrink:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:40px;padding:0 14px;border-radius:14px;background:var(--chip);border:1px solid var(--line);font-size:14px;font-weight:600;white-space:nowrap}
+.btn.sm{height:34px;padding:0 11px;font-size:13px}
+.bp{display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:16px;background:var(--navy);color:#fff;font-size:16px;font-weight:600;box-shadow:0 14px 30px -14px rgba(15,26,51,0.6);white-space:nowrap;width:100%}
+.bp.arr::after{content:"⟶";font-weight:400}
+.legend{display:flex;gap:14px;font-size:12.5px;color:var(--ink2);margin-top:14px}.legend .mk{margin:0 5px 0 0}
+.chk{font-size:12.5px;line-height:18px;color:var(--ink2);margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+/* fixed top bar + sticky tabs */
+.topbar{position:absolute;left:0;right:0;top:0;z-index:20;padding-top:var(--top);background:rgba(244,239,230,0.97);display:flex;align-items:center;height:calc(52px + var(--top));padding-left:6px;padding-right:6px;transform:translateY(-100%);transition:transform .2s}
+.topbar.on{transform:none}
+.topbar .t{flex:1;text-align:center;font-family:"Cormorant Garamond",Georgia,serif;font-size:23px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tabs{position:sticky;top:0;z-index:10;background:rgba(244,239,230,0.97);box-shadow:0 1px 0 var(--line);margin-top:14px;transition:top .2s}
+.tabs.st{top:calc(52px + var(--top))}
+.tabs .in{display:flex;gap:8px;padding:10px 44px 10px 20px;overflow-x:auto;scrollbar-width:none}.tabs .in::-webkit-scrollbar{display:none}
+.tabs::after{content:"";position:absolute;right:0;top:0;bottom:0;width:48px;background:linear-gradient(90deg,rgba(244,239,230,0),rgba(244,239,230,1) 70%);pointer-events:none}
+.tab{display:flex;align-items:center;gap:5px;height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(15,26,51,0.18);background:var(--chip);font-family:"Cormorant Garamond",Georgia,serif;font-size:22px;color:var(--navy);flex-shrink:0;white-space:nowrap}
+.tab sup{font-family:"Hanken Grotesk",sans-serif;font-size:11px;font-weight:700;vertical-align:6px;color:var(--ink2)}
+.tab.on{background:var(--navy);border-color:var(--navy);color:#fff}.tab.on sup{color:rgba(255,255,255,0.7)}.tab.on .star{color:#ff9a80}
+.tab .star{color:var(--coral)}
+.panel{display:none;padding:16px 20px 8px}.panel.on{display:block}
+.h2{margin:0;font-size:32px;line-height:34px}.h3{margin:0;font-size:24px;line-height:28px}
+.hrow{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.gl{background:rgba(250,246,238,0.85);border:1px solid rgba(255,255,255,0.8);border-radius:22px;box-shadow:0 1px 0 rgba(255,255,255,0.9) inset,0 22px 46px -30px rgba(15,26,51,0.35)}
+.lbl{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink2)}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{display:inline-flex;align-items:center;gap:5px;height:34px;padding:0 13px;border-radius:999px;background:var(--chip);border:1px solid var(--line);font-size:13.5px;font-weight:600;white-space:nowrap;flex-shrink:0}
+.chip.on{background:var(--navy);border-color:var(--navy);color:#fff}.chip em{font-style:normal;font-weight:500;opacity:0.65}
+.inp{flex:1;min-height:46px;border-radius:16px;background:var(--chip);border:1px solid var(--line);display:flex;align-items:center;padding:0 14px;font-family:"Cormorant Garamond",Georgia,serif;font-size:18px;color:var(--navy);width:100%;outline:none}
+.inp::placeholder{color:var(--ink3)}
+textarea.inp{padding:12px 14px;resize:none;font-family:inherit;font-size:15px}
+/* posts */
+.post{display:flex;gap:10px;padding:14px 0;border-top:1px solid var(--line)}
+.vote{display:flex;flex-direction:column;align-items:center;width:26px;flex-shrink:0;font-size:12.5px;font-weight:700;color:var(--ink2);line-height:16px;padding-top:4px}.vote button{font-size:11px;color:var(--ink3)}.vote button.on{color:var(--coral)}
+.post .g{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.pt{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:22px;line-height:24px}
+.meta{font-size:12.5px;line-height:18px;color:var(--ink2)}
+.kd{font-size:10.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-right:6px}.kd.q{color:var(--blue)}.kd.t{color:var(--green)}.kd.h{color:var(--navy)}
+.acts{display:flex;gap:12px;font-size:12px;color:var(--ink2)}.acts b{color:var(--red);font-weight:600}
+/* services */
+.kf{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:2px 20px 8px}.kf::-webkit-scrollbar{display:none}
+.kfc{width:150px;flex-shrink:0;border-radius:20px;overflow:hidden;background:rgba(250,246,238,0.85);border:1px solid rgba(255,255,255,0.8);box-shadow:0 18px 40px -28px rgba(15,26,51,0.35)}
+.ph{height:84px;background:linear-gradient(150deg,#a3aec3,#6d7a95)}
+.kfc .t{padding:9px 12px 11px;display:flex;flex-direction:column}.kfc b{font-size:14.5px}.kfc span{font-size:12px;color:var(--ink2)}
+.it{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line);align-items:flex-start}
+.it .g{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.it b{font-size:15px;line-height:20px}.it .d{font-size:13px;line-height:18px;color:var(--ink2)}.it .p{font-weight:700;font-size:14px;white-space:nowrap}
+/* visit */
+.hm{display:grid;grid-template-columns:38px repeat(7,1fr);gap:2px;font-size:10px;color:var(--ink2)}.hm span{display:flex;align-items:center;height:12px}.hm span.dy{justify-content:center;font-weight:600;color:var(--navy);height:18px;font-size:10.5px}.hm i{height:12px;border-radius:2px}
+.fr{display:flex;gap:10px;padding:11px 0;border-top:1px solid var(--line);font-size:14px}.fr:first-child{border-top:0}.fr .k{width:84px;flex-shrink:0;color:var(--ink2)}.fr .v{flex:1;text-align:right;font-weight:500}
+/* bars */
+.er{display:grid;grid-template-columns:128px 1fr 40px;gap:10px;align-items:center;padding:6px 0;font-size:13.5px}.er b{text-align:right}
+.br{display:block;height:6px;border-radius:3px;background:rgba(15,26,51,0.1);position:relative;overflow:hidden}.br u{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--navy)}
+/* updates */
+.up{display:flex;flex-direction:column;gap:8px;padding:14px 0;border-top:1px solid var(--line)}
+.who{display:flex;align-items:center;gap:10px}.who .lg{width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.who b{font-size:14px;display:block;line-height:18px}.who span{font-size:12px;color:var(--ink2)}
+.up p{margin:0;font-size:15px;line-height:21px}.up .ph{height:150px;border-radius:16px}
+.cm{display:flex;gap:8px;font-size:13.5px;padding-left:10px;border-left:2px solid rgba(239,91,60,0.45)}
+/* AI tab */
+.aisub{position:sticky;z-index:9;background:rgba(244,239,230,0.97);margin:0 -20px;padding:8px 20px;box-shadow:0 1px 0 var(--line);top:46px;transition:top .2s}
+.tabs.st ~ .panels .aisub{top:calc(98px + var(--top))}
+.aisec{padding-top:18px;scroll-margin-top:170px}
+.sg{display:grid;grid-template-columns:1fr 70px 26px;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:13.5px}.sg:first-child{border-top:0}.sg em{font-style:normal;font-size:11px;font-weight:700;color:var(--ink3);margin-left:5px}.sg b{text-align:right}
+.pdots{display:grid;grid-template-columns:repeat(11,1fr);gap:5px}.pdots i{height:18px;border-radius:5px;background:rgba(15,26,51,0.12)}.pdots i.on{background:var(--red)}
+.pq{display:flex;flex-direction:column;gap:5px;padding:10px 0;border-top:1px solid var(--line)}
+.ok{font-size:12px;font-weight:700;color:var(--green);background:rgba(47,107,58,0.1);padding:2px 8px;border-radius:999px}.no{font-size:12px;font-weight:700;color:var(--red);background:rgba(193,53,21,0.08);padding:2px 8px;border-radius:999px}
+.bub{background:var(--card);border:1px solid var(--line);border-radius:18px 18px 18px 4px;padding:12px 14px;font-size:14px;line-height:20px}.bub .lbl{display:block;margin-bottom:4px;font-size:10.5px}
+.bub mark{background:rgba(239,91,60,0.16);color:#a3270f;text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.fc{display:flex;flex-direction:column;gap:2px;padding:8px 0;border-top:1px solid var(--line)}.fc .f{font-size:12px;font-weight:700;color:var(--ink2)}.fc .row{display:flex;justify-content:space-between;gap:10px;font-size:13.5px}.fc .bad{color:#a3270f;text-decoration:line-through}.fc .rc{text-align:right;font-weight:600}
+.ddots{display:grid;grid-template-columns:repeat(20,1fr);gap:4px}.ddots i{height:12px;border-radius:3px;background:rgba(15,26,51,0.12)}.ddots i.on{background:var(--navy)}.ddots i.bad{background:var(--red)}
+.sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin:0 5px 0 0}
+.sov{display:flex;height:14px;border-radius:7px;overflow:hidden;gap:2px}.sov u{display:block}
+.kt{display:grid;grid-template-columns:76px 1fr;font-size:13px}.kt span{padding:6px 0;border-top:1px solid var(--line)}.kt span:nth-child(odd){color:var(--ink2)}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:11px;line-height:16px;background:#0f1a33;color:#e6e9f2;border-radius:14px;padding:12px;white-space:pre;overflow-x:auto}
+.seg{display:flex;padding:4px;border-radius:16px;background:#e9e2d5;gap:4px}.seg button{flex:1;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:14.5px;font-weight:600}.seg button.on{background:var(--navy);color:#fff}
+.sg .sd{display:block;font-size:12px;line-height:16px;color:var(--ink2);margin-top:1px}
+.lockrep{margin:22px -20px 0;background:#07101d;padding:22px 20px 24px;display:flex;flex-direction:column;gap:12px}
+.g3{position:relative;height:300px;border-radius:18px;overflow:hidden;background:#0b1730;touch-action:pan-y}
+.g3 canvas{display:block;width:100%!important;height:100%!important}
+.g3 .fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#8d9ab0;font-size:13px}
+.g3 .lab{position:absolute;transform:translate(-50%,-120%);font-weight:700;font-size:10.5px;color:#fff;background:rgba(11,26,46,.8);border:1px solid rgba(220,229,255,.25);padding:1px 6px;border-radius:6px;white-space:nowrap;pointer-events:none}
+.g3 .lab.bad{border-color:#ff7a5c;color:#ffd9cf}.g3 .lab.src{color:#c3cbd8;font-weight:600}
+.cap3{font-size:12.5px;color:#c3cbd8}
+.blur{position:relative;border-radius:14px;background:rgba(255,255,255,0.06);padding:6px 14px}
+.blur div{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid rgba(255,255,255,0.08);color:#fff;font-size:14px;filter:blur(4px)}.blur div:first-child{border-top:0}
+.blur b{color:#ff9a80}.blur .lk{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff}
+.inside{list-style:none;margin:2px 0 4px;padding:0;display:flex;flex-direction:column;gap:9px}.inside li{display:flex;gap:10px;color:#e6e9f2;font-size:14.5px;line-height:20px}.inside svg{color:#6f92ff;flex-shrink:0;margin-top:2px}
+.bp.light{background:#fff;color:#0f1a33}
+/* page end */
+.pal .r{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}.pal .r:first-of-type{border-top:0}
+.pal .r.me{background:rgba(239,91,60,0.07);margin:0 -10px;padding:10px;border-radius:12px}
+.pal .lo{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.pal .g{flex:1;min-width:0}.pal .g b{font-size:14.5px;display:block;line-height:19px}.pal .g span{font-size:12px;color:var(--ink2)}
+.pal .sc{display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px}.pal .sc i{width:40px;height:5px;border-radius:3px;background:rgba(15,26,51,0.12);position:relative;overflow:hidden}.pal .sc i u{position:absolute;left:0;top:0;bottom:0}
+.rf{display:flex;gap:8px;padding:9px 0;border-top:1px solid var(--line);font-size:12.5px;line-height:17px}.rf .n{color:var(--ink3);width:24px;flex-shrink:0}.rf .k{font-size:10px;font-weight:700;letter-spacing:0.12em;color:var(--ink2);margin-right:4px}.rf .mk{margin:0 6px 0 0}
+details.more summary{list-style:none;cursor:pointer}details.more summary::-webkit-details-marker{display:none}
+.refhead{display:flex;align-items:center;gap:10px;padding:14px 0;border-top:1px solid var(--line)}
+.refhead .tog{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:12px;background:var(--chip);border:1px solid rgba(15,26,51,0.22);font-size:13.5px;font-weight:600;white-space:nowrap}
+.refhead .tog svg{transition:transform .2s}details.more[open] .refhead .tog svg{transform:rotate(180deg)}
+details.more .hide{display:none}details.more[open] .hide{display:inline}details.more[open] .show{display:none}
+.rowlink{display:flex;align-items:center;width:100%;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+details.more{margin-bottom:-16px}
+/* bottom bar */
+.bar{position:absolute;left:0;right:0;bottom:0;z-index:30;padding:12px 18px calc(14px + var(--bot));background:rgba(244,239,230,0.97);box-shadow:0 -1px 0 var(--line);display:flex;align-items:center;gap:12px}
+@media (min-width:501px){.bar{padding-bottom:28px}}
+.cb{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.cb .ti{width:30px;height:30px;border-radius:50%;background:var(--coral);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cb small{display:block;font-size:12px;line-height:14px;color:var(--ink2)}.cb b{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:600;color:var(--coral);font-size:17px;line-height:20px;white-space:nowrap}
+.bar .bp{width:auto;padding:0 16px;height:50px;font-size:15.5px}
+/* sheets */
+.scrim{position:absolute;inset:0;background:rgba(15,26,51,0.42);z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:41;background:var(--chip);border-radius:26px 26px 0 0;box-shadow:0 -12px 40px rgba(15,26,51,0.25);padding:10px 20px calc(26px + var(--bot));display:flex;flex-direction:column;gap:14px;transform:translateY(105%);transition:transform .25s ease;max-height:88%;overflow-y:auto}
+.sheet.on{transform:none}
+.gr{width:40px;height:5px;border-radius:3px;background:rgba(15,26,51,0.2);align-self:center;flex-shrink:0}
+.sh{display:flex;align-items:center;justify-content:space-between}.sh b{font-size:20px}
+.slb{font-size:14px;font-weight:700;margin-bottom:-6px}
+.bk{border:1px solid rgba(15,26,51,0.25);border-radius:14px;overflow:hidden;background:var(--card)}
+.bk .rw{display:flex}.bk .rw + .rw{border-top:1px solid rgba(15,26,51,0.25)}
+.bk .c{flex:1;padding:10px 12px;display:flex;flex-direction:column}.bk .c + .c{border-left:1px solid rgba(15,26,51,0.25)}
+.bk small{font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}.bk select{font:inherit;font-size:15px;border:0;background:none;color:var(--navy);padding:0;width:100%;-webkit-appearance:none;appearance:none}
+.note{font-size:13px;color:var(--ink2);text-align:center}
+.cash-hero{background:var(--peach);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ob{font-weight:700;color:var(--navy);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(239,91,60,0.5)}
+.toast{position:absolute;left:50%;bottom:calc(96px + var(--bot));transform:translate(-50%,20px);background:var(--navy);color:#fff;font-size:14px;padding:10px 16px;border-radius:12px;z-index:60;opacity:0;transition:all .2s;pointer-events:none;width:max-content;max-width:86%}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.hs{display:flex;gap:10px;padding:12px 0;border-top:1px solid var(--line)}.hs .mk{margin:6px 0 0}.hs .g{flex:1;display:flex;flex-direction:column;gap:1px}.hs .g s{color:var(--ink3);font-size:13px}.hs .w{font-size:12.5px;color:var(--ink2)}.hs .d{font-size:12px;color:var(--ink2);white-space:nowrap}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="phone" id="phone">
+  <div class="topbar" id="topbar"><button class="icb" aria-label="Back">◀</button><span class="t">Lumen Aesthetics</span><button class="icb" aria-label="Share" data-act="share"></button></div>
+  <div class="scroll" id="scroll">
+    <div class="hero">
+      <div class="flt"><button class="icb g" aria-label="Back" id="bk1"></button><button class="icb g" aria-label="Share" data-act="share" id="sh1"></button></div>
+      <span class="nocode" id="nc">No code detected</span>
+      <span class="cap">[Treatment room]</span>
+      <div class="hb"><button class="glassbtn" data-sheet="media" id="am">Add media AI can read</button><button class="glassbtn" data-sheet="photos" id="pc">1 / 51</button></div>
+    </div>
+    <div class="pad">
+      <div class="crumb"><u>Irvine, CA</u> › <u>Med spas</u></div>
+      <h1 class="name S">Lumen Aesthetics</h1>
+      <span style="display:flex;align-items:center;gap:12px"><span class="unc">Unclaimed</span><button data-sheet="what" style="font-size:13.5px;font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(239,91,60,0.5)">What is this page?</button></span>
+      <div style="margin-top:10px;display:flex;flex-direction:column;gap:2px"><b style="font-size:16px">Med spa at Irvine Spectrum, Irvine, CA</b>
+      <span style="font-size:14px">★ 4.9 · 612 reviews<i class="mk c"></i> · Open today until 7 PM<i class="mk c"></i></span></div>
+      <p class="desc" id="desc">Lumen Aesthetics is a physician-led med spa at the Irvine Spectrum Center, offering Botox, dermal filler, lip filler, Sculptra… <button style="font-weight:600;text-decoration:underline;text-underline-offset:3px" id="more">More</button></p>
+    </div>
+    <div class="ai"><button class="ai-h" data-go="ai"><span class="ai-b" id="laur"></span><span><span class="t">AI names Lumen less than most Irvine med spas</span><span class="sub">Scored from 8 signals across search and AI.</span></span></button><div class="car" id="car"></div><div class="pager" id="pager"></div></div>
+    <div class="pad">
+      <div class="own"><span class="ava">[Photo]</span><span style="flex:1;min-width:0;display:flex;flex-direction:column"><b style="font-size:14px;white-space:nowrap">Owned by Dr. Priya Nair, MD<i class="mk a"></i></b><span class="sub" style="font-size:12.5px;white-space:nowrap"><b style="color:var(--navy)">Unclaimed · Never replied</b> · 10 yrs<i class="mk a"></i></span></span><button class="btn sm" data-sheet="claim">Claim it</button></div>
+      <div class="legend"><span><i class="mk c"></i>Confirmed</span><span><i class="mk v"></i>Visitor submitted</span><span><i class="mk a" style="margin-right:5px"></i>AI guess</span></div>
+      <div class="chk">AI checked this page at 6:10 AM today. Last activity 3 hours ago, a question from ella_v_irvine.</div>
+    </div>
+    <div class="tabs" id="tabs"><div class="in" id="tabin"></div></div>
+    <div class="panels" id="panels"></div>
+    <div class="pad" style="padding-top:20px;display:flex;flex-direction:column;gap:16px" id="end"></div>
+  </div>
+  <div class="bar">
+    <button class="cb" data-sheet="cash"><span class="ti" id="tagic"></span><span><small>Eligible for</small><b>20% cashback</b></span></button>
+    <button class="bp arr" data-sheet="book">Request a booking</button>
+  </div>
+  <div class="scrim" id="scrim"></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
+  <div class="toast" id="toast"></div>
+</div>
+<script>
+const $=s=>document.querySelector(s);
+const SK='fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
+const ic=(p,s=22)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" ${SK} aria-hidden="true">${p}</svg>`;
+const I={back:'<path d="M15 5l-7 7 7 7"/>',share:'<path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 13v7h14v-7"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',chev:'<path d="M9 5l7 7-7 7"/>',down:'<path d="M6 9l6 6 6-6"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',info:'<circle cx="12" cy="12" r="8"/><path d="M12 11v5M12 8h.01"/>',img:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-8 8"/>',tag:'<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8" r="1.4"/>',plus:'<path d="M12 5v14M5 12h14"/>',flag:'<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',pencil:'<path d="M4 20h4L20 8l-4-4L4 16z"/>',star:'<path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6z" fill="currentColor"/>',syringe:'<path d="M18 3l3 3M16 5l3 3M17 6L8 15l-3 1 1-3 9-9zM6 15l-3 3"/>',lips:'<path d="M3 12c3-4 6-5 9-3 3-2 6-1 9 3-3 4-6 5-9 5s-6-1-9-5z"/><path d="M3 12h18"/>',drop:'<path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/>',waves:'<path d="M3 8c3-2 6 2 9 0s6 2 9 0M3 13c3-2 6 2 9 0s6 2 9 0M3 18c3-2 6 2 9 0s6 2 9 0"/>',check:'<path d="M5 12l5 5 9-10"/>'};
+const MK={c:'<i class="mk c"></i>',v:'<i class="mk v"></i>',a:'<i class="mk a"></i>','':''};
+// icons in static markup
+document.querySelectorAll('[aria-label="Back"]').forEach(b=>b.innerHTML=ic(I.back));
+document.querySelectorAll('[data-act="share"]').forEach(b=>b.innerHTML=ic(I.share,19));
+$('#nc').insertAdjacentHTML('afterbegin',ic(I.info,13));$('#am').insertAdjacentHTML('afterbegin',ic(I.lock,15));$('#pc').insertAdjacentHTML('afterbegin',ic(I.img,15));$('#tagic').innerHTML=ic(I.tag,15);
+$('#more').onclick=()=>{$('#desc').textContent='Lumen Aesthetics is a physician-led med spa at the Irvine Spectrum Center, offering Botox, dermal filler, lip filler, Sculptra, microneedling and Morpheus8. Our medical director, board-certified dermatologist Dr. Priya Nair, and our licensed nurse injectors focus on natural, subtle results that still look like you. Free validated parking in Structure B.'};
+
+// ---------- stat carousel
+const LAUREL=t=>`<svg width="14" height="30" viewBox="0 0 22 46" aria-hidden="true"><g ${t} fill="#0f1a33"><path d="M18 44C9 38 5 27 8 10" fill="none" stroke="#0f1a33" stroke-width="1.8" stroke-linecap="round"/><ellipse cx="8" cy="39" rx="5.5" ry="2.4" transform="rotate(35 8 39)"/><ellipse cx="5" cy="31" rx="5.5" ry="2.4" transform="rotate(60 5 31)"/><ellipse cx="4.5" cy="23" rx="5.5" ry="2.4" transform="rotate(80 4.5 23)"/><ellipse cx="6" cy="15" rx="5" ry="2.2" transform="rotate(100 6 15)"/><ellipse cx="10" cy="8" rx="4.5" ry="2" transform="rotate(120 10 8)"/><ellipse cx="13.5" cy="33" rx="4.5" ry="2" transform="rotate(-25 13.5 33)"/><ellipse cx="12" cy="24" rx="4.5" ry="2" transform="rotate(-45 12 24)"/></g></svg>`;
+$('#laur').innerHTML=LAUREL('')+'<b>AI<br>Score</b>'+LAUREL('transform="translate(22 0) scale(-1 1)"');
+const CH=ic(I.chev,13);
+const STATS=[
+ {tab:'ai',html:`<span class="v" style="color:#c13515">58</span><span class="x"><svg width="60" height="18" viewBox="0 0 60 18"><path d="M1 17 C15 17 22 2 36 2 C48 2 53 17 59 17 Z" fill="rgba(15,26,51,0.14)"/><line x1="28.5" y1="5" x2="28.5" y2="17" stroke="#c13515" stroke-width="2.4" stroke-linecap="round"/></svg></span><span class="l">Irvine avg 71${MK.c}${CH}</span>`},
+ {tab:'locals',html:`<span class="v" style="color:#c13515">0</span><span class="x"><span class="segb">${'<i></i>'.repeat(22)}</span></span><span class="l">answered of 22${CH}</span>`},
+ {tab:'reputation',html:`<span class="v">78%</span><span class="x"><span class="srow"><i></i><i></i><i></i><i></i><i class="o"></i></span></span><span class="l">would go back${MK.c}${CH}</span>`},
+ {tab:'updates',html:`<span class="v">0</span><span class="x"><span class="ghg">${'<i></i>'.repeat(42)}</span></span><span class="l">updates, last 30 days${MK.c}${CH}</span>`},
+ {tab:'visit',html:`<span class="v"><span class="dotg"></span>Quiet</span><span class="x"><span class="spk">${[5,8,14,18,16,13,10,12,9].map((h,k)=>`<i class="${k==1?'on':''}" style="height:${h}px"></i>`).join('')}</span></span><span class="l">right now${MK.c}${CH}</span>`}];
+$('#car').innerHTML=STATS.map(s=>`<button data-go="${s.tab}" aria-label="Open the ${s.tab} tab">${s.html}</button>`).join('');
+$('#pager').innerHTML=STATS.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('');
+$('#car').addEventListener('scroll',e=>{const c=e.target,kids=[...c.children];let k=0,best=1e9;kids.forEach((el,i)=>{const d=Math.abs(el.offsetLeft-c.scrollLeft-18);if(d<best){best=d;k=i}});if(c.scrollLeft+c.clientWidth>=c.scrollWidth-4)k=kids.length-1;[...$('#pager').children].forEach((d,i)=>d.classList.toggle('on',i===k))},{passive:true});
+
+// ---------- tabs
+const TABS=[['locals','Locals','22'],['services','Services','34'],['team','Team','14'],['visit','Visit',''],['reputation','Reputation','612'],['updates','Updates','9'],['ai','AI','']];
+$('#tabin').innerHTML=TABS.map(([k,n,c])=>`<button class="tab" data-tab="${k}">${k==='ai'?`<span class="star">${ic(I.star,15)}</span>`:''}${n}${c?`<sup>${c}</sup>`:''}</button>`).join('');
+
+const post=(v,t,k,who,n,need)=>{const kc={Question:'q',Tip:'t','Heads-up':'h'}[k];return `<div class="post"><div class="vote"><button class="up" aria-label="Upvote">▲</button><span>${v}</span><button aria-label="Downvote">▼</button></div><div class="g"><span class="pt">${t}</span><span class="meta"><span class="kd ${kc}">${k}</span>by ${who}</span><span class="acts"><span>${n} comments</span>${need?'<b>Needs an answer</b>':''}<span>share</span></span></div></div>`};
+const POSTS=[[26,'Closed Saturday, Oct 3 for staff training. Google still shows them open.','Heads-up','kellyw_irvine · 3h · researching',4,1],[4,'Is there a wait list for Morpheus8 Body?','Question','ella_v_irvine · 3h · comparing',3,1],[31,'Park on level 3 of Structure B. It is the only level with an elevator straight to the second floor.','Tip','kellyw_irvine · 2d · going',3],[15,'Is the first consult free?','Question','quiet_quail_22 · 1d · went',9],[24,'If you are nervous, ask for Nadia. She numbs longer and talks you through every step.','Tip','jordan_p_tustin · 1w · researching',3],[33,'Lumen vs Coastline, which one?','Question','coastal_compare · 6d · comparing',12],[41,'Is Dr. Nair the one doing the injections?','Question','newport_nicole · 11d · went',8],[9,'Which laser do they use for hair removal?','Question','devin_r_laser · 12d · comparing',2,1]];
+const mi=(icon,n,mk,cat,d,p,pm)=>`<div class="it">${ic(I[icon],20)}<div class="g"><b>${n}${MK[mk]}</b><span class="d">${cat} · ${d}</span></div><span class="p">${p}${MK[pm]}</span></div>`;
+const HEAT={Sun:Array(10).fill(0),Mon:Array(10).fill(0),Tue:[1,2,2,3,3,2,2,2,2,1],Wed:[1,2,3,4,4,3,3,2,2,1],Thu:[1,2,3,4,4,3,3,2,2,1],Fri:[1,2,3,4,4,3,3,2,2,1],Sat:[1,1,2,3,3,2,2,1,1,1]};
+const HC=['#e6ebf5','#c8d6f1','#8fb0e8','#4f82dd','#2257d6'];const HRS=['9 AM','10','11','12 PM','1','2','3','4','5','6 PM'];
+let hm='<div class="hm"><span></span>'+Object.keys(HEAT).map(d=>`<span class="dy">${d}</span>`).join('');HRS.forEach((h,r)=>{hm+=`<span>${h}</span>`+Object.keys(HEAT).map(d=>`<i style="background:${HC[HEAT[d][r]]}"></i>`).join('')});hm+='</div>';
+const col=v=>v>=70?'#2f6b3a':(v>=50?'#0f1a33':'#c13515');
+const bars=(rows,max=100,colored)=>rows.map(([n,v])=>`<div class="er"><span>${n}</span><span class="br"><u style="width:${v/max*100}%;${colored?'background:'+col(v):''}"></u></span><b style="${colored?'color:'+col(v):''}">${v}%</b></div>`).join('');
+const upd=(src,when,t,votes,n,cms)=>`<div class="up"><div class="who"><span class="lg">L</span><span><b>Lumen Aesthetics</b><span>${src} · ${when}${MK.c}</span></span></div><p>${t}</p><div class="ph"></div><span class="acts"><span>▲ ${votes}</span><span>${n} comments</span><span>share</span></span>${cms.map(([u,c])=>`<div class="cm"><b>${u}</b><span>${c}</span></div>`).join('')}</div>`;
+
+// AI tab data
+const SIG=[['Retrieval grounding',26,60,'Can AI find a clear answer about Lumen when it looks?'],['Off-property attestation',20,50,'Do other sites say the same things Lumen says?'],['AI visibility',14,45,'How often AI names Lumen when people ask'],['Reviews and response',12,70,'How many reviews, how good, and whether the owner replies'],['Backlink and citation authority',8,60,'Trusted sites that mention or link to Lumen'],['Google Business Profile',8,72,'Complete, current and active'],['Speed and mobile',7,80,'How fast their website loads on a phone'],['Content freshness and schema',5,30,'New posts, and code AI can read']];
+const gauge=`<svg width="280" height="150" viewBox="0 0 300 160" aria-label="AI Score 58 out of 100"><path d="M30 150 A120 120 0 0 1 270 150" fill="none" stroke="rgba(15,26,51,0.12)" stroke-width="16" stroke-linecap="round"/><path d="M30 150 A120 120 0 0 1 270 150" fill="none" stroke="#c13515" stroke-width="16" stroke-linecap="round" pathLength="100" stroke-dasharray="58 100"/>${[71,84].map(v=>`<g transform="rotate(${-180+v*1.8} 150 150)"><line x1="262" y1="150" x2="286" y2="150" stroke="#0f1a33" stroke-width="2"/></g>`).join('')}<text x="236" y="38" font-size="11" font-weight="700" fill="#0f1a33" font-family="Hanken Grotesk">71</text><text x="284" y="88" font-size="11" font-weight="700" fill="#0f1a33" font-family="Hanken Grotesk">84</text><text x="150" y="132" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="68" fill="#c13515">58</text><text x="150" y="152" text-anchor="middle" font-size="12" fill="#4a5570" font-family="Hanken Grotesk">out of 100</text></svg>`;
+const PROMPTS=[['Best med spa in Irvine',0,'Coastline, Derm + Co, Pacific Skin'],['Natural-looking lip filler in Irvine',2],['Board-certified dermatologist for Botox near Irvine Spectrum',1],['Where can I get Morpheus8 near Irvine?',0,'Coastline, Derm + Co'],['Affordable Botox in Orange County',0,'Pacific Skin, Coastline']];
+const pdots=Array.from({length:22},(_,k)=>`<i class="${[2,5,8,11,14,17,20].includes(k)?'on':''}"></i>`).join('');
+const ddots=Array.from({length:40},(_,k)=>`<i class="${k<4?'on':(k<7?'bad':'')}"></i>`).join('');
+const fc=(f,ai,rec,mk,ok)=>`<div class="fc"><span class="f">${f}</span><span class="row"><span class="${ok?'':'bad'}">AI: ${ai}</span><span class="rc">Record: ${rec}${MK[mk]}</span></span></div>`;
+const SOV=[['Coastline',34,'#0f1a33'],['Derm + Co',26,'#4a5570'],['Lumen',14,'#c13515'],['Pacific Skin',8,'#9aa3b5'],['Others',18,'rgba(15,26,51,0.14)']];
+const CODE=`<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Lumen Aesthetics",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "7545 Irvine Center Dr, Suite 210",
+    "addressLocality": "Irvine",
+    "addressRegion": "CA",
+    "postalCode": "92618"
+  },
+  "telephone": "+1-949-555-0192",
+  "openingHours": "Tu-Sa 09:00-19:00",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 4.9,
+    "reviewCount": 612
+  },
+  "sameAs": ["https://lumenaesthetics.com"]
+}
+<\/script>`.replace(/</g,'&lt;');
+
+const PANELS={
+locals:`<div class="hrow"><h2 class="h2 S">Locals</h2><span class="sub"><b style="color:var(--navy)">18</b> asked · <b style="color:var(--navy)">0</b> answered by Lumen</span></div>
+<div style="display:flex;gap:8px;margin-top:12px"><input class="inp" placeholder="Ask, share a tip, or a heads-up" aria-label="Write a post"><button class="bp" style="width:auto;height:46px;padding:0 16px;font-size:15px" data-sheet="post">Post</button></div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin:10px 0 4px;gap:8px"><div class="chips" data-filter="locals"><button class="chip on" data-f="all">All</button><button class="chip" data-f="Question">? Question</button><button class="chip" data-f="Tip">✦ Tip</button><button class="chip" data-f="Heads-up">! Heads-up</button></div></div>
+<div id="feed"></div>`,
+services:`<h2 class="h2 S">Services</h2><span class="sub">What Lumen offers, what it costs, and what people come for.</span>
+<h3 class="h3 S" style="margin:14px 0 8px">Known for</h3><div class="kf">${[['Dermal filler','41%','$780 a syringe'],['Botox','29%','$12 a unit'],['Lip filler','9%','$780 a syringe']].map(([n,p,pr])=>`<div class="kfc"><div class="ph"></div><div class="t"><b>${n}</b><span>${p} of reviews</span><span>${pr}${MK.a}</span></div></div>`).join('')}</div>
+<div class="hrow" style="margin-top:12px"><h3 class="h3 S">The menu</h3><button class="btn sm" data-sheet="edit">${ic(I.plus,14)}Add a service</button></div>
+<div style="margin-top:8px">${mi('syringe','Dermal filler, cheeks, lips, jaw','c','Medical spa','45 minutes, results right away','$780 / syringe','a')+mi('syringe','Botox','c','Medical spa',"Forehead, frown and crow's feet lines",'$12 / unit','a')+mi('lips','Lip filler','c','Medical spa','Half syringes offered','$780 / syringe','a')+mi('drop','Filler dissolving','c','Medical spa','Including work from another provider','$450 est.','a')+mi('waves','Morpheus8, face','c','Skin care clinic','Microneedling plus radiofrequency','$1,100','v')+mi('waves','Morpheus8 Body','c','Skin care clinic','Arms, stomach and knees. New in October','$1,400 arms','v')+mi('syringe','Sculptra','c','Medical spa','Adds volume gradually over a few months','$900 / vial','a')+mi('drop','Kybella','a','Medical spa','Dissolves fat under the chin','$600 est.','a')}</div>`,
+team:`<h2 class="h2 S">Team</h2><span class="sub">Who works here, checked against state license boards.</span>
+<div style="margin-top:10px">${[['PN','Dr. Priya Nair, MD','Medical director · Board-certified dermatologist, 2011','CA Medical Board A112904, active to Jun 2027','c'],['NR','Nadia R., NP','Nurse practitioner · Filler, Botox, Sculptra','CA BRN NP 95-0812','c'],['JT','Jess T., RN','Registered nurse · Trained at CSU Long Beach, 2014','CA BRN RN 88-3311','c'],['FD','Front desk','2 people, both new since spring','Kelly W., in person, Aug 30','v'],['AE','Aestheticians','3 on staff','What AI engines say','a']].map(([i,n,r,s,m])=>`<div class="it" style="align-items:center"><span class="ava" style="font-size:12px;font-weight:700;color:var(--navy);background:#e4dccd">${i}</span><div class="g"><b>${n}${MK[m]}</b><span class="d">${r}</span><span class="d" style="font-size:12px">${s}</span></div></div>`).join('')}</div>`,
+visit:`<h2 class="h2 S">Visit</h2><span class="sub">When it's quiet, where to park, and what's nearby.</span>
+<div class="gl" style="padding:16px 18px;display:flex;flex-direction:column;gap:6px;margin-top:12px"><span class="lbl">When to visit <span style="color:var(--green);letter-spacing:0;text-transform:none;margin-left:6px"><i class="mk c" style="margin:0 5px 0 0"></i>Quiet right now</span></span><b style="font-size:18px;line-height:23px">Tuesday or Wednesday, before 11 AM.</b><span class="sub">Busiest Wednesday and Thursday from noon to 2. Saturday afternoons run about 25 minutes behind.${MK.a}</span><button class="bp arr" data-sheet="book" style="margin-top:6px;height:46px;font-size:15px">Request Tuesday 10 AM</button></div>
+<div class="hrow" style="margin-top:16px"><h3 class="h3 S">Busy times</h3><span class="sub" style="font-size:12px">12 weeks. Darker is busier.</span></div>
+<div class="gl" style="padding:12px;margin-top:8px">${hm}</div>
+<div class="gl" style="padding:14px 16px;margin-top:12px;display:flex;flex-direction:column;gap:4px"><span class="lbl">Best place to park</span><b style="font-size:15.5px">Structure B, level 3. Validated for 2 hours.</b><span class="sub">Ask the front desk for the validation sticker.${MK.v}</span></div>
+<div class="gl" style="padding:14px 16px;margin-top:12px;display:flex;flex-direction:column;gap:4px"><span class="lbl">Getting in</span><b style="font-size:15.5px">Second floor, elevator by the fountain.</b><span class="sub">Suite 210 is above the Nordstrom wing.${MK.a}</span></div>
+<div style="margin-top:12px">${[['Address','7545 Irvine Center Dr, Suite 210, Irvine, CA 92618','c'],['Phone','(949) 555-0192','c'],['Website','lumenaesthetics.com','c'],['Tue to Sat','9 AM to 7 PM','c'],['Sun, Mon','Closed','c']].map(([k,v,m])=>`<div class="fr"><span class="k">${k}</span><span class="v">${v}${MK[m]}</span></div>`).join('')}</div>`,
+reputation:`<h2 class="h2 S">Reputation</h2><span class="sub">Reviews, press and where Lumen is listed.</span>
+<div class="gl" style="padding:16px 18px;margin-top:12px;display:flex;flex-direction:column;gap:6px"><div style="display:flex;align-items:baseline;gap:8px"><span class="S" style="font-size:44px;line-height:44px">4.9</span><span style="font-size:15px">across 612 reviews${MK.c}</span></div>
+${bars([['Google',412/612*100|0],['Yelp',140/612*100|0],['RealSelf',60/612*100|0]])}
+<span class="sub" style="font-size:12.5px"><b style="color:var(--red)">0% replied to by the owner</b>${MK.c}</span></div>
+<h3 class="h3 S" style="margin-top:16px">The good</h3><ul class="sub" style="font-size:14px;line-height:21px;color:var(--navy);padding-left:18px;margin:6px 0"><li>Natural results that still move</li><li>Nadia is gentle and explains every step</li><li>Free validated parking</li></ul>
+<h3 class="h3 S" style="margin-top:8px">The bad</h3><ul class="sub" style="font-size:14px;line-height:21px;color:var(--navy);padding-left:18px;margin:6px 0"><li>Front desk is slow to return calls</li><li>Saturday waits run about 25 minutes</li><li>Yelp lists Monday hours that are wrong</li></ul>
+<h3 class="h3 S" style="margin-top:8px">Press</h3><div style="margin-top:6px">${[['Irvine Weekly','Pink ribbon walk raises $12,000','Sep 15, 2026'],['OC Register','Quoted on natural-looking filler','Aug 2026']].map(([p,t,d])=>`<div class="it"><div class="g"><b>${t}${MK.c}</b><span class="d">${p} · ${d}</span></div></div>`).join('')}</div>`,
+updates:`<div class="hrow"><h2 class="h2 S">Updates</h2><button class="btn sm" data-sheet="claim">Post an update</button></div>
+<div class="chips" style="margin:10px 0 2px"><button class="chip on">All <em>9</em></button><button class="chip">Instagram <em>2</em></button><button class="chip">Facebook <em>1</em></button><button class="chip">TikTok <em>1</em></button><button class="chip">Google post <em>2</em></button><button class="chip">Website and jobs <em>2</em></button><button class="chip">Press <em>1</em></button></div>
+${upd('Instagram','2 days ago','Morpheus8 Body is here. Arms, stomach and knees. Consults open October 1 with Dr. Nair.',142,9,[['kellyw_irvine','Finally! Booking for my arms.'],['oc_skin_nerd','Is it the same as the face version?']])}
+${upd('Facebook','4 days ago','Skin Night is Thursday, October 15, 6 to 9 PM. Live demos with Dr. Nair and $50 off anything booked that night.',88,5,[['anna_irvine_22','Going with my sister!']])}
+${upd('TikTok','1 week ago','Dr. Nair on why she talked a patient out of a second syringe. 48K views.',311,14,[])}`,
+ai:`<h2 class="h2 S">How AI sees Lumen</h2><span class="sub">The AI Score shows how much AI trusts what it finds about Lumen. Checked Sep 25, 2026.</span>
+<div class="gl" style="padding:14px 16px 12px;display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:12px">${gauge}<div style="display:flex;gap:16px;font-size:12.5px;color:var(--ink2)"><span><b style="color:var(--navy)">71</b> Irvine avg</span><span><b style="color:var(--navy)">84</b> Coastline, top in Irvine</span></div></div>
+<div class="hrow" style="margin-top:16px"><h3 class="h3 S">What the score is made of</h3></div>
+<div class="sub" style="font-size:12px;display:flex;justify-content:space-between;margin:4px 0 2px"><span>Signal and how much it counts</span><span>Lumen</span></div>
+<div>${SIG.map(([n,w,v,d])=>`<div class="sg"><span>${n}<em>${w}%</em><span class="sd">${d}</span></span><span class="br"><u style="width:${v}%;background:${col(v)}"></u></span><b style="color:${col(v)}">${v}</b></div>`).join('')}</div>
+<span class="sub" style="font-size:12px;display:block;margin-top:6px">Same method for every business. Never for sale.</span>
+<div class="lockrep">
+ <span class="lbl" style="color:#c3cbd8">Lumen's full AI report</span>
+ <b class="S" style="font-size:28px;line-height:30px;color:#fff;font-weight:500">See exactly what AI says about you, and how to get picked</b>
+ <div class="g3" id="g-ent"><div class="fallback">Loading the 3D view…</div></div>
+ <span class="cap3">Lumen, as AI sees it. Blue facts help. Red ones hold Lumen back.</span>
+ <div class="blur">${[['“Best med spa in Irvine”','Not named'],['“Botox near Irvine Spectrum”','Named #3'],['“Natural lip filler Irvine”','Named #2']].map(([q,r])=>`<div><span>${q}</span><b>${r}</b></div>`).join('')}<span class="lk">${ic(I.lock,16)}</span></div>
+ <ul class="inside">${[['Every question people ask AI about med spas in Irvine, and who AI names instead of you'],['What AI gets wrong about you, and the website it read it on'],['A 3D map of Irvine: where people search, and where you are missing'],['How many patients that costs you each month, in dollars'],['A simple plan to fix it, step by step']].map(([t])=>`<li>${ic(I.check,16)}<span>${t}</span></li>`).join('')}</ul>
+ <button class="bp arr light" data-sheet="claim">Claim free to get the report</button>
+ <span style="font-size:12.5px;color:#c3cbd8;text-align:center">Free. Takes 2 minutes. No contract.</span>
+</div>
+<section style="padding-top:22px"><h3 class="h3 S">What AI reads</h3><span class="sub">The page ChatGPT, Gemini, Perplexity and Google read about Lumen. The code version is exactly what their crawlers get.</span>
+<div class="seg" style="margin-top:10px" id="pcseg"><button class="on" data-pc="page">Page</button><button data-pc="code">Code</button></div>
+<div class="gl" id="pcpage" style="padding:14px 16px;display:flex;flex-direction:column;gap:6px;margin-top:10px"><span class="lbl" style="font-size:10px">Local AI Registry · Med spas in Irvine, CA · Editorial</span><span class="S" style="font-size:24px;line-height:27px;font-weight:600">Lumen Aesthetics, Irvine: a physician-owned med spa at the Irvine Spectrum (2026 guide)</span><span class="sub" style="font-size:12px">By Steve Lee, founder and CEO of Local AI Registry. Former Google Search executive and former Microsoft executive, with 20+ years in digital. Fact-checked against 69 sources. Updated Sep 25, 2026.</span><span class="sub" style="font-size:12px">Owner review: not yet. Lumen Aesthetics has not checked this page.</span><b style="font-size:14px;margin-top:6px">In short</b><span style="font-size:13.5px;line-height:19px">Lumen Aesthetics is a physician-owned med spa on the second floor of the Irvine Spectrum Center in Irvine, California, open since 2016. It is led by Dr. Priya Nair, MD, a board-certified dermatologist licensed by the Medical Board of California. It is best known for natural-looking dermal filler and Botox, holds a 4.9 average across 612 reviews, and charges $12 per unit of Botox and $780 per syringe of filler. It is open Tuesday to Saturday, 9 AM to 7 PM, and is quietest on Tuesday and Wednesday mornings.</span><b style="font-size:14px;margin-top:6px">Key facts</b><div class="kt">${[['Type','Physician-owned med spa'],['Address','7545 Irvine Center Dr, Suite 210, Irvine, CA 92618'],['Hours','Tue to Sat, 9 AM to 7 PM. Closed Sun and Mon.'],['Phone','(949) 555-0192'],['Director','Dr. Priya Nair, MD, board-certified dermatologist'],['Rating','4.9 across 612 reviews'],['Known for','Natural-looking filler, Botox that still moves'],['Prices','Botox $12 a unit, filler $780 a syringe'],['Quietest','Tuesday or Wednesday before 11 AM'],['Parking','Structure B, validated 2 hours'],['Verified','Sep 25, 2026, 6:10 AM']].map(([k,v])=>`<span>${k}</span><span>${v}</span>`).join('')}</div><b style="font-size:14px;margin-top:6px">Questions people ask</b><div class="kt" style="grid-template-columns:1fr">${['Is the first consult at Lumen Aesthetics free? It is $75, credited if you book.','Who does the injections? Dr. Nair and licensed nurse injectors.','Where do I park? Irvine Spectrum Structure B, level 3, validated for 2 hours.'].map(q=>`<span>${q}</span>`).join('')}</div></div>
+<div class="code" id="pccode" style="display:none;margin-top:10px">${CODE}</div></section>`};
+$('#panels').innerHTML=Object.entries(PANELS).map(([k,h])=>`<div class="panel" id="p-${k}">${h}</div>`).join('');
+const renderFeed=f=>{$('#feed').innerHTML=POSTS.filter(p=>f==='all'||p[2]===f).map(p=>post(...p)).join('')};renderFeed('all');
+
+// page end
+const REFS=[[1,'c','LOCALS','Answers about hours, prices and services',"Lumen's website and Google Business Profile. Checked Sep 25, 2026."],[2,'v','LOCALS','First consult is $75 and credited','Marcus D., in person, Mar 12, 2026.'],[3,'v','LOCALS','Nadia is the one to see for lips','3 visitors, after treatment, Aug 2026.'],[4,'v','LOCALS','Coastline replies faster than Lumen','Sam K., called both, Sep 10, 2026.'],[5,'a','LOCALS','Answers marked AI','Summaries of reviews and the record. Not medical advice.'],[6,'c','SERVICES','Botox $12 per unit, filler $780 per syringe','lumenaesthetics.com/pricing. Checked Sep 25, 2026.'],[7,'c','SERVICES','34 services on the menu, with descriptions','lumenaesthetics.com/services. Checked Sep 25, 2026.'],[16,'c','TEAM','Dr. Priya Nair, license A112904, active to Jun 2027','Medical Board of California license lookup. Checked Sep 25, 2026.'],[26,'c','VISIT','Address, phone and hours','Google Business Profile. Checked Sep 25, 2026, 6:10 AM.'],[37,'c','REPUTATION','612 reviews, 4.9 average','Google 412, Yelp 140, RealSelf 60. Read Sep 25, 2026.'],[47,'c','UPDATES','Morpheus8 Body consults open Oct 1','instagram.com post by Lumen. Posted Sep 21, 2026.']];
+const rf=([n,m,k,t,d])=>`<div class="rf"><span class="n">[${n}]</span><span>${MK[m].replace('class="mk','style="margin:0 6px 0 0" class="mk')}<span class="k">${k}</span><b>${t}</b> <span class="sub" style="font-size:12.5px">${d}</span></span></div>`;
+const pal=(lo,bg,n,s,sc,c,me)=>`<div class="r${me?' me':''}"><span class="lo" style="background:${bg}">${lo}</span><span class="g"><b>${n}</b><span>${s}</span></span><span class="sc"><i><u style="width:${sc}%;background:${c}"></u></i><span style="color:${sc>70?'#2f6b3a':'var(--navy)'}">${sc}</span></span></div>`;
+$('#end').innerHTML=`<div class="gl pal" style="padding:14px 16px"><div class="hrow" style="margin-bottom:6px"><b style="font-size:16px">People also look at</b><span class="sub" style="font-size:12px">AI Score, out of 100</span></div>${pal('LA','#fbdfe0','Lumen Aesthetics','612 reviews · you are here',58,'#c13515',1)+pal('CM','#e3defa','Coastline MedSpa','1,102 reviews · Newport Beach',84,'#1f8a2e')+pal('DC','#dce9fa','Derm + Co','640 reviews · Tustin, 5 mi',79,'#1f8a2e')+pal('PS','#dff0e4','Pacific Skin Studio','217 reviews · Irvine, 3 mi',44,'#c13515')}</div>
+<div style="display:flex;justify-content:center;gap:22px;font-size:13.5px"><button data-sheet="report" style="display:flex;gap:6px;align-items:center;text-decoration:underline;text-underline-offset:3px">${ic(I.flag,15)}Report this listing</button><button data-sheet="edit" style="display:flex;gap:6px;align-items:center;text-decoration:underline;text-underline-offset:3px">${ic(I.pencil,15)}Suggest an edit</button></div>
+<details class="more"><summary class="refhead"><span style="flex:1;display:flex;flex-direction:column"><span class="S" style="font-size:24px;line-height:28px">References</span><span class="sub">53 sources behind every fact on this page</span></span><span class="tog"><span class="show">Show</span><span class="hide">Hide</span>${ic(I.down,15)}</span></summary>
+<div class="legend" style="margin:0 0 4px"><span><i class="mk c"></i>Confirmed</span><span><i class="mk v"></i>Visitor submitted</span><span><i class="mk a" style="margin-right:5px"></i>AI guess</span></div>
+${REFS.map(rf).join('')}<p class="sub" style="font-size:12px">Prototype shows 11 of 53.</p></details>
+<button class="rowlink" data-sheet="history"><span style="flex:1;display:flex;flex-direction:column;text-align:left"><span class="S" style="font-size:24px;line-height:28px">Change history</span><span class="sub">Every change to every fact, newest first</span></span>${ic(I.chev,20)}</button>
+<p class="sub" style="font-size:12px;text-align:center;margin:4px 0 0">Profile by Local AI Registry · Checked every morning against public sources</p>`;
+
+function hscroll(el){const c=el.parentNode;c.scrollTo({left:Math.max(0,el.offsetLeft-c.clientWidth/2+el.offsetWidth/2),behavior:'smooth'})}
+// ---------- tab switching
+const scroller=$('#scroll'),tabsEl=$('#tabs');
+function setTab(k,jump){document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.tab===k));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+k));
+ const t=document.querySelector(`.tab[data-tab="${k}"]`);hscroll(t);
+ if(jump){const top=tabsEl.offsetTop-52;scroller.scrollTo({top:top,behavior:'smooth'})}}
+document.addEventListener('click',e=>{
+ const t=e.target.closest('[data-tab]');if(t){setTab(t.dataset.tab,scroller.scrollTop>tabsEl.offsetTop-60);return}
+ const g=e.target.closest('[data-go]');if(g){setTab(g.dataset.go,true);return}
+ const f=e.target.closest('[data-f]');if(f){f.parentNode.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===f));renderFeed(f.dataset.f);return}
+ const j=e.target.closest('[data-jump]');if(j){const s=document.getElementById(j.dataset.jump);scroller.scrollTo({top:s.offsetTop-150,behavior:'smooth'});return}
+ const pc=e.target.closest('[data-pc]');if(pc){$('#pcseg').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===pc));$('#pcpage').style.display=pc.dataset.pc==='page'?'flex':'none';$('#pccode').style.display=pc.dataset.pc==='code'?'block':'none';return}
+ const up=e.target.closest('.vote button');if(up){if(!up.classList.contains('on')){up.classList.add('on');const n=up.parentNode.querySelector('span');n.textContent=+n.textContent+(up.classList.contains('up')?1:-1)}return}
+ const sh=e.target.closest('[data-sheet]');if(sh){openSheet(sh.dataset.sheet);return}
+ const ac=e.target.closest('[data-act]');if(ac){act(ac.dataset.act,ac);return}
+ if(e.target.closest('.chip')&&!e.target.closest('[data-jump]')){const c=e.target.closest('.chip');c.parentNode.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===c))}
+});
+setTab('locals');
+
+// sticky behaviors
+const topbar=$('#topbar'),nameEl=document.querySelector('.name');
+const SECS=['ai-score','ai-says','ai-wrong','ai-sources','ai-reads'];
+scroller.addEventListener('scroll',()=>{const on=scroller.scrollTop>nameEl.offsetTop+30;topbar.classList.toggle('on',on);tabsEl.classList.toggle('st',on);
+},{passive:true});
+
+// ---------- sheets
+const SHEETS={
+cash:()=>`<div class="sh"><b class="S" style="font-size:26px">20% cashback</b><button class="icb" data-act="close" aria-label="Close" style="width:34px;height:34px">${ic(I.x,18)}</button></div>
+<div class="cash-hero"><span class="cb" style="flex:none"><span class="ti">${ic(I.tag,15)}</span><b style="font-size:22px">20% back at Lumen</b></span><span style="font-size:15px;line-height:22px">Local AI Registry partners with <a class="ob" href="https://orbitback.com" target="_blank" rel="noopener">OrbitBack.com</a> to give you cashback at local businesses. Lumen is eligible, but cashback stays off until Lumen claims this page.</span></div>
+<div style="display:flex;flex-direction:column;gap:6px"><b style="font-size:16px">Get a text when it's on</b><span class="sub" style="font-size:14px;line-height:20px">We'll reach out to Lumen for you, then let you know the moment cashback turns on.</span></div>
+<input class="inp" style="font-family:inherit;font-size:15px" type="tel" placeholder="Phone number" aria-label="Phone number">
+<button class="bp" data-act="notify">Notify me</button><a class="btn" href="https://orbitback.com" target="_blank" rel="noopener" style="width:100%;height:48px">How OrbitBack works</a>
+<span class="note">Own Lumen? <button data-sheet="claim" style="font-weight:700;text-decoration:underline;text-underline-offset:3px">Claim this page</button> to turn on cashback.</span>`,
+book:()=>`<div class="sh"><b>Request a booking</b><button class="icb" data-act="close" aria-label="Close" style="width:34px;height:34px">${ic(I.x,18)}</button></div>
+<button data-sheet="cash" style="background:var(--peach);border-radius:16px;padding:12px 14px;display:flex;align-items:center;gap:10px"><span class="cb"><span class="ti">${ic(I.tag,15)}</span><b>Eligible for 20% cashback</b></span>${ic(I.chev,16)}</button>
+<div class="seg"><button class="on">Book a visit</button><button data-act="topost">Post</button></div>
+<div class="bk"><div class="rw"><label class="c"><small>Day</small><select><option>Tue, Sep 29</option><option>Wed, Sep 30</option><option>Thu, Oct 1</option><option>Fri, Oct 2</option></select></label><label class="c"><small>Time</small><select><option>Morning</option><option>Afternoon</option><option>Evening</option></select></label></div>
+<div class="rw"><label class="c"><small>Service</small><select><option>Consultation</option><option>Botox</option><option>Dermal filler</option><option>Lip filler</option><option>Morpheus8</option></select></label></div></div>
+<button class="bp arr" data-act="booked">Request a booking</button><span class="note">Takes 30 seconds. You won't be charged.</span>`,
+booked:()=>`<div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:10px 0"><span style="width:56px;height:56px;border-radius:50%;background:rgba(47,107,58,0.12);color:var(--green);display:flex;align-items:center;justify-content:center">${ic(I.check,28)}</span><b class="S" style="font-size:28px">Request sent</b><span class="sub" style="font-size:14.5px;line-height:21px">We sent your request to Lumen. Lumen hasn't claimed this page yet, so we'll also share it with nearby spots so you hear back faster.</span><button class="btn" data-act="close" style="width:100%;height:48px">Back to Lumen</button></div>`,
+edit:()=>`<div class="sh"><b>Suggest an edit</b><button class="icb" data-act="close" aria-label="Close" style="width:34px;height:34px">${ic(I.x,18)}</button></div>
+<span class="slb">What needs fixing?</span><div class="chips" style="flex-wrap:wrap"><button class="chip on">Hours</button><button class="chip">Phone</button><button class="chip">Price</button><button class="chip">Service</button><button class="chip">Team</button><button class="chip">Something else</button></div>
+<span class="slb">Monday hours right now</span><div style="display:flex;justify-content:space-between;font-size:15px;padding:2px 0 8px;border-bottom:1px solid var(--line)"><span><i class="mk a" style="margin:0 6px 0 0"></i>9 AM to 6 PM</span><span class="sub">AI guess</span></div>
+<span class="slb">What should it say?</span><input class="inp" style="font-family:inherit;font-size:15px;border:2px solid var(--navy)" value="Closed Mondays">
+<span class="slb">How do you know?</span><div class="chips" style="flex-wrap:wrap"><button class="chip on">I called</button><button class="chip">I went there</button><button class="chip">Their website or sign</button><button class="chip">I work there</button></div>
+<button class="bp arr" data-act="submitted">Submit</button>`,
+submitted:()=>`<div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:10px 0"><span style="width:56px;height:56px;border-radius:50%;background:#fbe4d3;display:flex;align-items:center;justify-content:center"><i class="mk v" style="width:16px;height:16px;margin:0;border-width:2px"></i></span><b class="S" style="font-size:28px">Thanks for the fix</b><span style="font-size:15px;font-weight:600;line-height:21px">It shows on the page right away, marked as visitor submitted.</span><span class="sub">When a second neighbor or Lumen agrees, it becomes a confirmed fact, and that is what AI starts repeating.</span><button class="btn" data-act="close" style="width:100%;height:48px">Back to Lumen</button></div>`,
+report:()=>`<div class="sh"><b>Why are you reporting this listing?</b><button class="icb" data-act="close" aria-label="Close" style="width:34px;height:34px">${ic(I.x,18)}</button></div><span class="sub">This won't be shared with the business.</span>${['It has wrong information','The business is closed','It is a duplicate','I am the owner and dispute it','Something else'].map((r,i)=>`<label style="display:flex;gap:10px;align-items:center;font-size:15px;padding:10px 0;border-top:1px solid var(--line)"><input type="radio" name="rr" ${i?'':'checked'}>${r}</label>`).join('')}<button class="bp" data-act="reported">Send report</button>`,
+claim:()=>`<div class="sh"><b class="S" style="font-size:26px">Is this your business?</b><button class="icb" data-act="close" aria-label="Close" style="width:34px;height:34px">${ic(I.x,18)}</button></div><span class="sub" style="font-size:14.5px;line-height:21px">Claim Lumen Aesthetics free to get your full AI report, answer your locals, correct what AI gets wrong, and turn on 20% cashback.</span><input class="inp" style="font-family:inherit;font-size:15px" placeholder="Work email"><input class="inp" style="font-family:inherit;font-size:15px" placeholder="Phone number"><button class="bp arr" data-act="claimed">Send my code</button><span class="note">Free forever. No contract.</span>`,
+post:()=>`<div class="sh"><b>Post to Locals</b><button class="icb" data-act="close" aria-label="Close" style="width:34px;height:34px">${ic(I.x,18)}</button></div><div class="chips"><button class="chip on">? Question</button><button class="chip">✦ Tip</button><button class="chip">! Heads-up</button></div><textarea class="inp" rows="4" placeholder="What do you want to know about Lumen?"></textarea><span class="slb">Have you been?</span><div class="chips"><button class="chip">Went</button><button class="chip">Going</button><button class="chip on">Researching</button></div><button class="bp" data-act="posted">Post</button><span class="note">No account needed. Add a phone number later to hear about replies.</span>`,
+media:()=>`<div class="sh"><b>Add media AI can read</b><button class="icb" data-act="close" aria-label="Close" style="width:34px;height:34px">${ic(I.x,18)}</button></div><span class="sub" style="font-size:14.5px;line-height:21px">None of Lumen's 51 photos carry code that tells AI what they show. Owners can add photos with that code after claiming.</span><button class="bp arr" data-sheet="claim">Claim this page</button>`,
+photos:()=>`<div class="sh"><b>51 photos</b><button class="icb" data-act="close" aria-label="Close" style="width:34px;height:34px">${ic(I.x,18)}</button></div><div class="chips"><button class="chip on">All</button><button class="chip">Results</button><button class="chip">Space</button><button class="chip">Team</button></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin:0 -20px">${'<div class="ph" style="height:118px;border-radius:0"></div>'.repeat(9)}</div>`,
+what:()=>`<div class="sh"><b class="S" style="font-size:26px">What is this page?</b><button class="icb" data-act="close" aria-label="Close" style="width:34px;height:34px">${ic(I.x,18)}</button></div>
+<span style="font-size:15.5px;line-height:23px"><b>Local AI Registry is a public record of what AI tools like ChatGPT and Google say about local businesses.</b> Locals add what's true, and owners claim their page to correct it.</span>
+<div style="background:var(--peach);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:6px"><span class="lbl">For example</span><span style="font-size:14.5px;line-height:21px">Someone asks ChatGPT for the best med spa in Irvine. If AI has Lumen's hours wrong, or can't find Lumen on sites it trusts, it names someone else. This page shows what AI has right and wrong.</span></div>
+<div style="display:flex;flex-direction:column;gap:8px">${[['c','Confirmed','from their website, Google, review sites or license boards'],['v','Visitor submitted','added by a local, with how they know'],['a','AI guess','what AI tools are saying, not confirmed yet']].map(([m,t,d])=>`<span style="font-size:14px;line-height:20px">${MK[m].replace('class="mk','style="margin:0 8px 0 0" class="mk')}<b>${t}:</b> ${d}</span>`).join('')}</div>
+<button class="bp" data-act="close">Got it</button><span class="note">Own Lumen? <button data-sheet="claim" style="font-weight:700;text-decoration:underline;text-underline-offset:3px">Claim this page free</button></span>`,
+history:()=>`<div class="sh"><b class="S" style="font-size:28px">Change history</b><button class="icb" data-act="close" aria-label="Close" style="width:34px;height:34px">${ic(I.x,18)}</button></div><span class="sub" style="margin-top:-8px">Every change to every fact on Lumen's page, newest first. Nothing is ever deleted.</span><div>${[['Today','Monday hours','Closed','9 AM to 6 PM','Aisha M., visited on a Monday · Photo of the door sign','v'],['Sep 26','Saturday, Oct 3','Closed for staff training','Open','Lumen, confirmed as the owner','c'],['Sep 25','Botox','$12 a unit','$14 a unit','lumenaesthetics.com/pricing · Archived copy','c'],['Sep 24','Parking tip','Level 3 of Structure B has the elevator','','Kelly W., goes every month','v'],['Sep 21','Morpheus8 Body','Added, consults from Oct 1','',"Lumen's Instagram post",'c'],['Aug 2','Monday hours','9 AM to 6 PM','','What ChatGPT and Gemini said on this date','a']].map(([d,f,n,o,w,m])=>`<div class="hs">${MK[m]}<div class="g"><b>${f}</b><span>${n}</span>${o?`<s>${o}</s>`:''}<span class="w">${w}</span></div><span class="d">${d}</span></div>`).join('')}</div>`};
+const scrim=$('#scrim'),sheet=$('#sheet');
+function openSheet(k){sheet.innerHTML='<span class="gr"></span>'+SHEETS[k]();scrim.classList.add('on');sheet.classList.add('on');sheet.scrollTop=0}
+function closeSheet(){scrim.classList.remove('on');sheet.classList.remove('on')}
+scrim.onclick=closeSheet;document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('on');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('on'),2600)}
+function act(a){
+ if(a==='close')closeSheet();
+ if(a==='share'){toast('Link copied')}
+ if(a==='notify'){closeSheet();toast("We'll text you when cashback is on at Lumen")}
+ if(a==='booked')openSheet('booked');
+ if(a==='submitted')openSheet('submitted');
+ if(a==='reported'){closeSheet();toast('Report sent. Thanks.')}
+ if(a==='claimed'){closeSheet();toast('Prototype: the claim flow starts here')}
+ if(a==='posted'){closeSheet();toast('Posted to Locals')}
+ if(a==='topost'){closeSheet();setTab('locals',true);setTimeout(()=>openSheet('post'),350)}
+}
+
+(function(){
+ const el=document.getElementById('g-ent');
+ function boot(){
+  if(!window.THREE){el.querySelector('.fallback').textContent='3D view unavailable here.';return}
+  el.innerHTML='';const W=()=>el.clientWidth,H=()=>el.clientHeight;
+  const r=new THREE.WebGLRenderer({antialias:true});r.setPixelRatio(Math.min(devicePixelRatio,2));r.setSize(W(),H());r.setClearColor(0x0b1730);el.appendChild(r.domElement);
+  const sc=new THREE.Scene();sc.fog=new THREE.Fog(0x0b1730,60,150);const cam=new THREE.PerspectiveCamera(45,W()/H(),.1,500);
+  const st={th:.4,ph:1.2,rad:66};const place=()=>{cam.position.set(st.rad*Math.sin(st.ph)*Math.sin(st.th),st.rad*Math.cos(st.ph),st.rad*Math.sin(st.ph)*Math.cos(st.th));cam.lookAt(0,0,0)};place();
+  sc.add(new THREE.AmbientLight(0xffffff,.55));const pl=new THREE.PointLight(0xffffff,1.1);pl.position.set(20,30,20);sc.add(pl);
+  const N=[['core','Lumen Aesthetics','truth'],['d1','Dr. Priya Nair','ok'],['f1','Board certified, 2011','ok'],['f2','4.9 from 612 reviews','ok'],['f3','Known for filler','ok'],['b1','Open Mondays','bad'],['b2','Botox $14 a unit','bad'],['b3','Missing from 33 directories','bad'],['b4','Owner never replies','bad'],['s1','Google','src'],['s2','Yelp','src'],['s3','RealSelf','src'],['s4','Their website','src'],['s5','OC Register','src']];
+  const E=[['core','d1'],['d1','f1'],['s4','d1'],['s1','f2'],['s3','f2'],['f2','core'],['f3','core'],['s3','f3'],['s2','b1'],['b1','core'],['s2','b2'],['b2','core'],['b3','core'],['b4','core'],['s1','b4'],['s5','core'],['s4','core']];
+  const idx={};N.forEach((n,i)=>{idx[n[0]]=i;n.p=new THREE.Vector3((Math.random()-.5)*20,(Math.random()-.5)*20,(Math.random()-.5)*20);n.v=new THREE.Vector3()});N[0].p.set(0,0,0);
+  for(let it=0;it<400;it++){for(let i=0;i<N.length;i++)for(let j=i+1;j<N.length;j++){const d=new THREE.Vector3().subVectors(N[i].p,N[j].p);const l=Math.max(d.length(),.5);d.multiplyScalar(80/(l*l*l));N[i].v.add(d);N[j].v.sub(d)}
+   E.forEach(e=>{const a=N[idx[e[0]]],b=N[idx[e[1]]];const d=new THREE.Vector3().subVectors(b.p,a.p);const l=d.length();const rest=(a[2]==='bad'||b[2]==='bad')?15:11;d.multiplyScalar((l-rest)*.02);a.v.add(d);b.v.sub(d)});
+   N.forEach((n,i)=>{if(!i){n.v.set(0,0,0);return}n.v.add(n.p.clone().multiplyScalar(-.004));n.p.add(n.v.multiplyScalar(.5))})}
+  const colr={truth:0xf4f1ea,ok:0x3d6bff,bad:0xff5a3c,src:0x8d9ab0};const meshes=[],labels=[];
+  N.forEach(n=>{const rr=n[2]==='truth'?2:n[2]==='src'?.75:1.05;const m=new THREE.Mesh(n[2]==='src'?new THREE.BoxGeometry(rr*1.5,rr*1.5,rr*1.5):new THREE.SphereGeometry(rr,24,18),new THREE.MeshStandardMaterial({color:colr[n[2]],emissive:colr[n[2]],emissiveIntensity:n[2]==='bad'?.5:.22,roughness:.4}));m.position.copy(n.p);m.userData.bad=n[2]==='bad';sc.add(m);meshes.push(m);
+   const d=document.createElement('div');d.className='lab'+(n[2]==='bad'?' bad':n[2]==='src'?' src':'');d.textContent=n[1];el.appendChild(d);labels.push({d,p:n.p.clone().add(new THREE.Vector3(0,rr+.6,0))})});
+  E.forEach(e=>{const a=N[idx[e[0]]],b=N[idx[e[1]]];const bad=a[2]==='bad'||b[2]==='bad';sc.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([a.p,b.p]),new THREE.LineBasicMaterial({color:bad?0xff5a3c:0x4f74e8,transparent:true,opacity:bad?.65:.4})))});
+  const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;let auto=!RM,drag=null;
+  const cv=r.domElement;cv.addEventListener('pointerdown',e=>{drag=e.clientX;auto=false});cv.addEventListener('pointermove',e=>{if(drag===null)return;st.th-=(e.clientX-drag)*.008;drag=e.clientX;place()});['pointerup','pointercancel','pointerleave'].forEach(t=>cv.addEventListener(t,()=>drag=null));
+  const v=new THREE.Vector3();let vis=false,raf=0;const t0=performance.now();
+  function loop(){cancelAnimationFrame(raf);if(!vis)return;raf=requestAnimationFrame(loop);const t=(performance.now()-t0)/1000;if(auto){st.th+=.003;place()}meshes.forEach(m=>{if(m.userData.bad)m.scale.setScalar(1+.12*Math.sin(t*3+m.position.x))});r.render(sc,cam);
+   const w=W(),h=H();labels.forEach(L=>{v.copy(L.p).project(cam);const ok=v.z<1&&Math.abs(v.x)<1.05&&Math.abs(v.y)<1.05;L.d.style.display=ok?'block':'none';if(ok){L.d.style.left=((v.x+1)/2*w)+'px';L.d.style.top=((1-v.y)/2*h)+'px'}})}
+  new IntersectionObserver(es=>{vis=es[0].isIntersecting&&el.offsetParent!==null;if(vis)loop()},{threshold:.05}).observe(el);
+  new ResizeObserver(()=>{if(!W())return;r.setSize(W(),H());cam.aspect=W()/H();cam.updateProjectionMatrix();vis=true;loop()}).observe(el);
+ }
+ const sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';sc.onload=boot;sc.onerror=boot;document.head.appendChild(sc);
+})();
+</script>
+</body>
+</html>

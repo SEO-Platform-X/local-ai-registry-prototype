@@ -29,3 +29,7 @@ Every screen in `docs/` carries the brand look from the concept (paper backgroun
 ## Mobile business profile (M3)
 
 `MProfile` was rebuilt to match the finalized desktop profile (`Main`): same order, copy, prices, AI Score strip, serif tabs, Locals posts, booking card and references. It is a standalone page with its own styles, so the brand layer skips it. Rebuild it with `python3 generators/mobile/profile_v2.py`, which writes `docs/MProfile.html` and `prototype/MProfile.dc.html`. Re-run it after `build_site.py`, which would otherwise put back the old version.
+
+## Clickable mobile profile
+
+`docs/MobileProfile.html` is the clickable mobile version of the business profile, the reference for building mobile. Open it on a phone and it fills the screen. Live at https://seo-platform-x.github.io/local-ai-registry-prototype/MobileProfile.html
